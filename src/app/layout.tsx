@@ -71,7 +71,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     logo: siteUrl ? `${siteUrl}/icon.svg` : "/icon.svg",
     description:
       "Industrial wooden pallets, export pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
-    email: "sales@dynpallets.com",
+    email: "Info@dynpallets.com",
+    telephone: "+918850139961",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
+    },
   };
 
   const websiteSchema = {

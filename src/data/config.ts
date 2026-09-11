@@ -2,11 +2,13 @@ export const siteConfig = {
   name: "DYN Pallets",
   shortName: "DYN",
   tagline: "Industrial packaging, engineered to move.",
-  email: "sales@dynpallets.com",
-  phone: "+91 00000 00000",
-  whatsapp: "910000000000",
-  location: "Maharashtra, India",
-  serviceArea: "India · Export enquiries",
+  email: "Info@dynpallets.com",
+  emailHref: "mailto:Info@dynpallets.com",
+  phone: "+91 88501 39961",
+  phoneHref: "tel:+918850139961",
+  whatsapp: "918850139961",
+  location: "Mumbai, Maharashtra, India",
+  serviceArea: "Mumbai, Maharashtra, India",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "",
 } as const;
 

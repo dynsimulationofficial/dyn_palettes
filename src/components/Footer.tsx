@@ -63,15 +63,15 @@ export default function Footer() {
                 {siteConfig.serviceArea}
               </span>
 
-              <span>
+              <a href={siteConfig.phoneHref}>
                 <Phone size={17} />
                 {siteConfig.phone}
-              </span>
+              </a>
 
-              <span>
+              <a href={siteConfig.emailHref}>
                 <Mail size={17} />
                 {siteConfig.email}
-              </span>
+              </a>
             </div>
           </div>
 
