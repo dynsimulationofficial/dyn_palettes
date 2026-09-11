@@ -1,0 +1,26 @@
+DYN PALLETS — FINAL PREMIUM VISUAL PASS
+========================================
+
+Header kept intentionally minimal:
+Home · About Us · Products · Services · Gallery · Contact
+
+Premium motion / texture system added:
+- Animated Packaging Lab hero with live specification readouts
+- 3D-style floating pallet / box / crate / plastic product models
+- Moving scan lines and load-state visual indicators
+- Layered timber-grain surfaces and exploded timber stack section
+- Brushed/noise surface texture across dark graphite theme
+- Blueprint/grid motion and engineering callouts
+- Cursor-reactive ambient lighting on desktop
+- Scroll reveal motion with blur-to-focus transition
+- Product-card light sweep and depth hover interactions
+- Animated capability ticker
+- Larger, more readable footer typography
+- Responsive mobile layout and motion-reduction support
+
+Repository status:
+- Original .git folder is preserved
+- Branch remains: main
+- Remote remains: https://github.com/dynsimulationofficial/dyn_palettes.git
+- Original commit authors/history remain intact
+- Website changes remain uncommitted for your review

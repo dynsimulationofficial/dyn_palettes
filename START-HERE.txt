@@ -1,0 +1,50 @@
+DYN PALLETS — START HERE
+========================
+
+This package keeps the ORIGINAL Git repository and history.
+
+Remote preserved:
+https://github.com/dynsimulationofficial/dyn_palettes.git
+
+Existing commit authors preserved:
+- Danish Khan <danish@dynsimulation.com>
+- Prashik Shivgan <workwith.prashik@gmail.com>
+
+IMPORTANT
+1. Extract the ZIP normally.
+2. In VS Code choose File > Open Folder.
+3. Open the folder named "dyn-pallets" — the same folder that contains package.json AND the hidden .git folder.
+4. Open a terminal and run:
+
+   git status
+   git remote -v
+   git log --oneline --all --decorate -n 10
+
+5. Install/run the website:
+
+   npm install
+   npm run dev
+
+6. When you are happy with it:
+
+   git add .
+   git commit -m "Build premium DYN PALLETS website"
+   git push origin main
+
+VS CODE SAYS "NO SOURCE CONTROL PROVIDERS REGISTERED"?
+------------------------------------------------------
+Git CLI can still be installed correctly while VS Code's built-in Git extension is disabled.
+
+- Open Extensions (Ctrl+Shift+X)
+- Search: @builtin git
+- Open "Git" and click Enable
+- Ctrl+Shift+P > Developer: Reload Window
+
+The workspace already contains .vscode/settings.json with git.enabled=true.
+
+BUSINESS DETAILS
+----------------
+Before going live, edit:
+src/data/config.ts
+
+Replace the placeholder phone, WhatsApp, email and location.

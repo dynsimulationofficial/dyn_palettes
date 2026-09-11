@@ -1,85 +1,75 @@
-# DynPalettes ??
+# DYN PALLETS — Industrial Packaging Website
 
-**DynPalettes** is a modern, ultra-fast, and feature-packed Dynamic Color Palette Generator built with **Next.js 15+ (App Router)**, **TypeScript**, and **Tailwind CSS**.
+Premium multi-page Next.js website for DYN PALLETS.
 
----
+## Included pages
 
-## ? Key Features
+- Home
+- About
+- Products + 13 product detail pages
+- Services + 8 service detail pages
+- Industries
+- Custom Solutions
+- Gallery
+- Catalogue
+- FAQ
+- Contact / Quote
 
-- ? **Instant Palette Generation**: Press `Spacebar` or click generate to produce harmonic, aesthetically pleasing palettes dynamically.
-- ?? **12 Color Harmonies**:
-  - Random / Dynamic
-  - Analogous
-  - Monochromatic
-  - Complementary
-  - Split Complementary
-  - Triadic
-  - Tetradic
-  - Pastel Dream
-  - Cyberpunk Neon
-  - Warm Sunset
-  - Cool Ocean
-  - Earthy Forest
-- ?? **Locking System**: Lock individual color swatches while generating new palettes for the remaining slots.
-- ?? **Tailwind 50-950 Shade Generator**: Expand any color into a full 11-step tint and shade scale (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) with 1-click Tailwind JSON copy.
-- ??? **Image Palette Extractor**: Upload your own image or choose built-in presets to extract dominant colors using canvas pixel sampling.
-- ?? **Live UI Mockup Playground**: Preview active palettes on realistic mockups:
-  - SaaS Dashboard (Stats, Revenue, Active users)
-  - Landing Page Hero (CTA buttons, Gradient titles, Badges)
-  - Mobile App (DynPay credit card, Music widget)
-- ? **WCAG 2.1 Contrast Matrix**: Accessibility scores (AAA, AA, AA+) and contrast ratios between every color pair in the active palette.
-- ??? **Color Blindness Simulator**: Test palettes across Protanopia, Deuteranopia, Tritanopia, and Achromatopsia vision modes.
-- ?? **Favorites Library**: Save, name, and restore palettes with LocalStorage persistence.
-- ?? **Multi-Format Export**:
-  - Tailwind CSS (`tailwind.config.js` extend colors)
-  - CSS Variables (`:root { ... }`)
-  - SCSS (`$color-1: ...`)
-  - JSON Objects & Arrays
-  - SVG Image export
-  - Shareable URL link with hash sync (`#HEX1-HEX2-HEX3...`)
+## Design system
 
----
+The UI uses an industrial premium direction: obsidian/charcoal surfaces, warm timber tones, amber accents, layered timber grain, brushed/noise overlays, animated scan lines, moving blueprint grids, 3D-style product models, scroll reveals, spotlight hover states and a minimal six-item responsive navigation.
 
-## ??? Tech Stack
+## Important: this ZIP preserves the existing Git repository
 
-- **Framework**: Next.js 15+ (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Icons**: Lucide React
-- **Animations**: Canvas Confetti
+The `.git` directory from the original project is intentionally preserved. The existing remote remains:
 
----
-
-## ?? Getting Started
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/dynsimulationofficial/dyn_palettes.git
-cd dyn_palettes
+```text
+https://github.com/dynsimulationofficial/dyn_palettes.git
 ```
 
-### 2. Install dependencies
-```bash
+The original history with commits by Prashik Shivgan and Danish Khan is preserved. The website changes are left **uncommitted** so you can review them and then create your own commit.
+
+After extracting the ZIP, open the **folder that directly contains `.git` and `package.json`** in VS Code.
+
+Then run:
+
+```powershell
+git status
+git remote -v
+git log --oneline --all --decorate -n 10
 npm install
-```
-
-### 3. Run development server
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+When ready to push:
 
----
+```powershell
+git add .
+git commit -m "Build premium DYN PALLETS website"
+git push origin main
+```
 
-## ?? Keyboard Shortcuts
+If VS Code Source Control says **No source control providers registered**, Git itself may still be fine. Open Extensions, search `@builtin git`, enable the built-in **Git** extension, then run `Developer: Reload Window` from the Command Palette.
 
-- `Spacebar`: Generate new color palette
-- `Ctrl + Z`: Undo palette change
-- `Ctrl + Y`: Redo palette change
-- `Click on HEX`: Copy HEX code to clipboard
+## Business details before production
 
----
+Edit this one file:
 
-## ?? License
-MIT License. Built with ?? for designers and developers.
+```text
+src/data/config.ts
+```
+
+Replace the placeholder phone number, WhatsApp number, email and location with the final DYN PALLETS details.
+
+## Final visual polish
+
+- Approx. 80% dark industrial surfaces with limited warm-light contrast sections
+- Centered header navigation: Home, About Us, Products, Services, Gallery, Contact Us
+- Separate right-side **Enquire Now** CTA
+- Tactile timber/grain hover treatment on buttons, cards and service rows
+- Medico-style home conversion flow: Why Choose, clear requirement routing, How It Works, FAQ and strong enquiry CTAs
+- Industrial pallet / warehouse / freight photography integrated with the technical 3D-style visual system
+- Custom DYN PALLETS brand mark and app favicon
+- Existing cursor glow, technical scan, blueprint and scroll animations retained and refined
+
+Photography used in the demo layout is loaded remotely from free Unsplash source images. Replace those URLs with DYN PALLETS' own factory/product photography before final production launch whenever available.
