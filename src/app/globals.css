@@ -1693,3 +1693,55 @@ main { position:relative; z-index:1; background:#090a09; }
     margin-left: 0;
   }
 }
+
+/* =========================================================
+   DYN PALLETS — REMOVE CURSOR FOLLOWING BACKGROUND GLOW
+   Keep the custom cursor ring/dot, remove only the large aura.
+   ========================================================= */
+
+.cursor-aura {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  background: none !important;
+  filter: none !important;
+}
+
+/* =========================================================
+   DYN PALLETS — DISABLE ALL CUSTOM CURSOR EFFECTS
+   ========================================================= */
+
+.cursor-aura,
+.cursor-ring,
+.cursor-dot {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Restore the standard system cursor everywhere. */
+html,
+body,
+a,
+button,
+input,
+textarea,
+select,
+label,
+summary,
+[role="button"] {
+  cursor: auto !important;
+}
+
+a,
+button,
+summary,
+[role="button"] {
+  cursor: pointer !important;
+}
+
