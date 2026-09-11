@@ -1,11 +1,17 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, Boxes, ClipboardCheck, Factory, PackageCheck, ShieldCheck, Ship, Truck, Wind } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { Reveal } from "@/components/Motion";
 import { services } from "@/data/site";
 
-export const metadata = { title: "Services" };
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Explore DYN PALLETS services including heat treatment, fumigation, industrial packing, VCI packing, vacuum packing and container lashing for industrial shipments.",
+  alternates: { canonical: "/services" },
+};
 
 const servicesImage = "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
 

@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0D130F"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#paint0_linear_1_2)" opacity="0.18"/>
+  <g opacity="0.9">
+    <path d="M145 474H508V120H145V474Z" fill="#F5C78A" fill-opacity="0.18"/>
+    <path d="M187 446H466V165H187V446Z" stroke="#F5C78A" stroke-width="8"/>
+    <path d="M236 189H417L469 214H184L236 189Z" fill="#F5C78A"/>
+    <path d="M236 272H417L469 297H184L236 272Z" fill="#F5C78A" fill-opacity="0.82"/>
+    <path d="M236 355H417L469 380H184L236 355Z" fill="#F5C78A" fill-opacity="0.74"/>
+    <path d="M259 163V454M387 163V454" stroke="#0D130F" stroke-width="7" opacity="0.8"/>
+  </g>
+  <g opacity="0.92">
+    <circle cx="884" cy="210" r="110" fill="#F5C78A" fill-opacity="0.12"/>
+    <path d="M820 330L857 266L929 248L965 298L1022 334L959 390L851 384L820 330Z" fill="#D98643" fill-opacity="0.7"/>
+    <path d="M845 236H932V254H845V236ZM845 290H982V308H845V290ZM845 344H953V362H845V344Z" fill="#F4F1EA"/>
+  </g>
+  <g>
+    <text x="120" y="205" fill="#F4F1EA" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="8">DYN PALLETS</text>
+    <text x="120" y="290" fill="#F9E4C8" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700">Industrial Wooden</text>
+    <text x="120" y="370" fill="#F9E4C8" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700">Pallets & Packaging</text>
+    <text x="120" y="450" fill="#D9D4CD" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500">Export pallets • crates • boxes • industrial packing • treatment</text>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="77" y1="58" x2="1037" y2="553" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D98643"/>
+      <stop offset="1" stop-color="#0D130F"/>
+    </linearGradient>
+  </defs>
+</svg>

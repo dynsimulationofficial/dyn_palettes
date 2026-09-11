@@ -1,9 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Forklift, PackageCheck, Ruler, Ship } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { products } from "@/data/site";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = products.find((item) => item.slug === slug);
+
+  if (!product) {
+    return { title: "Product Not Found" };
+  }
+
+  return {
+    title: product.name,
+    description: `${product.summary} ${product.applications.join(" / ")}. DYN PALLETS designs industrial wooden packaging for load, handling and export requirements.`,
+    alternates: { canonical: `/products/${product.slug}` },
+  };
+}
 
 export function generateStaticParams() { return products.map(p => ({ slug: p.slug })); }
 

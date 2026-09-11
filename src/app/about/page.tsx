@@ -1,10 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowUpRight, Boxes, ClipboardCheck, Factory, PackageCheck, Ruler, ShieldCheck, Ship, Truck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { Reveal } from "@/components/Motion";
 
-export const metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn how DYN PALLETS approaches industrial wooden packaging, export requirements, protection planning and custom pallet solutions for B2B shipments.",
+  alternates: { canonical: "/about" },
+};
 
 const aboutImage = "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
 

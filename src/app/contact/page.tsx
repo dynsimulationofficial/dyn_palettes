@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { siteConfig } from "@/data/config";
 
-export const metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Contact DYN PALLETS for industrial wooden pallets, export packaging, wooden crates, boxes and custom packaging requirements.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return <>

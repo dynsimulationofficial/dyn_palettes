@@ -1,9 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Boxes, ClipboardCheck, Route, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { services } from "@/data/site";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services.find((item) => item.slug === slug);
+
+  if (!service) {
+    return { title: "Service Not Found" };
+  }
+
+  return {
+    title: service.name,
+    description: `${service.summary} DYN PALLETS coordinates industrial packing, treatment and shipment protection for commercial and export requirements.`,
+    alternates: { canonical: `/services/${service.slug}` },
+  };
+}
 
 export function generateStaticParams() { return services.map(s => ({ slug: s.slug })); }
 

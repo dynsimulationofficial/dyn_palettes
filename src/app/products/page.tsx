@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, Boxes, Forklift, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { ProductVisual } from "@/components/ProductVisual";
@@ -6,7 +7,12 @@ import { QuoteBand } from "@/components/QuoteBand";
 import { Reveal } from "@/components/Motion";
 import { products } from "@/data/site";
 
-export const metadata = { title: "Products" };
+export const metadata: Metadata = {
+  title: "Products",
+  description:
+    "Browse industrial wooden pallets, export pallets, heat treated pallets, plywood boxes and packaging formats designed around load, handling and shipment conditions.",
+  alternates: { canonical: "/products" },
+};
 
 const productsImage = "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
 

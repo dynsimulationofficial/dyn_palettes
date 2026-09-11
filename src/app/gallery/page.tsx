@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ProductVisual } from "@/components/ProductVisual";
 import { QuoteBand } from "@/components/QuoteBand";
 
-export const metadata = { title: "Gallery" };
+export const metadata: Metadata = {
+  title: "Gallery",
+  description:
+    "View industrial pallet, crate, box and packaging project examples from DYN PALLETS for material handling, warehouse flow and export requirements.",
+  alternates: { canonical: "/gallery" },
+};
 
 const galleryItems = [
   { title:"Warehouse pallet flow", label:"Industrial handling", image:"https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000" },
