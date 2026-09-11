@@ -6,7 +6,7 @@ import { QuoteBand } from "@/components/QuoteBand";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "View industrial pallet, crate, box and packaging project examples from DYN PALLETS for material handling, warehouse flow and export requirements.",
+    "View industrial pallet, crate, box and packaging project examples from DYN Pallets for material handling, warehouse flow and export requirements.",
   alternates: { canonical: "/gallery" },
 };
 

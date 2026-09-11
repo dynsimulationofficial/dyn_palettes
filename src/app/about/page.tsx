@@ -8,7 +8,7 @@ import { Reveal } from "@/components/Motion";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn how DYN PALLETS approaches industrial wooden packaging, export requirements, protection planning and custom pallet solutions for B2B shipments.",
+    "Learn how DYN Pallets approaches industrial wooden packaging, export requirements, protection planning and custom pallet solutions for B2B shipments.",
   alternates: { canonical: "/about" },
 };
 

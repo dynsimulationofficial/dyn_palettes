@@ -10,29 +10,29 @@ const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 
 export const metadata: Metadata = {
   metadataBase,
-  applicationName: "DYN PALLETS",
+  applicationName: "DYN Pallets",
   title: {
-    default: "DYN PALLETS | Industrial Wooden Pallets & Packaging Solutions",
-    template: "%s | DYN PALLETS",
+    default: "Industrial Wooden Pallets & Packaging | DYN Pallets",
+    template: "%s | DYN Pallets",
   },
   description:
-    "DYN PALLETS supplies industrial wooden pallets, export pallets, heat treated pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
+    "DYN Pallets supplies industrial wooden pallets, export pallets, heat treated pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
   alternates: siteUrl ? { canonical: "/" } : undefined,
   openGraph: siteUrl
     ? {
         type: "website",
         url: siteUrl,
-        siteName: "DYN PALLETS",
-        title: "DYN PALLETS | Industrial Wooden Pallets & Packaging Solutions",
+        siteName: "DYN Pallets",
+        title: "Industrial Wooden Pallets & Packaging | DYN Pallets",
         description:
           "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and export logistics.",
-        images: [{ url: `${siteUrl}/og-image-placeholder.svg`, width: 1200, height: 630, alt: "DYN PALLETS industrial packaging and export solutions" }],
+        images: [{ url: `${siteUrl}/og-image-placeholder.svg`, width: 1200, height: 630, alt: "DYN Pallets industrial packaging and export solutions" }],
       }
     : undefined,
   twitter: siteUrl
     ? {
         card: "summary_large_image",
-        title: "DYN PALLETS | Industrial Wooden Pallets & Packaging Solutions",
+        title: "Industrial Wooden Pallets & Packaging | DYN Pallets",
         description:
           "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and industrial packing services for B2B supply chains.",
         images: [`${siteUrl}/og-image-placeholder.svg`],
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
-  creator: "DYN PALLETS",
-  publisher: "DYN PALLETS",
+  creator: "DYN Pallets",
+  publisher: "DYN Pallets",
 };
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "DYN PALLETS",
+    name: "DYN Pallets",
     url: siteUrl || undefined,
     logo: siteUrl ? `${siteUrl}/icon.svg` : "/icon.svg",
     description:
@@ -77,7 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "DYN PALLETS",
+    name: "DYN Pallets",
     url: siteUrl || undefined,
     description:
       "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and international shipments.",

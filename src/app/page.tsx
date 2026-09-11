@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Boxes, Check, Factory, Gauge, PackageCheck, Ruler, ShieldCheck, Sparkles, Truck, Layers3, TimerReset, BadgeCheck, ClipboardCheck, Ship, Warehouse } from "lucide-react";
 import { products, services, industries } from "@/data/site";
@@ -6,13 +5,6 @@ import { CountUp, Reveal } from "@/components/Motion";
 import { ProductVisual } from "@/components/ProductVisual";
 import { ProductCardMedia } from "@/components/ProductCardMedia";
 import { QuoteBand } from "@/components/QuoteBand";
-
-export const metadata: Metadata = {
-  title: "DYN PALLETS | Industrial Wooden Pallets & Packaging Solutions",
-  description:
-    "DYN PALLETS supplies industrial wooden pallets, export pallets, heat treated pallets, wooden crates, plywood boxes and industrial packaging solutions for factories, warehouses and logistics teams.",
-  alternates: { canonical: "/" },
-};
 
 const fieldImages = {
   warehouse: "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",

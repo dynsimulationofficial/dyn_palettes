@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: product.name,
-    description: `${product.summary} ${product.applications.join(" / ")}. DYN PALLETS designs industrial wooden packaging for load, handling and export requirements.`,
+    description: `${product.summary} ${product.applications.join(" / ")}. DYN Pallets designs industrial wooden packaging for load, handling and export requirements.`,
     alternates: { canonical: `/products/${product.slug}` },
   };
 }

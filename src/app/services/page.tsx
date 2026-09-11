@@ -9,7 +9,7 @@ import { services } from "@/data/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore DYN PALLETS services including heat treatment, fumigation, industrial packing, VCI packing, vacuum packing and container lashing for industrial shipments.",
+    "Explore DYN Pallets services including heat treatment, fumigation, industrial packing, VCI packing, vacuum packing and container lashing for industrial shipments.",
   alternates: { canonical: "/services" },
 };
 

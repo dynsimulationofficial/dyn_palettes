@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "DYN PALLETS",
+  name: "DYN Pallets",
   shortName: "DYN",
   tagline: "Industrial packaging, engineered to move.",
   email: "sales@dynpallets.com",

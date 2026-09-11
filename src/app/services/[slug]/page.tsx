@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: service.name,
-    description: `${service.summary} DYN PALLETS coordinates industrial packing, treatment and shipment protection for commercial and export requirements.`,
+    description: `${service.summary} DYN Pallets coordinates industrial packing, treatment and shipment protection for commercial and export requirements.`,
     alternates: { canonical: `/services/${service.slug}` },
   };
 }

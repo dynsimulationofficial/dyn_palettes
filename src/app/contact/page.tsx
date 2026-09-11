@@ -5,7 +5,7 @@ import { siteConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact DYN PALLETS for industrial wooden pallets, export packaging, wooden crates, boxes and custom packaging requirements.",
+    "Contact DYN Pallets for industrial wooden pallets, export packaging, wooden crates, boxes and custom packaging requirements.",
   alternates: { canonical: "/contact" },
 };
 
