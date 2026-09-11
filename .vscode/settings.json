@@ -1,6 +1,0 @@
-{
-  "git.enabled": true,
-  "git.autofetch": true,
-  "git.openRepositoryInParentFolders": "always",
-  "files.eol": "\n"
-}

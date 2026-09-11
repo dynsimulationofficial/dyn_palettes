@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, Boxes, Check, Factory, Gauge,
 import { products, services, industries } from "@/data/site";
 import { CountUp, Reveal } from "@/components/Motion";
 import { ProductVisual } from "@/components/ProductVisual";
+import { ProductCardMedia } from "@/components/ProductCardMedia";
 import { QuoteBand } from "@/components/QuoteBand";
 
 const fieldImages = {
@@ -11,6 +12,15 @@ const fieldImages = {
   freight: "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
   crates: "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
 };
+
+const productCardImages = [
+  "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1774873396087-a8fcd266e20a?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1645736315000-6f788915923b?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1777793919056-72717077d724?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+] as const;
 
 const faqs = [
   ["Can you make pallets to our exact dimensions?", "Yes. Share the footprint, load, entry requirement and expected quantity. Standard and fully custom builds can both be reviewed."],
@@ -82,7 +92,7 @@ export default function Home() {
               <Link href={`/products/${product.slug}`} className={`product-card textured-card ${i === 0 ? "featured" : ""}`}>
                 <div className="card-index">P/{String(i + 1).padStart(2, "0")}</div>
                 <div className="card-grid-overlay" />
-                <ProductVisual type={product.visual} compact />
+                <ProductCardMedia image={productCardImages[i]} index={i} tag={product.eyebrow} />
                 <div className="product-card-copy"><span>{product.eyebrow}</span><h3>{product.name}</h3><p>{product.summary}</p><b>View product <ArrowUpRight size={15} /></b></div>
               </Link>
             </Reveal>
