@@ -2710,10 +2710,10 @@ summary,
 }
 
 /* ==========================================================================
-   PERFORMANCE PASS — KEEP THE SITE LIGHT, BUT RESTORE INTENTIONAL MOTION
-   Continuous decorative animation stays limited to the home hero. Scroll
-   reveals use one shared IntersectionObserver; buttons keep their texture
-   hover transitions. No scroll/pointer RAF loop or progress bar is restored.
+   PERFORMANCE PASS — STATIC EVERYWHERE EXCEPT THE HOME HERO
+   Heavy scroll/pointer/reveal work has been removed in React. These rules
+   also stop decorative CSS motion outside the approved home hero while
+   keeping textures, grids, gradients and static visual treatments intact.
    ========================================================================== */
 
 .scroll-progress,
@@ -2723,47 +2723,32 @@ summary,
   display: none !important;
 }
 
-/* Stop looping keyframe animation outside the approved home hero.
-   CSS transitions remain available for hover/focus and scroll reveal. */
+/* Header interactions still work, but without animated movement/fades. */
 .site-header,
 .site-header *,
-.site-footer,
-.site-footer *,
+footer,
+footer * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* On the home page only .home-hero is allowed to keep its existing motion. */
 main > :not(.home-hero),
 main > :not(.home-hero) *,
 .page-hero,
 .page-hero * {
   animation: none !important;
+  transition: none !important;
 }
 
-/* Lightweight scroll entrance: fade + small upward movement only. */
-.reveal {
-  opacity: 0 !important;
-  transform: translate3d(0, 26px, 0) !important;
-  filter: blur(2px);
-  transition:
-    opacity .62s ease-out,
-    transform .72s cubic-bezier(.2,.8,.2,1),
-    filter .62s ease-out !important;
-}
+/* Reveal wrappers now render immediately; keep legacy classes harmless. */
+.reveal,
 .reveal.is-visible {
   opacity: 1 !important;
-  transform: translate3d(0, 0, 0) !important;
-  filter: blur(0);
+  transform: none !important;
+  transition: none !important;
 }
-
-/* Button texture/sweep motion is intentionally enabled site-wide. */
-.button,
-.button::before,
-.button::after,
-.header-enquire,
-.header-enquire::before {
-  transition-property: transform, opacity, background-position, background-color, border-color, color, box-shadow, filter !important;
-  transition-duration: .28s, .30s, .55s, .28s, .28s, .28s, .28s, .40s !important;
-  transition-timing-function: cubic-bezier(.2,.8,.2,1) !important;
-}
-.button::after,
-.header-enquire::before { transition-duration: .65s !important; }
 
 /* Every non-home hero is photographic and fully static. */
 .page-hero-photo-static .page-hero-photo-bg {
@@ -2885,42 +2870,19 @@ main > :not(.home-hero) *,
   font-weight: 900;
 }
 
-/* Pseudo-elements cannot run looping keyframes outside the home hero, but
-   transitions are retained so button texture sweeps and hover feedback work. */
+/* Pseudo-elements are included in the static-motion pass as well. */
 .site-header::before,
 .site-header::after,
 .site-header *::before,
 .site-header *::after,
-.site-footer::before,
-.site-footer::after,
-.site-footer *::before,
-.site-footer *::after,
+footer::before,
+footer::after,
+footer *::before,
+footer *::after,
 main > :not(.home-hero)::before,
 main > :not(.home-hero)::after,
 main > :not(.home-hero) *::before,
 main > :not(.home-hero) *::after {
   animation: none !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal.is-visible {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
-
-
-/* Image-slot responsive refinements */
-@media (max-width: 1120px) {
-  .hero-image-slot { width:190px; height:122px; right:22px; }
-  .dark-feature-image-slot { min-height:480px; height:480px; }
-}
-@media (max-width: 720px) {
-  .hero-image-slot { width:132px; height:88px; right:10px; bottom:68px; border-radius:10px; }
-  .hero-image-slot > span { left:9px; bottom:25px; font-size:5px; }
-  .hero-image-slot > b { left:9px; bottom:10px; font-size:6px; }
-  .dark-feature-image-slot { min-height:360px; height:360px; border-radius:18px; }
-  .dark-feature-image-meta { left:16px; right:16px; bottom:14px; flex-direction:column; gap:5px; }
+  transition: none !important;
 }
