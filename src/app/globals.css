@@ -302,6 +302,43 @@ main { min-height: 70vh; }
 .dark-feature-copy .kicker { color:#db9850; }
 .dark-feature-copy p { color:#9d9f96; max-width:610px; line-height:1.75; font-size:15px; margin:28px 0; }
 .blueprint-card { height:520px; border:1px solid rgba(255,255,255,.11); border-radius:24px; position:relative; overflow:hidden; background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.01)); box-shadow:inset 0 0 80px rgba(0,0,0,.22); }
+
+.dark-feature-image-slot {
+  height:520px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+  background:#11120f;
+  box-shadow:0 30px 70px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.dark-feature-image-bg {
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  filter:saturate(.76) contrast(1.05);
+}
+.dark-feature-image-slot .bp-grid { opacity:.32; z-index:2; }
+.dark-feature-image-slot .bp-note,
+.dark-feature-image-slot .bp-dimension { z-index:4; backdrop-filter:blur(9px); background:rgba(12,13,11,.72); }
+.dark-feature-image-meta {
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:20px;
+  z-index:4;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.15);
+  color:#d4d5cf;
+  font-size:7px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.dark-feature-image-meta b { color:#e7a15e; }
 .bp-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:34px 34px; }
 .bp-object { position:absolute; inset:22% 18%; border:2px solid rgba(225,158,83,.65); transform:skewY(-8deg); }
 .bp-object span { position:absolute; background:rgba(225,158,83,.55); }
@@ -727,6 +764,40 @@ main { position:relative; z-index:1; background:#090a09; }
 .lab-reading { position:absolute; z-index:7; min-width:116px; padding:11px 12px; border:1px solid rgba(255,255,255,.08); background:rgba(10,11,10,.68); backdrop-filter:blur(12px); border-radius:10px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
 .lab-reading small { display:block; font-size:6px; letter-spacing:.18em; color:#676a64; }.lab-reading strong{display:block;margin:5px 0 2px;font-size:11px;color:#e4c09b;letter-spacing:.06em}.lab-reading span{font-size:6px;letter-spacing:.13em;color:#71746d}
 .reading-a{left:22px;top:132px}.reading-b{right:20px;top:220px}.reading-c{left:34px;bottom:112px}
+
+.hero-image-slot {
+  position:absolute;
+  right:18px;
+  bottom:78px;
+  width:178px;
+  height:116px;
+  z-index:8;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:13px;
+  background:#11120f;
+  box-shadow:0 16px 36px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.hero-image-slot-bg {
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(9,10,9,.04),rgba(9,10,9,.78)),
+    url('/wooden-pallets-performance.webp') center/cover no-repeat;
+  filter:saturate(.82) contrast(1.03);
+  transition:transform .55s cubic-bezier(.2,.8,.2,1), filter .4s ease;
+}
+.hero-image-slot:hover .hero-image-slot-bg { transform:scale(1.035); filter:saturate(.95) contrast(1.05); }
+.hero-image-slot > span,
+.hero-image-slot > b {
+  position:absolute;
+  left:12px;
+  z-index:2;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.hero-image-slot > span { bottom:30px; color:#a5a79f; font-size:6px; }
+.hero-image-slot > b { bottom:13px; color:#f0c28e; font-size:8px; }
 
 /* 3D product visual */
 .product-visual { width:min(100%,620px); height:430px; position:relative; display:grid; place-items:center; transform-style:preserve-3d; }
@@ -2636,4 +2707,220 @@ summary,
   .catalog-detail-two-col { gap: 50px; }
   .catalog-detail-cta-box { flex-direction: column; align-items: flex-start; }
   .catalog-detail-cta-box .button { width: 100%; }
+}
+
+/* ==========================================================================
+   PERFORMANCE PASS — KEEP THE SITE LIGHT, BUT RESTORE INTENTIONAL MOTION
+   Continuous decorative animation stays limited to the home hero. Scroll
+   reveals use one shared IntersectionObserver; buttons keep their texture
+   hover transitions. No scroll/pointer RAF loop or progress bar is restored.
+   ========================================================================== */
+
+.scroll-progress,
+.cursor-aura,
+.cursor-ring,
+.cursor-dot {
+  display: none !important;
+}
+
+/* Stop looping keyframe animation outside the approved home hero.
+   CSS transitions remain available for hover/focus and scroll reveal. */
+.site-header,
+.site-header *,
+.site-footer,
+.site-footer *,
+main > :not(.home-hero),
+main > :not(.home-hero) *,
+.page-hero,
+.page-hero * {
+  animation: none !important;
+}
+
+/* Lightweight scroll entrance: fade + small upward movement only. */
+.reveal {
+  opacity: 0 !important;
+  transform: translate3d(0, 26px, 0) !important;
+  filter: blur(2px);
+  transition:
+    opacity .62s ease-out,
+    transform .72s cubic-bezier(.2,.8,.2,1),
+    filter .62s ease-out !important;
+}
+.reveal.is-visible {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: blur(0);
+}
+
+/* Button texture/sweep motion is intentionally enabled site-wide. */
+.button,
+.button::before,
+.button::after,
+.header-enquire,
+.header-enquire::before {
+  transition-property: transform, opacity, background-position, background-color, border-color, color, box-shadow, filter !important;
+  transition-duration: .28s, .30s, .55s, .28s, .28s, .28s, .28s, .40s !important;
+  transition-timing-function: cubic-bezier(.2,.8,.2,1) !important;
+}
+.button::after,
+.header-enquire::before { transition-duration: .65s !important; }
+
+/* Every non-home hero is photographic and fully static. */
+.page-hero-photo-static .page-hero-photo-bg {
+  inset: 0 !important;
+  transform: none !important;
+  animation: none !important;
+}
+.page-hero-photo-static::after {
+  display: none !important;
+}
+
+/* Static wooden-pallet visual for “Strength where it matters”. */
+.material-visual-static {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;
+  background: #11120f;
+  isolation: isolate;
+}
+.material-static-image {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(145deg, rgba(7,8,7,.04), rgba(7,8,7,.2) 52%, rgba(7,8,7,.72)),
+    url('/wooden-pallets-performance.webp');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(.82) contrast(1.04);
+}
+.material-static-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to top, #000, transparent 74%);
+}
+.material-static-label {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: #d6d7d1;
+  font-size: 8px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.material-static-label b { color: #e39a52; }
+
+@media (max-width: 720px) {
+  .material-visual-static { min-height: 390px; }
+  .material-static-label { left: 16px; right: 16px; bottom: 16px; flex-direction: column; gap: 6px; }
+}
+
+/* Static category/detail hero photography. */
+.catalog-hero-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-color: rgba(255,255,255,.11) !important;
+}
+.catalog-hero-photo::before { display: none !important; }
+.catalog-hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(8,9,8,.08), rgba(8,9,8,.16) 50%, rgba(8,9,8,.72));
+  pointer-events: none;
+}
+.catalog-hero-photo-meta {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: #e3e2dc;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.catalog-hero-photo-meta b { color: #dfa05c; }
+.catalog-static-image-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.catalog-static-image-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9,10,9,.05), rgba(9,10,9,.65));
+}
+.catalog-static-image-photo > span {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  bottom: 12px;
+  color: #fff;
+  font-size: 7px;
+  letter-spacing: .12em;
+  font-weight: 900;
+}
+
+/* Pseudo-elements cannot run looping keyframes outside the home hero, but
+   transitions are retained so button texture sweeps and hover feedback work. */
+.site-header::before,
+.site-header::after,
+.site-header *::before,
+.site-header *::after,
+.site-footer::before,
+.site-footer::after,
+.site-footer *::before,
+.site-footer *::after,
+main > :not(.home-hero)::before,
+main > :not(.home-hero)::after,
+main > :not(.home-hero) *::before,
+main > :not(.home-hero) *::after {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* Image-slot responsive refinements */
+@media (max-width: 1120px) {
+  .hero-image-slot { width:190px; height:122px; right:22px; }
+  .dark-feature-image-slot { min-height:480px; height:480px; }
+}
+@media (max-width: 720px) {
+  .hero-image-slot { width:132px; height:88px; right:10px; bottom:68px; border-radius:10px; }
+  .hero-image-slot > span { left:9px; bottom:25px; font-size:5px; }
+  .hero-image-slot > b { left:9px; bottom:10px; font-size:6px; }
+  .dark-feature-image-slot { min-height:360px; height:360px; border-radius:18px; }
+  .dark-feature-image-meta { left:16px; right:16px; bottom:14px; flex-direction:column; gap:5px; }
 }

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { ProductVisual } from "./ProductVisual";
+
+const fallbackImages = {
+  pallet: "/wooden-pallets-performance.webp",
+  box: "https://images.unsplash.com/photo-1645736315000-6f788915923b?auto=format&fit=crop&fm=webp&q=58&w=1800",
+  crate: "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&q=58&w=1800",
+  plastic: "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&q=58&w=1800",
+} as const;
 
 export function PageHero({
   kicker,
@@ -21,8 +27,10 @@ export function PageHero({
   imageLabel?: string;
   imageMeta?: string;
 }) {
+  const resolvedImage = image || fallbackImages[visual];
+
   return (
-    <section className={`page-hero texture-grid ${image ? "page-hero-photo-mode" : ""}`}>
+    <section className="page-hero texture-grid page-hero-photo-mode">
       <div className="page-hero-copy">
         {back && <Link className="back-link" href={back.href}><ArrowLeft size={14} /> {back.label}</Link>}
         <span className="kicker">{kicker}</span>
@@ -31,17 +39,13 @@ export function PageHero({
         <div className="hero-actions"><Link href="/contact" className="button button-primary">Get a quote <ArrowUpRight size={18} /></Link><Link href="/catalogue" className="text-link">View catalogue <ArrowUpRight size={15} /></Link></div>
       </div>
 
-      {image ? (
-        <div className="page-hero-photo" aria-label={imageLabel}>
-          <div className="page-hero-photo-bg" style={{ backgroundImage: `url('${image}')` }} />
-          <div className="page-hero-photo-grid" />
-          <div className="page-hero-photo-corners"><i/><i/><i/><i/></div>
-          <div className="page-hero-photo-top"><span><i /> DYN / FIELD VIEW</span><b>LIVE MATERIAL ROUTE</b></div>
-          <div className="page-hero-photo-bottom"><span>{imageLabel}</span><b>{imageMeta}</b></div>
-        </div>
-      ) : (
-        <ProductVisual type={visual} />
-      )}
+      <div className="page-hero-photo page-hero-photo-static" aria-label={imageLabel}>
+        <div className="page-hero-photo-bg" style={{ backgroundImage: `url('${resolvedImage}')` }} />
+        <div className="page-hero-photo-grid" />
+        <div className="page-hero-photo-corners"><i/><i/><i/><i/></div>
+        <div className="page-hero-photo-top"><span><i /> DYN / FIELD VIEW</span><b>PACKAGING SYSTEM</b></div>
+        <div className="page-hero-photo-bottom"><span>{imageLabel}</span><b>{imageMeta}</b></div>
+      </div>
     </section>
   );
 }

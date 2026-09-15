@@ -41,7 +41,7 @@ export default function WoodenPalletsPage() {
 
   <div className="wooden-hero-image">
     <Image
-      src="/wooden pallets.png"
+      src="/wooden-pallets-performance.webp"
       alt="Wooden pallets"
       fill
       priority

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-const aboutImage = "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
+const aboutImage = "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800";
 
 const routes = [
   ["01", "Pallet systems", "Standard, custom, export and high-load pallet formats designed around handling and movement.", Boxes],

@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 };
 
 const galleryItems = [
-  { title:"Warehouse pallet flow", label:"Industrial handling", image:"https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000" },
-  { title:"Stacked pallet systems", label:"Repeatable storage", image:"https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000" },
-  { title:"Freight movement", label:"Dispatch ready", image:"https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000" },
-  { title:"Wooden crate systems", label:"Protected storage", image:"https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000" },
+  { title:"Warehouse pallet flow", label:"Industrial handling", image:"https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800" },
+  { title:"Stacked pallet systems", label:"Repeatable storage", image:"https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800" },
+  { title:"Freight movement", label:"Dispatch ready", image:"https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800" },
+  { title:"Wooden crate systems", label:"Protected storage", image:"https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800" },
 ];
 
 export default function GalleryPage() {
