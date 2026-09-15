@@ -17,7 +17,7 @@ const faqs = [
 export default function FAQPage() {
   return <>
     <PageHero kicker="COMMON QUESTIONS" title="What buyers usually ask first." text="A quick guide to specifications, custom manufacturing, export treatment and industrial packing requirements." visual="box" />
-    <section className="content-section"><div className="faq-shell">{faqs.map(([q,a]) => <div className="faq-item" key={q}><h3>{q}</h3><p>{a}</p></div>)}</div></section>
+    <section className="content-section light-surface"><div className="faq-shell">{faqs.map(([q,a]) => <div className="faq-item" key={q}><h3>{q}</h3><p>{a}</p></div>)}</div></section>
     <QuoteBand />
   </>;
 }

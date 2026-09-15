@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section products-showcase">
+      <section className="section products-showcase light-surface">
         <div className="section-sheen" />
         <Reveal className="section-heading split-heading"><div><span className="kicker">PRODUCT SYSTEMS</span><h2>Built from the load<br /><em>outwards.</em></h2></div><p>Choose a starting format. We tune timber sections, deck spacing, entry, reinforcement, treatment and enclosure around your real operational requirement.</p></Reveal>
         <div className="product-feature-grid">
@@ -135,7 +135,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section industries-section">
+      <section className="section industries-section light-surface">
         <Reveal className="section-heading split-heading"><div><span className="kicker">WHO WE WORK WITH</span><h2>Different cargo.<br /><em>Different failure points.</em></h2></div><p>Every visitor should be able to recognise their operating environment quickly. Our packaging routes cover repeat warehouse flow, export freight, sensitive components and high-load project cargo.</p></Reveal>
         <div className="industry-grid">{industries.map(([name, text], i) => <Reveal key={name} delay={(i % 4) * 45}><div className="industry-card textured-card"><span>{String(i + 1).padStart(2, "0")}</span><h3>{name}</h3><p>{text}</p><Check size={17} /></div></Reveal>)}</div>
       </section>
@@ -153,7 +153,7 @@ export default function Home() {
         <Reveal className="blueprint-card"><div className="bp-grid"/><div className="bp-object"><span/><span/><span/><span/></div><div className="bp-scan"/><div className="bp-note n1">LOAD PATH</div><div className="bp-note n2">LIFT ACCESS</div><div className="bp-note n3">BLOCK + BRACE</div><div className="bp-dimension d1">2400 mm</div><div className="bp-dimension d2">CUSTOM WIDTH</div></Reveal>
       </section>
 
-      <section className="section home-faq">
+      <section className="section home-faq light-surface">
         <Reveal className="section-heading split-heading"><div><span className="kicker">FREQUENTLY ASKED QUESTIONS</span><h2>Useful answers<br/><em>before you enquire.</em></h2></div><p>Quick answers for procurement teams, exporters and industrial buyers evaluating the right packaging route.</p></Reveal>
         <div className="home-faq-grid">{faqs.map(([question,answer], i) => <Reveal key={question} delay={i*45}><details className="home-faq-item"><summary><span>{String(i+1).padStart(2,"0")}</span>{question}<b>+</b></summary><p>{answer}</p></details></Reveal>)}</div>
         <Reveal className="faq-link-row"><Link href="/faq" className="wide-link textured-link"><span>View all frequently asked questions</span><ArrowRight size={20}/></Link></Reveal>

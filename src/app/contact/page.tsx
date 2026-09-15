@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return <>
     <PageHero kicker="GET A QUOTE" title="Send the requirement. We'll shape the packaging." text="For the fastest review, include product type, size, quantity, expected load and delivery location. Drawings or reference images are useful when available." visual="pallet" />
-    <section className="content-section"><div className="contact-layout">
+    <section className="content-section light-surface"><div className="contact-layout">
       <aside className="contact-info"><span className="kicker">B2B ENQUIRIES</span><h2>Start with what you know.</h2><p>You do not need a complete technical specification to contact us. Basic dimensions and the shipment context are enough to begin.</p><div className="contact-details"><div className="contact-detail"><small>Email</small><a href={siteConfig.emailHref}><strong>{siteConfig.email}</strong></a></div><div className="contact-detail"><small>Phone / WhatsApp</small><a href={siteConfig.phoneHref}><strong>{siteConfig.phone}</strong></a></div><div className="contact-detail"><small>Base</small><strong>{siteConfig.location}</strong></div><div className="contact-detail"><small>Service area</small><strong>{siteConfig.serviceArea}</strong></div></div></aside>
       <form className="quote-form" action={siteConfig.emailHref} method="post" encType="text/plain"><div className="form-grid">
         <div className="field"><label htmlFor="name">Name</label><input id="name" name="Name" placeholder="Your name" required /></div>

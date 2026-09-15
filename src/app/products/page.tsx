@@ -43,7 +43,7 @@ export default function ProductsPage() {
       imageMeta="STANDARD · CUSTOM · EXPORT"
     />
 
-    <section className="section product-overview-section">
+    <section className="section product-overview-section light-surface">
       <Reveal className="section-heading split-heading"><div><span className="kicker">PRODUCT OVERVIEW</span><h2>One range.<br/><em>Different load conditions.</em></h2></div><p>Our product portfolio is organised by the way industrial cargo needs to move: open pallet handling, standardised footprints, high-load bases, enclosed protection and export-ready timber packaging.</p></Reveal>
       <div className="product-signal-grid">
         <div><strong>13</strong><span>Product formats</span><p>Pallet, box, crate and plastic routes.</p></div>
@@ -76,7 +76,7 @@ export default function ProductsPage() {
       <Reveal className="product-custom-cta"><div><Boxes size={25}/><div><span className="kicker">CUSTOM REQUIREMENT</span><h3>Odd footprint, unusual lift points or a non-standard load?</h3><p>Share a drawing, photograph or approximate dimensions. We can review a custom pallet, skid, box or crate route.</p></div></div><Link href="/contact" className="button button-primary">Send your requirement <ArrowUpRight size={17}/></Link></Reveal>
     </section>
 
-    <section className="section product-faq-section">
+    <section className="section product-faq-section light-surface">
       <Reveal className="section-heading split-heading"><div><span className="kicker">PRODUCT QUESTIONS</span><h2>Useful answers<br/><em>before you specify.</em></h2></div><p>Common questions from procurement, warehouse and export teams comparing pallet and packaging formats.</p></Reveal>
       <div className="product-faq-grid">{productFaqs.map(([q,a],i)=><Reveal key={q} delay={i*40}><details><summary><span>{String(i+1).padStart(2,"0")}</span>{q}<b>+</b></summary><p>{a}</p></details></Reveal>)}</div>
       <Reveal><Link href="/contact" className="wide-link textured-link"><span>Still not sure which product fits?</span><span>Share the load <ArrowRight size={17}/></span></Link></Reveal>

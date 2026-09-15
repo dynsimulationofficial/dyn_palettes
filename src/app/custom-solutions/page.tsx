@@ -12,7 +12,7 @@ export default function CustomSolutionsPage() {
   ];
   return <>
     <PageHero kicker="CUSTOM ENGINEERING" title="When standard packaging is not enough." text="Oversized, fragile, high-value or irregular cargo benefits from a packaging system designed around the full handling and shipment condition." visual="crate" />
-    <section className="content-section"><div className="content-shell"><div className="cards-intro"><h2>From unusual geometry to a repeatable packing method.</h2><p>Custom does not need to mean complicated. The goal is to convert an unusual shipment into a clear, buildable and repeatable packaging specification.</p></div><div className="custom-steps">{steps.map(([num,title,text]) => <div className="custom-step" key={num}><span>{num}</span><h3>{title}</h3><p>{text}</p></div>)}</div></div></section>
+    <section className="content-section light-surface"><div className="content-shell"><div className="cards-intro"><h2>From unusual geometry to a repeatable packing method.</h2><p>Custom does not need to mean complicated. The goal is to convert an unusual shipment into a clear, buildable and repeatable packaging specification.</p></div><div className="custom-steps">{steps.map(([num,title,text]) => <div className="custom-step" key={num}><span>{num}</span><h3>{title}</h3><p>{text}</p></div>)}</div></div></section>
     <QuoteBand title="Have a drawing, photo or unusual load?" text="Send what you have. A basic sketch, dimensions and approximate weight are enough to start the conversation." />
   </>;
 }

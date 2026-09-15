@@ -31,7 +31,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
 
   return <>
     <PageHero kicker={product.eyebrow} title={product.name} text={product.summary} back={{ href: "/products", label: "All products" }} visual={product.visual} />
-    <section className="content-section"><div className="content-shell">
+    <section className="content-section light-surface"><div className="content-shell">
       <div className="content-grid"><h2>Designed around the real handling condition.</h2><div><p className="lead">{product.description}</p><p>Share the footprint, quantity, expected static or dynamic load, handling equipment and delivery location. For export requirements, add the destination country and any treatment requirement already specified by your customer or freight partner.</p></div></div>
       <div className="spec-grid">{product.specs.map(s => <div className="spec" key={s.label}><small>{s.label}</small><strong>{s.value}</strong></div>)}</div>
       <div className="list-columns"><div className="list-block"><h3>Key build options</h3><ul className="check-list">{product.features.map(x => <li key={x}>{x}</li>)}</ul></div><div className="list-block"><h3>Typical applications</h3><ul className="check-list">{product.applications.map(x => <li key={x}>{x}</li>)}</ul></div></div>

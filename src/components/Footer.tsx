@@ -131,7 +131,7 @@ export default function Footer() {
           DYN PALLETS
         </div>
 
-        {/* Bottom legal bar */}
+        {/* Bottom legalm bar */}
         <div className="footer-bottom footer-bottom-final">
           <span>
             © {new Date().getFullYear()}{" "}

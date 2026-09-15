@@ -44,7 +44,7 @@ export default function ServicesPage() {
       imageMeta="PROTECT · SECURE · DISPATCH"
     />
 
-    <section className="section service-overview-section">
+    <section className="section service-overview-section light-surface">
       <Reveal className="section-heading split-heading"><div><span className="kicker">01 · OVERVIEW</span><h2>One shipment.<br/><em>Multiple protection layers.</em></h2></div><p>DYN PALLETS supports businesses that need more than a product. Treatment, packing, corrosion control and cargo securing can be coordinated around the same industrial shipment.</p></Reveal>
       <div className="service-signal-grid">
         <div><strong>08</strong><span>Service routes</span><p>Treatment, packing and securing support.</p></div>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
       </div>
     </section>
 
-    <section className="cards-page service-catalog-section"><div className="cards-shell">
+    <section className="cards-page service-catalog-section light-surface"><div className="cards-shell">
       <Reveal className="cards-intro"><h2>Eight focused service routes.</h2><p>Use a single service or combine several into a complete packing and securing workflow for industrial and export cargo.</p></Reveal>
       <div className="service-card-grid">{services.map((service, i) => <Reveal key={service.slug} delay={(i%2)*45}><Link className="service-card-large" href={`/services/${service.slug}`}><span>{String(i + 1).padStart(2, "0")} · {service.eyebrow}</span><h3>{service.name}</h3><p>{service.summary}</p><footer><span>Explore service</span><ArrowUpRight size={18} /></footer></Link></Reveal>)}</div>
     </div></section>

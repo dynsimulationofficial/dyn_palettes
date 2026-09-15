@@ -20,7 +20,7 @@ const galleryItems = [
 export default function GalleryPage() {
   return <>
     <PageHero kicker="GALLERY" title="Packaging systems in form." text="A visual overview of the pallet, box, crate and skid formats that shape our industrial packaging work." visual="crate" />
-    <section className="cards-page gallery-photo-page">
+    <section className="cards-page gallery-photo-page light-surface">
       <div className="gallery-photo-grid">
         {galleryItems.map((item, i) => <article className={`gallery-photo-card ${i === 0 ? "gallery-photo-wide" : ""}`} key={item.title}>
           <div className="gallery-photo-bg" style={{backgroundImage:`linear-gradient(180deg,transparent 25%,rgba(8,9,8,.84) 100%),url('${item.image}')`}} />

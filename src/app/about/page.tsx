@@ -40,7 +40,7 @@ export default function AboutPage() {
       imageMeta="DESIGN · BUILD · PROTECT"
     />
 
-    <section className="about-story">
+    <section className="about-story light-surface">
       <div className="about-grid">
         <Reveal><span className="kicker">OUR APPROACH</span><h2>Start with the load, not the catalogue.</h2></Reveal>
         <Reveal className="about-copy"><p>Standard products are useful, but real industrial requirements rarely arrive as neat catalogue numbers. Loads vary, forklift access changes, storage environments differ and export routes add treatment and securing requirements.</p><p>Our approach is to begin with the operating condition: what is moving, how it will be lifted, where it will travel, how long it will be stored and what protection the cargo actually needs. From there, the pallet, box, crate or skid becomes part of a complete transport system.</p></Reveal>
@@ -59,7 +59,7 @@ export default function AboutPage() {
       </div>
     </section>
 
-    <section className="section about-process-section">
+    <section className="section about-process-section light-surface">
       <Reveal className="section-heading split-heading"><div><span className="kicker">HOW WE WORK</span><h2>Clear requirements.<br/><em>Appropriate protection.</em></h2></div><p>Industrial packaging becomes easier to procure when the route is structured from the beginning. We use four practical checkpoints from first enquiry to dispatch.</p></Reveal>
       <div className="about-process-line">
         {[
