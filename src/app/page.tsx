@@ -7,19 +7,19 @@ import { ProductCardMedia } from "@/components/ProductCardMedia";
 import { QuoteBand } from "@/components/QuoteBand";
 
 const fieldImages = {
-  warehouse: "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  pallets: "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  freight: "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  crates: "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  warehouse: "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  pallets: "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  freight: "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  crates: "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
 };
 
 const productCardImages = [
-  "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  "https://images.unsplash.com/photo-1774873396087-a8fcd266e20a?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  "https://images.unsplash.com/photo-1645736315000-6f788915923b?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
-  "https://images.unsplash.com/photo-1777793919056-72717077d724?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000",
+  "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  "https://images.unsplash.com/photo-1774873396087-a8fcd266e20a?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  "https://images.unsplash.com/photo-1645736315000-6f788915923b?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
+  "https://images.unsplash.com/photo-1777793919056-72717077d724?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
 ] as const;
 
 const faqs = [
@@ -102,15 +102,10 @@ export default function Home() {
       </section>
 
       <section className="material-story">
-        <div className="material-visual">
-          <div className="material-image-window" style={{ backgroundImage: `linear-gradient(145deg,rgba(7,8,7,.1),rgba(7,8,7,.82)),url('${fieldImages.crates}')` }} />
-          <div className="timber-stack">
-            <span className="timber t1"/><span className="timber t2"/><span className="timber t3"/><span className="timber t4"/><span className="timber t5"/>
-          </div>
-          <div className="material-ring ring-a"/><div className="material-ring ring-b"/>
-          <div className="material-callout callout-a"><b>01</b><span>SELECTED<br/>TIMBER</span></div>
-          <div className="material-callout callout-b"><b>02</b><span>STRUCTURAL<br/>LOAD PATH</span></div>
-          <div className="material-callout callout-c"><b>03</b><span>TRANSIT<br/>PROTECTION</span></div>
+        <div className="material-visual material-visual-static" aria-label="Wooden pallets">
+          <div className="material-static-image" />
+          <div className="material-static-grid" />
+          <div className="material-static-label"><span>WOODEN PALLETS</span><b>ENGINEERED FOR LOAD · HANDLING · TRANSIT</b></div>
         </div>
         <Reveal className="material-copy"><span className="kicker">DESIGN LOGIC</span><h2>Strength where it matters.<br/><em>Nothing where it doesn&apos;t.</em></h2><p>Premium packaging is not about adding more material. It is about placing the right material where forces, moisture, impact and handling actually happen.</p><div className="material-points"><span><Gauge size={18}/> Load-led member sizing</span><span><Boxes size={18}/> Smart enclosure selection</span><span><Sparkles size={18}/> Cleaner, repeatable fabrication</span></div><Link href="/about" className="text-link light">How we approach packaging <ArrowUpRight size={15}/></Link></Reveal>
       </section>

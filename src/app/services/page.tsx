@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services" },
 };
 
-const servicesImage = "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
+const servicesImage = "https://images.unsplash.com/photo-1779517226273-bcf843b759b9?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800";
 
 const supportItems = [
   ["01","Packaging design","Choose the base, enclosure and protection route around cargo and handling."],

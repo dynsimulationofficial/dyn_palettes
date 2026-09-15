@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/products" },
 };
 
-const productsImage = "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000";
+const productsImage = "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800";
 
 const selectionFactors = [
   ["01", "Load", "Approximate static and dynamic weight, centre of gravity and concentrated load points.", Weight],

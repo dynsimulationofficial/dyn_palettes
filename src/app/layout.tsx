@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AmbientEffects } from "@/components/Motion";
 import { getSiteUrl } from "@/data/config";
 
 const siteUrl = getSiteUrl();
@@ -95,7 +94,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
-        <AmbientEffects />
         <Header />
         <main>{children}</main>
         <Footer />

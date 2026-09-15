@@ -2637,3 +2637,181 @@ summary,
   .catalog-detail-cta-box { flex-direction: column; align-items: flex-start; }
   .catalog-detail-cta-box .button { width: 100%; }
 }
+
+/* ==========================================================================
+   PERFORMANCE PASS — STATIC EVERYWHERE EXCEPT THE HOME HERO
+   Heavy scroll/pointer/reveal work has been removed in React. These rules
+   also stop decorative CSS motion outside the approved home hero while
+   keeping textures, grids, gradients and static visual treatments intact.
+   ========================================================================== */
+
+.scroll-progress,
+.cursor-aura,
+.cursor-ring,
+.cursor-dot {
+  display: none !important;
+}
+
+/* Header interactions still work, but without animated movement/fades. */
+.site-header,
+.site-header *,
+footer,
+footer * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* On the home page only .home-hero is allowed to keep its existing motion. */
+main > :not(.home-hero),
+main > :not(.home-hero) *,
+.page-hero,
+.page-hero * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Reveal wrappers now render immediately; keep legacy classes harmless. */
+.reveal,
+.reveal.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Every non-home hero is photographic and fully static. */
+.page-hero-photo-static .page-hero-photo-bg {
+  inset: 0 !important;
+  transform: none !important;
+  animation: none !important;
+}
+.page-hero-photo-static::after {
+  display: none !important;
+}
+
+/* Static wooden-pallet visual for “Strength where it matters”. */
+.material-visual-static {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;
+  background: #11120f;
+  isolation: isolate;
+}
+.material-static-image {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(145deg, rgba(7,8,7,.04), rgba(7,8,7,.2) 52%, rgba(7,8,7,.72)),
+    url('/wooden-pallets-performance.webp');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(.82) contrast(1.04);
+}
+.material-static-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to top, #000, transparent 74%);
+}
+.material-static-label {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: #d6d7d1;
+  font-size: 8px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.material-static-label b { color: #e39a52; }
+
+@media (max-width: 720px) {
+  .material-visual-static { min-height: 390px; }
+  .material-static-label { left: 16px; right: 16px; bottom: 16px; flex-direction: column; gap: 6px; }
+}
+
+/* Static category/detail hero photography. */
+.catalog-hero-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-color: rgba(255,255,255,.11) !important;
+}
+.catalog-hero-photo::before { display: none !important; }
+.catalog-hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(8,9,8,.08), rgba(8,9,8,.16) 50%, rgba(8,9,8,.72));
+  pointer-events: none;
+}
+.catalog-hero-photo-meta {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: #e3e2dc;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.catalog-hero-photo-meta b { color: #dfa05c; }
+.catalog-static-image-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.catalog-static-image-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9,10,9,.05), rgba(9,10,9,.65));
+}
+.catalog-static-image-photo > span {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  bottom: 12px;
+  color: #fff;
+  font-size: 7px;
+  letter-spacing: .12em;
+  font-weight: 900;
+}
+
+/* Pseudo-elements are included in the static-motion pass as well. */
+.site-header::before,
+.site-header::after,
+.site-header *::before,
+.site-header *::after,
+footer::before,
+footer::after,
+footer *::before,
+footer *::after,
+main > :not(.home-hero)::before,
+main > :not(.home-hero)::after,
+main > :not(.home-hero) *::before,
+main > :not(.home-hero) *::after {
+  animation: none !important;
+  transition: none !important;
+}
