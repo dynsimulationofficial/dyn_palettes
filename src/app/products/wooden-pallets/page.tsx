@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { woodenPalletItems } from "@/data/productCatalog";
+import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Wooden Pallets for Sale | Manufacturer & Supplier | DYN Pallets',
@@ -48,6 +49,8 @@ export default function WoodenPalletsPage() {
     />
   </div>
 </section>
+
+    
 
       <section className="wooden-page-section wooden-intro-section light-surface">
         <div className="wooden-content-shell">
@@ -752,7 +755,25 @@ export default function WoodenPalletsPage() {
           </div>
         </div>
       </section>
-
+  <section className="section wooden-category-browser">
+        <div className="section-heading split-heading">
+          <div><span className="kicker">WOODEN PALLET CATEGORY</span><h2>Browse wooden pallet types.</h2></div>
+          <p>Explore the wooden pallet range by construction, material, handling format and shipment requirement. Each route below opens a dedicated product page.</p>
+        </div>
+        <div className="catalog-category-grid">
+          {woodenPalletItems.map((item, index) => (
+            <Link href={`/products/wooden-pallets/${item.slug}`} className="catalog-static-card" key={item.slug}>
+              <div className="catalog-static-image"><ImageIcon size={22} /><span>IMAGE</span></div>
+              <div className="catalog-static-body">
+                <span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span>
+                <h3>{item.name}</h3>
+                <p>{item.summary}</p>
+                <footer><span>View product</span><ArrowUpRight size={15} /></footer>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
       <section className="wooden-page-section wooden-faq-section light-surface">
         <div className="wooden-content-shell">
           <div className="wooden-section-heading">

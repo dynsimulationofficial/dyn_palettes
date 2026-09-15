@@ -1,16 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight, Boxes, Forklift, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Boxes, Forklift, Image as ImageIcon, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { ProductVisual } from "@/components/ProductVisual";
 import { QuoteBand } from "@/components/QuoteBand";
-import { Reveal } from "@/components/Motion";
-import { products } from "@/data/site";
+import { productCategories } from "@/data/productCatalog";
 
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Browse industrial wooden pallets, export pallets, heat treated pallets, plywood boxes and packaging formats designed around load, handling and shipment conditions.",
+    "Browse wooden pallets, CP1-CP9 chemical pallets, wooden boxes and crates, and plastic pallet solutions from DYN Pallets.",
   alternates: { canonical: "/products" },
 };
 
@@ -37,49 +35,64 @@ export default function ProductsPage() {
     <PageHero
       kicker="PRODUCT RANGE"
       title="Built for every kind of load."
-      text="From standard warehouse pallets to export crates and high-load machinery bases, choose a starting format and we’ll tune the build around your requirement."
+      text="Browse four clear product categories, then choose the exact pallet, box or crate format required for your load and shipment route."
       image={productsImage}
-      imageLabel="WOODEN PALLET SYSTEMS"
-      imageMeta="STANDARD · CUSTOM · EXPORT"
+      imageLabel="DYN PALLET SYSTEMS"
+      imageMeta="PALLETS · BOXES · CRATES"
     />
 
     <section className="section product-overview-section light-surface">
-      <Reveal className="section-heading split-heading"><div><span className="kicker">PRODUCT OVERVIEW</span><h2>One range.<br/><em>Different load conditions.</em></h2></div><p>Our product portfolio is organised by the way industrial cargo needs to move: open pallet handling, standardised footprints, high-load bases, enclosed protection and export-ready timber packaging.</p></Reveal>
+      <div className="section-heading split-heading"><div><span className="kicker">PRODUCT OVERVIEW</span><h2>Four categories.<br/><em>Clear product routes.</em></h2></div><p>Products are now organised by category so buyers can move from a broad requirement to the exact pallet or packaging format without searching through an unstructured list.</p></div>
       <div className="product-signal-grid">
-        <div><strong>13</strong><span>Product formats</span><p>Pallet, box, crate and plastic routes.</p></div>
-        <div><strong>2 / 4</strong><span>Entry options</span><p>Directional or flexible forklift access.</p></div>
-        <div><strong>HT</strong><span>Export-ready route</span><p>Heat-treatment support where applicable.</p></div>
+        <div><strong>4</strong><span>Main categories</span><p>Wooden, chemical, boxes & crates, plastic.</p></div>
+        <div><strong>34</strong><span>Product routes</span><p>Dedicated linked pages across the product system.</p></div>
+        <div><strong>CP1–9</strong><span>Chemical series</span><p>Individual CP-series product pages.</p></div>
         <div><strong>Custom</strong><span>Load-led builds</span><p>Dimensions and structure tuned to requirement.</p></div>
       </div>
     </section>
 
-    <section className="cards-page product-catalog-section"><div className="cards-shell">
-      <Reveal className="cards-intro"><h2>13 industrial packaging formats.</h2><p>Each product can be adapted around size, entry direction, material, treatment, expected load and shipment conditions.</p></Reveal>
-      <div className="catalog-grid">{products.map((product, i) => <Reveal key={product.slug} delay={(i%3)*35}><Link className="catalog-card" href={product.slug === "wooden-pallets" ? "/products/wooden-pallets" : "/contact"}><span className="kicker">{String(i + 1).padStart(2, "0")} · {product.eyebrow}</span><ProductVisual type={product.visual} compact /><h3>{product.name}</h3><p>{product.summary}</p><footer><span>{product.slug === "wooden-pallets" ? "View details" : "Enquire"}</span><ArrowUpRight size={16} /></footer></Link></Reveal>)}</div>
+    <section className="cards-page product-catalog-section static-product-catalog"><div className="cards-shell">
+      <div className="cards-intro"><h2>Browse by product category.</h2><p>Each category has its own landing page. Product cards use a separate static image area so final product photography can be added without changing the content layout.</p></div>
+      <div className="product-category-hub-grid">
+        {productCategories.map((category, index) => (
+          <article className="product-category-hub-card" key={category.slug}>
+            <div className="product-category-hub-image"><ImageIcon size={26}/><span>ADD CATEGORY IMAGE</span></div>
+            <div className="product-category-hub-body">
+              <span className="kicker">{String(index + 1).padStart(2,"0")} · {category.eyebrow}</span>
+              <h3>{category.name}</h3>
+              <p>{category.summary}</p>
+              {category.items.length > 0 && <div className="product-category-preview-links">
+                {category.items.slice(0, 6).map((item) => <Link key={item.slug} href={`/products/${category.slug}/${item.slug}`}>{item.name}<ArrowUpRight size={12}/></Link>)}
+              </div>}
+              <Link className="product-category-view-all" href={`/products/${category.slug}`}>{category.items.length ? "View all products" : "View product"}<ArrowRight size={15}/></Link>
+            </div>
+          </article>
+        ))}
+      </div>
     </div></section>
 
     <section className="section choose-product-section light-surface">
-      <Reveal className="section-heading split-heading"><div><span className="kicker">CHOOSING THE RIGHT FORMAT</span><h2>Start with the movement.<br/><em>Then choose the package.</em></h2></div><p>The strongest product choice comes from the operating condition, not only the dimensions. These six inputs help define the right build quickly.</p></Reveal>
+      <div className="section-heading split-heading"><div><span className="kicker">CHOOSING THE RIGHT FORMAT</span><h2>Start with the movement.<br/><em>Then choose the package.</em></h2></div><p>The strongest product choice comes from the operating condition, not only the dimensions. These six inputs help define the right build quickly.</p></div>
       <div className="selection-factor-grid">
-        {selectionFactors.map(([num,title,copy,Icon],i)=><Reveal key={num} delay={i*45}><div className="selection-factor-card"><div><span>{num}</span><Icon size={20}/></div><h3>{title}</h3><p>{copy}</p></div></Reveal>)}
+        {selectionFactors.map(([num,title,copy,Icon])=><div className="selection-factor-card static-card" key={num}><div><span>{num}</span><Icon size={20}/></div><h3>{title}</h3><p>{copy}</p></div>)}
       </div>
     </section>
 
     <section className="section product-route-section">
-      <Reveal className="section-heading split-heading"><div><span className="kicker">COMMON REQUIREMENT ROUTES</span><h2>Tell us what the load needs.<br/><em>We’ll narrow the range.</em></h2></div><p>You do not need to identify the exact product before enquiring. A few practical inputs are usually enough to route the requirement.</p></Reveal>
+      <div className="section-heading split-heading"><div><span className="kicker">COMMON REQUIREMENT ROUTES</span><h2>Tell us what the load needs.<br/><em>We’ll narrow the range.</em></h2></div><p>You do not need to identify the exact product before enquiring. A few practical inputs are usually enough to route the requirement.</p></div>
       <div className="product-route-grid">
-        <div className="product-route-card"><span>WAREHOUSE FLOW</span><h3>Repeat movement and storage</h3><p>Wooden, pinewood, Euro, 2-way and 4-way pallets for recurring handling environments.</p><Link href="/products/wooden-pallets">Explore pallet routes <ArrowUpRight size={15}/></Link></div>
-        <div className="product-route-card"><span>EXPORT FREIGHT</span><h3>Border-ready timber packaging</h3><p>Export and heat-treated pallets, wooden boxes and crates aligned to shipment conditions.</p><Link href="/contact">Discuss export route <ArrowUpRight size={15}/></Link></div>
-        <div className="product-route-card"><span>HIGH LOAD</span><h3>Machinery and dense cargo</h3><p>Heavy-duty pallets, skids and framed crates with load-focused structural members.</p><Link href="/contact">Discuss high-load route <ArrowUpRight size={15}/></Link></div>
-        <div className="product-route-card"><span>CLEAN / MOISTURE-SENSITIVE</span><h3>Controlled handling environments</h3><p>Plastic pallets, plywood boxes and barrier protection routes for sensitive operations.</p><Link href="/contact">Discuss controlled route <ArrowUpRight size={15}/></Link></div>
+        <div className="product-route-card static-card"><span>WAREHOUSE FLOW</span><h3>Repeat movement and storage</h3><p>Wooden, pinewood, Euro, 2-way and 4-way pallets for recurring handling environments.</p><Link href="/products/wooden-pallets">Explore wooden pallets <ArrowUpRight size={15}/></Link></div>
+        <div className="product-route-card static-card"><span>CHEMICAL INDUSTRY</span><h3>CP-series requirements</h3><p>CP1 through CP9 pallet routes for chemical, process and petrochemical supply chains.</p><Link href="/products/chemical-pallets">Explore chemical pallets <ArrowUpRight size={15}/></Link></div>
+        <div className="product-route-card static-card"><span>ENCLOSED PROTECTION</span><h3>Boxes and crates</h3><p>Wooden boxes, plywood boxes, crates, bolting boxes and pallet collars for protected movement.</p><Link href="/products/wooden-boxes-crates">Explore boxes & crates <ArrowUpRight size={15}/></Link></div>
+        <div className="product-route-card static-card"><span>CLEAN / MOISTURE-SENSITIVE</span><h3>Plastic pallet route</h3><p>Reusable plastic pallet options for hygiene-sensitive and moisture-exposed operations.</p><Link href="/products/plastic-pallets">Explore plastic pallets <ArrowUpRight size={15}/></Link></div>
       </div>
-      <Reveal className="product-custom-cta"><div><Boxes size={25}/><div><span className="kicker">CUSTOM REQUIREMENT</span><h3>Odd footprint, unusual lift points or a non-standard load?</h3><p>Share a drawing, photograph or approximate dimensions. We can review a custom pallet, skid, box or crate route.</p></div></div><Link href="/contact" className="button button-primary">Send your requirement <ArrowUpRight size={17}/></Link></Reveal>
+      <div className="product-custom-cta static-card"><div><Boxes size={25}/><div><span className="kicker">CUSTOM REQUIREMENT</span><h3>Odd footprint, unusual lift points or a non-standard load?</h3><p>Share a drawing, photograph or approximate dimensions. We can review a custom pallet, skid, box or crate route.</p></div></div><Link href="/contact" className="button button-primary">Send your requirement <ArrowUpRight size={17}/></Link></div>
     </section>
 
     <section className="section product-faq-section light-surface">
-      <Reveal className="section-heading split-heading"><div><span className="kicker">PRODUCT QUESTIONS</span><h2>Useful answers<br/><em>before you specify.</em></h2></div><p>Common questions from procurement, warehouse and export teams comparing pallet and packaging formats.</p></Reveal>
-      <div className="product-faq-grid">{productFaqs.map(([q,a],i)=><Reveal key={q} delay={i*40}><details><summary><span>{String(i+1).padStart(2,"0")}</span>{q}<b>+</b></summary><p>{a}</p></details></Reveal>)}</div>
-      <Reveal><Link href="/contact" className="wide-link textured-link"><span>Still not sure which product fits?</span><span>Share the load <ArrowRight size={17}/></span></Link></Reveal>
+      <div className="section-heading split-heading"><div><span className="kicker">PRODUCT QUESTIONS</span><h2>Useful answers<br/><em>before you specify.</em></h2></div><p>Common questions from procurement, warehouse and export teams comparing pallet and packaging formats.</p></div>
+      <div className="product-faq-grid">{productFaqs.map(([q,a],i)=><details key={q}><summary><span>{String(i+1).padStart(2,"0")}</span>{q}<b>+</b></summary><p>{a}</p></details>)}</div>
+      <Link href="/contact" className="wide-link textured-link"><span>Still not sure which product fits?</span><span>Share the load <ArrowRight size={17}/></span></Link>
     </section>
 
     <QuoteBand />

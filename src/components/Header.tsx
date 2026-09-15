@@ -5,14 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
-import { navProducts, navServices } from "@/data/site";
-
-const links = [
-  ["Home", "/"],
-  ["About Us", "/about"],
-  ["Gallery", "/gallery"],
-  ["Contact Us", "/contact"],
-] as const;
+import { navServices } from "@/data/site";
+import { productCategories } from "@/data/productCatalog";
 
 function Brand() {
   return (
@@ -23,26 +17,70 @@ function Brand() {
   );
 }
 
-function MegaMenu({ type }: { type: "products" | "services" }) {
-  const isProducts = type === "products";
-  const items = isProducts ? navProducts : navServices;
-  const href = isProducts ? "/products" : "/services";
-  const title = isProducts ? "Packaging built around the load." : "Protection beyond the pallet.";
-  const copy = isProducts
-    ? "Explore standard and custom pallet, box and crate routes — then tune the build around load, handling and shipment conditions."
-    : "Treatment, industrial packing, corrosion protection and cargo securing organised as clear service routes.";
-
+function ProductMegaMenu() {
   return (
-    <div className={`nav-mega-panel ${isProducts ? "nav-products-panel" : "nav-services-panel"}`}>
+    <div className="nav-mega-panel nav-products-panel">
+      <div className="nav-product-intro">
+        <span>PRODUCT SYSTEMS</span>
+        <h3>Packaging built around the load.</h3>
+        <p>Browse pallet, chemical, box and crate categories. Every route links directly to its own product page.</p>
+        <Link href="/products">View all products <ArrowRight size={15} /></Link>
+      </div>
+
+      <div className="nav-product-columns">
+        {productCategories.map((category) => {
+          const links = category.slug === "wooden-pallets"
+            ? category.items.slice(0, 10)
+            : category.slug === "chemical-pallets"
+              ? category.items.slice(0, 9)
+              : category.items;
+
+          return (
+            <div className="nav-product-column" key={category.slug}>
+              <Link className="nav-product-category" href={`/products/${category.slug}`}>
+                <span>{category.eyebrow}</span>
+                <strong>{category.name}</strong>
+                <ArrowUpRight size={14} />
+              </Link>
+
+              <div className="nav-product-list">
+                {category.slug === "chemical-pallets" && (
+                  <Link href="/products/chemical-pallets"><span>00</span><b>Chemical Pallets Overview</b></Link>
+                )}
+                {links.map((item, index) => (
+                  <Link href={`/products/${category.slug}/${item.slug}`} key={item.slug}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <b>{item.name}</b>
+                  </Link>
+                ))}
+                {category.slug === "plastic-pallets" && (
+                  <p>Clean, reusable pallet formats for hygiene-sensitive and moisture-exposed handling.</p>
+                )}
+              </div>
+
+              <Link className="nav-product-more" href={`/products/${category.slug}`}>
+                {category.slug === "plastic-pallets" ? "View product" : "More products"} <ArrowRight size={13} />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ServicesMegaMenu() {
+  return (
+    <div className="nav-mega-panel nav-services-panel">
       <div className="nav-mega-intro">
-        <span>{isProducts ? "PRODUCT SYSTEMS" : "PACKING + EXPORT"}</span>
-        <h3>{title}</h3>
-        <p>{copy}</p>
-        <Link href={href}>View all {type} <ArrowRight size={15} /></Link>
+        <span>PACKING + EXPORT</span>
+        <h3>Protection beyond the pallet.</h3>
+        <p>Treatment, industrial packing, corrosion protection and cargo securing organised as clear service routes.</p>
+        <Link href="/services">View all services <ArrowRight size={15} /></Link>
       </div>
       <div className="nav-mega-links">
-        {items.map((item, index) => (
-          <Link href={`${href}/${item.slug}`} key={item.slug}>
+        {navServices.map((item, index) => (
+          <Link href={`/services/${item.slug}`} key={item.slug}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <b>{item.name}</b>
             <ArrowUpRight size={14} />
@@ -70,12 +108,12 @@ export default function Header() {
 
           <div className={`nav-mega ${active("/products") ? "active" : ""}`}>
             <Link href="/products">Products</Link>
-            <MegaMenu type="products" />
+            <ProductMegaMenu />
           </div>
 
           <div className={`nav-mega ${active("/services") ? "active" : ""}`}>
             <Link href="/services">Services</Link>
-            <MegaMenu type="services" />
+            <ServicesMegaMenu />
           </div>
 
           <Link href="/gallery" className={active("/gallery") ? "active" : ""}>Gallery</Link>
@@ -94,9 +132,15 @@ export default function Header() {
           <button className="drawer-close" onClick={() => setOpen(false)} aria-label="Close menu"><X /></button>
         </div>
         <div className="drawer-links">
-          {[
-            ["Home", "/"], ["About Us", "/about"], ["Products", "/products"], ["Services", "/services"], ["Gallery", "/gallery"], ["Contact Us", "/contact"],
-          ].map(([label, href], index) => <Link href={href} key={href} onClick={() => setOpen(false)}><span>0{index + 1}</span>{label}<ArrowUpRight size={18} /></Link>)}
+          <Link href="/" onClick={() => setOpen(false)}><span>01</span>Home<ArrowUpRight size={18} /></Link>
+          <Link href="/about" onClick={() => setOpen(false)}><span>02</span>About Us<ArrowUpRight size={18} /></Link>
+          <Link href="/products" onClick={() => setOpen(false)}><span>03</span>Products<ArrowUpRight size={18} /></Link>
+          <div className="drawer-product-links">
+            {productCategories.map((category) => <Link href={`/products/${category.slug}`} key={category.slug} onClick={() => setOpen(false)}>{category.name}<ArrowUpRight size={14}/></Link>)}
+          </div>
+          <Link href="/services" onClick={() => setOpen(false)}><span>04</span>Services<ArrowUpRight size={18} /></Link>
+          <Link href="/gallery" onClick={() => setOpen(false)}><span>05</span>Gallery<ArrowUpRight size={18} /></Link>
+          <Link href="/contact" onClick={() => setOpen(false)}><span>06</span>Contact Us<ArrowUpRight size={18} /></Link>
         </div>
         <Link href="/contact" className="button button-primary drawer-enquire" onClick={() => setOpen(false)}>Enquire now <ArrowUpRight size={17} /></Link>
       </div>
