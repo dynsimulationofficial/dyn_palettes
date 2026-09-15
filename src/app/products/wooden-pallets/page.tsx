@@ -755,7 +755,7 @@ export default function WoodenPalletsPage() {
           </div>
         </div>
       </section>
-  <section className="section wooden-category-browser">
+  {/* <section className="section wooden-category-browser">
         <div className="section-heading split-heading">
           <div><span className="kicker">WOODEN PALLET CATEGORY</span><h2>Browse wooden pallet types.</h2></div>
           <p>Explore the wooden pallet range by construction, material, handling format and shipment requirement. Each route below opens a dedicated product page.</p>
@@ -773,7 +773,7 @@ export default function WoodenPalletsPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
       <section className="wooden-page-section wooden-faq-section light-surface">
         <div className="wooden-content-shell">
           <div className="wooden-section-heading">
