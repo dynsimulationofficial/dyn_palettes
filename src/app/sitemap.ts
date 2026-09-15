@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/custom-solutions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  const productRoutes = products.map((product) => ({
+  const productRoutes = products.filter((product) => product.slug === "wooden-pallets").map((product) => ({
     url: `${siteUrl}/products/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

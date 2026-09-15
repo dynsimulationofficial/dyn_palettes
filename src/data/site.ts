@@ -188,5 +188,5 @@ export const industries = [
   ["Heavy Industry", "Reinforced bases, skids and crates for project cargo and dense industrial loads."],
 ];
 
-export const navProducts = products.map(({ slug, name }) => ({ slug, name }));
+export const navProducts = products.filter(({ slug }) => slug === "wooden-pallets").map(({ slug, name }) => ({ slug, name }));
 export const navServices = services.map(({ slug, name }) => ({ slug, name }));

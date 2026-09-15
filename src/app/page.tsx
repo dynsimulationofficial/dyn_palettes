@@ -89,11 +89,11 @@ export default function Home() {
         <div className="product-feature-grid">
           {products.slice(0, 6).map((product, i) => (
             <Reveal key={product.slug} delay={(i % 3) * 70}>
-              <Link href={`/products/${product.slug}`} className={`product-card textured-card ${i === 0 ? "featured" : ""}`}>
+              <Link href={product.slug === "wooden-pallets" ? "/products/wooden-pallets" : "/contact"} className={`product-card textured-card ${i === 0 ? "featured" : ""}`}>
                 <div className="card-index">P/{String(i + 1).padStart(2, "0")}</div>
                 <div className="card-grid-overlay" />
                 <ProductCardMedia image={productCardImages[i]} index={i} tag={product.eyebrow} />
-                <div className="product-card-copy"><span>{product.eyebrow}</span><h3>{product.name}</h3><p>{product.summary}</p><b>View product <ArrowUpRight size={15} /></b></div>
+                <div className="product-card-copy"><span>{product.eyebrow}</span><h3>{product.name}</h3><p>{product.summary}</p><b>{product.slug === "wooden-pallets" ? "View product" : "Enquire"} <ArrowUpRight size={15} /></b></div>
               </Link>
             </Reveal>
           ))}

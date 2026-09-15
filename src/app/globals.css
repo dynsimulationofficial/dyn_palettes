@@ -2120,3 +2120,176 @@ summary,
     border-radius: 0 !important;
   }
 }
+
+/* Dedicated Wooden Pallets product page */
+.wooden-pallets-hero {
+  min-height:760px;
+  grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);
+  gap:72px;
+}
+.wooden-pallets-hero .page-hero-copy { max-width:760px; }
+.wooden-breadcrumbs { display:flex; align-items:center; gap:9px; margin-bottom:26px; color:#73776f; font-size:8px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.wooden-breadcrumbs a { color:#a6aaa2; transition:color .2s ease; }
+.wooden-breadcrumbs a:hover { color:#e2a05e; }
+.wooden-breadcrumbs span:last-child { color:#d58b49; }
+.wooden-hero-actions { margin-top:34px; }
+
+/* Static image-ready area: intentionally no product animation here. */
+.wooden-hero-image-slot {
+  width:100%;
+  min-height:500px;
+  align-self:center;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 72% 35%,rgba(189,108,48,.18),transparent 28%),
+    linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.006));
+  box-shadow:inset 0 0 90px rgba(0,0,0,.28);
+}
+.wooden-hero-image-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px); background-size:42px 42px; mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent); opacity:.65; }
+.wooden-hero-image-slot::before { content:""; position:absolute; width:58%; aspect-ratio:1; left:21%; top:19%; border:1px solid rgba(213,139,75,.24); transform:rotate(45deg); }
+.wooden-hero-image-slot::after { content:""; position:absolute; width:44%; height:1px; left:28%; top:50%; background:linear-gradient(90deg,transparent,rgba(220,143,73,.6),transparent); }
+.wooden-hero-image-corners i { position:absolute; width:28px; height:28px; border-color:rgba(223,151,84,.56); z-index:2; }
+.wooden-hero-image-corners i:nth-child(1){left:20px;top:20px;border-left:1px solid;border-top:1px solid}.wooden-hero-image-corners i:nth-child(2){right:20px;top:20px;border-right:1px solid;border-top:1px solid}.wooden-hero-image-corners i:nth-child(3){left:20px;bottom:20px;border-left:1px solid;border-bottom:1px solid}.wooden-hero-image-corners i:nth-child(4){right:20px;bottom:20px;border-right:1px solid;border-bottom:1px solid}
+.wooden-hero-image-line { position:absolute; left:24px; right:24px; bottom:58px; height:1px; background:linear-gradient(90deg,rgba(221,144,73,.5),rgba(255,255,255,.08),transparent); }
+
+.wooden-page-section { padding:100px max(5vw,56px); background:#f4f0e8; color:#26241f; border-top:1px solid rgba(36,28,20,.1); }
+.wooden-page-section-alt { background:#0d0f0d; color:#f2eee7; border-top:1px solid var(--line); }
+.wooden-content-shell { max-width:1220px; margin:auto; }
+.wooden-intro-layout { display:grid; grid-template-columns:.72fr 1.28fr; gap:80px; align-items:start; }
+.wooden-intro-layout > .kicker { padding-top:8px; }
+.wooden-intro-copy { max-width:900px; }
+.wooden-intro-copy p:first-child { color:#302d27; font-size:16px; line-height:1.72; }
+
+.wooden-spec-strip-inner { max-width:1220px; margin:auto; display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid rgba(36,28,20,.14); border-left:1px solid rgba(36,28,20,.14); }
+.wooden-inline-specs { margin-top:50px; }
+.wooden-spec-strip-inner > div { min-height:130px; padding:22px; border-right:1px solid rgba(36,28,20,.14); border-bottom:1px solid rgba(36,28,20,.14); display:flex; flex-direction:column; gap:13px; }
+.wooden-spec-strip-inner span { font-size:8px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; color:#8c6646; }
+.wooden-spec-value { margin:0; color:#292722; font-size:14px; line-height:1.45; font-weight:500; }
+
+.wooden-section-heading { display:grid; grid-template-columns:.72fr 1.28fr; gap:80px; align-items:start; margin-bottom:42px; }
+.wooden-section-heading .kicker { padding-top:9px; }
+.wooden-section-heading h2 { margin:0; font-size:clamp(42px,5.3vw,78px); line-height:.94; letter-spacing:-.055em; max-width:900px; color:#24221e; }
+.wooden-page-section-alt .wooden-section-heading h2 { color:#f0ede7; }
+.wooden-page-section-alt .kicker { color:#b8733f; }
+
+.wooden-content-flow { display:grid; gap:16px; }
+.wooden-content-flow p { margin:0; max-width:960px; color:#625f57; font-size:13px; line-height:1.82; font-weight:400; }
+.wooden-page-section-alt .wooden-content-flow p { color:#858981; }
+
+.wooden-content-list { list-style:none; margin:8px 0 4px; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; max-width:980px; border-top:1px solid rgba(36,28,20,.13); border-left:1px solid rgba(36,28,20,.13); }
+.wooden-content-list li { min-height:54px; padding:15px 18px 15px 38px; position:relative; border-right:1px solid rgba(36,28,20,.13); border-bottom:1px solid rgba(36,28,20,.13); color:#57534c; font-size:11px; line-height:1.55; font-weight:400; }
+.wooden-content-list li::before { content:""; position:absolute; left:18px; top:23px; width:6px; height:6px; border-radius:50%; background:#ba713a; }
+.wooden-page-section-alt .wooden-content-list { border-color:var(--line); }
+.wooden-page-section-alt .wooden-content-list li { color:#81857d; border-color:var(--line); }
+
+.wooden-subsection-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.wooden-subsection-grid.is-two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.wooden-subsection-card { min-height:250px; padding:26px; border:1px solid rgba(36,28,20,.14); border-radius:18px; background:rgba(255,255,255,.34); display:flex; flex-direction:column; transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease; }
+.wooden-subsection-card:hover { transform:translateY(-4px); border-color:rgba(172,104,51,.32); box-shadow:0 18px 45px rgba(51,36,20,.08); }
+.wooden-page-section-alt .wooden-subsection-card { border-color:var(--line); background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008)); }
+.wooden-page-section-alt .wooden-subsection-card:hover { border-color:rgba(222,142,67,.22); box-shadow:none; }
+.wooden-card-index { color:#a6693e; font-size:8px; letter-spacing:.14em; font-weight:900; }
+.wooden-subsection-card h3 { margin:38px 0 16px; font-size:26px; line-height:1.02; letter-spacing:-.04em; color:#27241f; }
+.wooden-page-section-alt .wooden-subsection-card h3 { color:#e8e7e1; }
+.wooden-subsection-card .wooden-content-flow { gap:12px; }
+.wooden-subsection-card .wooden-content-flow p { font-size:11px; line-height:1.7; }
+.wooden-subsection-card .wooden-content-list { grid-template-columns:1fr; margin-top:5px; width:100%; }
+.wooden-subsection-card .wooden-content-list li { min-height:46px; padding-top:12px; padding-bottom:12px; }
+.wooden-subsection-card .wooden-content-list li::before { top:20px; }
+
+.wooden-table-wrap { overflow-x:auto; margin-top:10px; border:1px solid rgba(36,28,20,.14); }
+.wooden-spec-table { border-collapse:collapse; width:100%; min-width:650px; }
+.wooden-spec-table th,.wooden-spec-table td { padding:17px 19px; text-align:left; border-right:1px solid rgba(36,28,20,.12); border-bottom:1px solid rgba(36,28,20,.12); font-size:11px; }
+.wooden-spec-table th { background:#282621; color:#f0ede7; font-size:9px; letter-spacing:.12em; text-transform:uppercase; }
+.wooden-spec-table td:first-child { width:34%; color:#302d27; font-weight:700; }
+.wooden-spec-table td:last-child { color:#625f57; font-weight:400; }
+.wooden-page-section-alt .wooden-table-wrap { border-color:var(--line); }
+.wooden-page-section-alt .wooden-spec-table th,.wooden-page-section-alt .wooden-spec-table td { border-color:var(--line); }
+.wooden-page-section-alt .wooden-spec-table td:first-child { color:#d7d6d0; }
+.wooden-page-section-alt .wooden-spec-table td:last-child { color:#7d8179; }
+
+.wooden-inline-cta { margin-top:34px; }
+.wooden-requirement-grid { margin:44px 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid rgba(36,28,20,.14); border-left:1px solid rgba(36,28,20,.14); }
+.wooden-requirement-card { min-height:180px; padding:22px; border-right:1px solid rgba(36,28,20,.14); border-bottom:1px solid rgba(36,28,20,.14); }
+.wooden-requirement-card > span { color:#9d6339; font-size:8px; letter-spacing:.14em; font-weight:900; }
+.wooden-requirement-card h3 { margin:25px 0 8px; font-size:23px; letter-spacing:-.035em; color:#2a2722; }
+.wooden-requirement-card p { margin:0; color:#625f57; font-size:11px; line-height:1.65; font-weight:400; }
+.wooden-page-section-alt .wooden-requirement-grid,.wooden-page-section-alt .wooden-requirement-card { border-color:var(--line); }
+.wooden-page-section-alt .wooden-requirement-card h3 { color:#e6e5df; }
+.wooden-page-section-alt .wooden-requirement-card p { color:#7c8078; }
+
+.wooden-faq-section { background:#f4f0e8; }
+.wooden-faq-list { border-top:1px solid rgba(36,28,20,.14); }
+.wooden-faq-list details { border-bottom:1px solid rgba(36,28,20,.14); }
+.wooden-faq-list summary { list-style:none; min-height:88px; display:grid; grid-template-columns:50px 1fr 28px; gap:16px; align-items:center; cursor:pointer; }
+.wooden-faq-list summary::-webkit-details-marker { display:none; }
+.wooden-faq-list summary span { color:#9a6b47; font-size:8px; letter-spacing:.12em; }
+.wooden-faq-list summary b { color:#2b2823; font-size:18px; font-weight:700; }
+.wooden-faq-list summary i { color:#b56f3b; font-size:24px; font-style:normal; transition:transform .24s ease; }
+.wooden-faq-list details[open] summary i { transform:rotate(45deg); }
+.wooden-faq-list details .wooden-content-flow { padding:0 44px 28px 66px; }
+
+.wooden-final-cta { background:#0a0b0a; color:#f3efe8; padding:110px max(5vw,56px); border-top:1px solid var(--line); }
+.wooden-final-cta-inner { max-width:1220px; margin:auto; }
+.wooden-final-cta h2 { margin:18px 0 26px; font-size:clamp(52px,7vw,96px); line-height:.9; letter-spacing:-.06em; color:#f2eee7; max-width:1000px; }
+.wooden-final-cta h2 em { color:#c57c43; font-style:normal; }
+.wooden-final-cta .wooden-content-flow p { color:#858981; max-width:800px; font-size:13px; }
+.wooden-final-actions { margin-top:34px; display:flex; gap:12px; flex-wrap:wrap; }
+
+@media (max-width: 980px) {
+  .wooden-pallets-hero { grid-template-columns:1fr; gap:40px; min-height:auto; }
+  .wooden-hero-image-slot { min-height:440px; }
+  .wooden-intro-layout,.wooden-section-heading { grid-template-columns:1fr; gap:18px; }
+  .wooden-spec-strip-inner { grid-template-columns:repeat(2,1fr); }
+  .wooden-spec-strip-inner > div:last-child { grid-column:span 2; }
+  .wooden-subsection-grid,.wooden-subsection-grid.is-two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 700px) {
+  .wooden-pallets-hero { padding-top:126px; }
+  .wooden-breadcrumbs { margin-bottom:20px; }
+  .wooden-hero-actions { display:grid; grid-template-columns:1fr; width:100%; }
+  .wooden-hero-image-slot { min-height:330px; border-radius:18px; }
+  .wooden-page-section,.wooden-final-cta { padding:74px 20px; }
+  .wooden-inline-specs { margin-top:36px; }
+  .wooden-spec-strip-inner { grid-template-columns:1fr; }
+  .wooden-spec-strip-inner > div:last-child { grid-column:auto; }
+  .wooden-section-heading h2 { font-size:42px; }
+  .wooden-content-list { grid-template-columns:1fr; }
+  .wooden-subsection-grid,.wooden-subsection-grid.is-two,.wooden-requirement-grid { grid-template-columns:1fr; }
+  .wooden-subsection-card { min-height:220px; }
+  .wooden-faq-list summary { grid-template-columns:34px 1fr 22px; gap:9px; min-height:80px; }
+  .wooden-faq-list summary b { font-size:15px; }
+  .wooden-faq-list details .wooden-content-flow { padding:0 0 24px 43px; }
+  .wooden-final-actions .button { width:100%; }
+}
+.wooden-hero-image {
+  position: relative;
+  min-height: 520px;
+}
+
+.wooden-pallet-product-image {
+  object-fit: contain;
+  object-position: center;
+}
+.wooden-hero-description {
+  max-width: 560px;
+  margin: 24px 0 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.wooden-hero-image {
+  position: relative;
+  min-height: 500px;
+  width: 100%;
+}
+
+.wooden-pallet-product-image {
+  object-fit: contain;
+  object-position: center;
+}

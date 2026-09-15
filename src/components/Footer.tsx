@@ -7,7 +7,7 @@ import {
   Phone,
 } from "lucide-react";
 
-import { products, services } from "@/data/site";
+import { navProducts, services } from "@/data/site";
 import { siteConfig } from "@/data/config";
 
 export default function Footer() {
@@ -79,7 +79,7 @@ export default function Footer() {
           <div>
             <h4>Products</h4>
 
-            {products.slice(0, 6).map((product) => (
+            {navProducts.map((product) => (
               <Link
                 key={product.slug}
                 href={`/products/${product.slug}`}
