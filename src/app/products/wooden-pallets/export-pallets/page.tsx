@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "export-pallets",
-  name: "Export Pallets",
-  eyebrow: "BUILT FOR SHIPMENT ROUTES",
-  summary: "Export wooden pallets developed around cargo, destination and treatment needs.",
-  description: "Export pallets are configured around destination, shipment route, load and applicable timber packaging requirements.",
-  applications: ["International shipping", "Container freight", "Export packaging", "Industrial logistics"],
-  features: ["Standard or custom sizing", "ISPM-15 route available", "Destination-led treatment planning", "Marking as required"],
-  specs: [{ label: "Use", value: "International shipping" }, { label: "Sizing", value: "Standard / custom" }, { label: "Treatment", value: "ISPM-15 route available" }, { label: "Marking", value: "As required" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "export-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/export-pallets" },
+  title: {
+    absolute: "Export Pallets for Sale | Heat Treated Wooden Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies export wooden pallets for international shipping. Share size, load, heat treatment and ISPM 15 requirements for a custom pallet quote.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

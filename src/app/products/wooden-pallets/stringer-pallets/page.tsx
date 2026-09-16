@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "stringer-pallets", name: "Stringer Pallets", eyebrow: "PROVEN STRUCTURAL FORMAT",
-  summary: "Stringer pallet construction for dependable warehouse and shipping loads.",
-  description: "Stringer pallets use longitudinal supporting members to create a practical, repairable and cost-efficient industrial pallet platform.",
-  applications: ["Warehousing", "Manufacturing", "Shipping", "Industrial logistics"],
-  features: ["Stringer construction", "2-way or partial 4-way entry", "Standard or custom sizing", "Pine or hardwood material"],
-  specs: [{ label: "Construction", value: "Stringer" }, { label: "Entry", value: "2-way / partial 4-way" }, { label: "Sizing", value: "Standard / custom" }, { label: "Material", value: "Pine / hardwood" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "stringer-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/stringer-pallets" },
+  title: {
+    absolute: "Stringer Pallets for Sale | 2 & 4 Way Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies wooden stringer pallets for warehousing, shipping and export. Get 2-way, 4-way, heavy-duty, heat-treated and custom stringer pallet options.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

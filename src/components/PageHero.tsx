@@ -36,7 +36,7 @@ export function PageHero({
         <span className="kicker">{kicker}</span>
         <h1>{title}</h1>
         <p>{text}</p>
-        <div className="hero-actions"><Link href="/contact" className="button button-primary">Get a quote <ArrowUpRight size={18} /></Link><Link href="/catalogue" className="text-link">View catalogue <ArrowUpRight size={15} /></Link></div>
+        <div className="hero-actions"><Link href="/contact" className="button button-primary">Get a quote <ArrowUpRight size={18} /></Link><Link href="/products" className="text-link">Browse products <ArrowUpRight size={15} /></Link></div>
       </div>
 
       <div className="page-hero-photo page-hero-photo-static" aria-label={imageLabel}>

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import type { ProductCategory } from "@/data/productCatalog";
+import type { ProductCategory } from "@/data/products";
 
 const categoryHeroImages: Record<ProductCategory["slug"], string> = {
-  "wooden-pallets": "/wooden-pallets-performance.webp",
+  "wooden-pallets": "/pinewood%20pallets.png",
   "chemical-pallets": "/wooden-pallets-performance.webp",
   "wooden-boxes-crates": "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&q=58&w=1800",
   "plastic-pallets": "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&q=58&w=1800",

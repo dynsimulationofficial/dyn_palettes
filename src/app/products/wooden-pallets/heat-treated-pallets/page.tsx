@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "heat-treated-pallets", name: "Heat-Treated Pallets", eyebrow: "EXPORT-READY TIMBER ROUTE",
-  summary: "Heat-treated wooden pallets for applicable export and compliance requirements.",
-  description: "Heat-treated pallet supply supports export programs where treated timber packaging is required as part of the shipping workflow.",
-  applications: ["International shipping", "Export packaging", "Container freight", "Industrial logistics"],
-  features: ["Heat-treated timber route", "Wood construction", "Standard or custom sizing", "Export and domestic use"],
-  specs: [{ label: "Treatment", value: "HT" }, { label: "Material", value: "Wood" }, { label: "Sizing", value: "Standard / custom" }, { label: "Use", value: "Export / domestic" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "heat-treated-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/heat-treated-pallets" },
+  title: {
+    absolute: "Heat Treated Pallets for Sale | ISPM 15 Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies heat treated wooden pallets for export and international shipping. Get HT pallets, custom sizes, ISPM 15 requirements and specification-based pricing.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

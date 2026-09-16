@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "chemical-pallets" as const, name: "Chemical Pallets" };
-const product = { slug: "cp8-pallets", name: "CP8 Pallets", eyebrow: "CP-SERIES PALLET", summary: "CP8 square pallet format for suitable drums, containers and chemical loads.", description: "CP8 pallets can be reviewed around suitable drums, containers, chemical loads and handling conditions.", applications: ["Chemical industry", "Process manufacturing", "Industrial exports"], features: ["CP8-series format", "Selected timber construction", "Application-led load design", "Treatment available where required"], specs: [{ label: "Format", value: "CP8" }, { label: "Typical footprint", value: "1140 × 1140 mm" }, { label: "Material", value: "Selected timber" }, { label: "Treatment", value: "Available on request" }] };
+const categorySlug = "chemical-pallets" as const;
+const productSlug = "cp8-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/chemical-pallets/cp8-pallets" },
+  title: `${product.name} for Industrial Use | DYN Pallets`,
+  description: product.summary,
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { navServices } from "@/data/site";
-import { productCategories } from "@/data/productCatalog";
+import { productCategories } from "@/data/products";
 
 function Brand() {
   return (

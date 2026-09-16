@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, Boxes, Forklift, Image as ImageIcon, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
-import { productCategories } from "@/data/productCatalog";
+import { productCategories } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Products",

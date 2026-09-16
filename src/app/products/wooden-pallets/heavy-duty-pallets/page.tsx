@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "heavy-duty-pallets", name: "Heavy-Duty Pallets", eyebrow: "HIGH-LOAD ENGINEERED BUILDS",
-  summary: "Reinforced wooden pallets for machinery and dense industrial cargo.",
-  description: "Heavy-duty pallets use larger structural members, reinforced joints and application-led load paths for demanding equipment and project cargo.",
-  applications: ["Machinery", "Engineering equipment", "Project cargo", "Dense industrial loads"],
-  features: ["Engineered to requirement", "Selected heavy timber sections", "2-way or 4-way entry", "Custom sizing"],
-  specs: [{ label: "Load", value: "Engineered to requirement" }, { label: "Material", value: "Selected heavy sections" }, { label: "Entry", value: "2-way / 4-way" }, { label: "Sizing", value: "Custom" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "heavy-duty-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/heavy-duty-pallets" },
+  title: `${product.name} for Industrial Use | DYN Pallets`,
+  description: product.summary,
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

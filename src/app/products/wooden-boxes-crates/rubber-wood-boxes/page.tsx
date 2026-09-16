@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-boxes-crates" as const, name: "Wooden Boxes & Crates" };
-const product = { slug: "rubber-wood-boxes", name: "Rubber Wood Boxes", eyebrow: "DOMESTIC PACKING ROUTE", summary: "Rubber wood boxes for suitable domestic and industrial packing applications.", description: "Rubber wood boxes can be considered for selected domestic packing requirements where robust framed timber protection is needed.", applications: ["Domestic packing", "Industrial products", "Warehouse movement"], features: ["Rubber wood construction", "Domestic or industrial use", "Custom sizing", "Nailed or screwed closure"], specs: [{ label: "Material", value: "Rubber wood" }, { label: "Use", value: "Domestic / industrial" }, { label: "Sizing", value: "Custom" }, { label: "Closure", value: "Nailed / screwed" }] };
+const categorySlug = "wooden-boxes-crates" as const;
+const productSlug = "rubber-wood-boxes";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-boxes-crates/rubber-wood-boxes" },
+  title: `${product.name} for Industrial Use | DYN Pallets`,
+  description: product.summary,
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

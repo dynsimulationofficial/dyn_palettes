@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-boxes-crates" as const, name: "Wooden Boxes & Crates" };
-const product = { slug: "pallet-collars", name: "Pallet Collars", eyebrow: "MODULAR SIDE PROTECTION", summary: "Reusable pallet collars for modular containment above a pallet base.", description: "Pallet collars create removable side walls around compatible pallet bases for repeat handling, storage and returnable packaging systems.", applications: ["Returnable packaging", "Warehousing", "Repeat handling", "Modular containment"], features: ["Collar system", "Compatible pallet base", "Stackable height", "Returnable warehouse use"], specs: [{ label: "Format", value: "Collar system" }, { label: "Base", value: "Compatible pallet" }, { label: "Height", value: "Stackable / requirement-led" }, { label: "Use", value: "Returnable / warehouse" }] };
+const categorySlug = "wooden-boxes-crates" as const;
+const productSlug = "pallet-collars";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-boxes-crates/pallet-collars" },
+  title: `${product.name} for Industrial Use | DYN Pallets`,
+  description: product.summary,
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

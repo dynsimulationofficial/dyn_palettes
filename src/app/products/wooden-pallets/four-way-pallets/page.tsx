@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "four-way-pallets", name: "Four-Way Pallets", eyebrow: "FLEXIBLE FORKLIFT ACCESS",
-  summary: "Four-way pallets for faster warehouse positioning and handling flexibility.",
-  description: "Four-way entry construction enables forklift access from multiple sides for busy warehouse, distribution and manufacturing environments.",
-  applications: ["Warehousing", "Distribution", "Manufacturing", "Industrial shipping"],
-  features: ["4-way entry", "Block or notched stringer construction", "Custom sizing", "Treatment available"],
-  specs: [{ label: "Entry", value: "4-way" }, { label: "Construction", value: "Block / notched stringer" }, { label: "Sizing", value: "Custom" }, { label: "Treatment", value: "Optional" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "four-way-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/four-way-pallets" },
+  title: {
+    absolute: "Four Way Pallets for Sale | 4 Way Wooden Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies four way wooden pallets for warehouses, forklifts and export. Get 4 way block, heavy-duty, heat-treated and custom pallet options.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

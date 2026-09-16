@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { woodenPalletItems } from "@/data/productCatalog";
+import { woodenPalletItems } from "@/data/products";
 import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {

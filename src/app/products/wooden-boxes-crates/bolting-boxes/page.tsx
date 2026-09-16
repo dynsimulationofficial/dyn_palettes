@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-boxes-crates" as const, name: "Wooden Boxes & Crates" };
-const product = { slug: "bolting-boxes", name: "Bolting Boxes", eyebrow: "SERVICEABLE HEAVY ENCLOSURE", summary: "Bolted wooden boxes for equipment that may need controlled opening or reassembly.", description: "Bolting boxes use mechanical fasteners in selected structural areas to support robust protection and practical access during industrial handling.", applications: ["Heavy equipment", "Project cargo", "Industrial exports", "Protected storage"], features: ["Bolted or screwed closure", "Timber frame", "Custom sizing", "Heavy cargo use"], specs: [{ label: "Closure", value: "Bolted / screwed" }, { label: "Frame", value: "Timber" }, { label: "Sizing", value: "Custom" }, { label: "Use", value: "Heavy / project cargo" }] };
+const categorySlug = "wooden-boxes-crates" as const;
+const productSlug = "bolting-boxes";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-boxes-crates/bolting-boxes" },
+  title: `${product.name} for Industrial Use | DYN Pallets`,
+  description: product.summary,
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

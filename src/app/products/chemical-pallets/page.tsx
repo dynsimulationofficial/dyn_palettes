@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductCategoryPage } from "@/components/ProductCategoryPage";
-import { getProductCategory } from "@/data/productCatalog";
+import { getProductCategory } from "@/data/products";
 
 const category = getProductCategory("chemical-pallets");
 

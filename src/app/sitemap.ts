@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/data/config";
 import { services } from "@/data/site";
-import { productCatalogRoutes } from "@/data/productCatalog";
+import { productRoutes } from "@/data/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
@@ -19,11 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${siteUrl}/faq`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/industries`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${siteUrl}/catalogue`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/custom-solutions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  const productRoutes = productCatalogRoutes.map((route) => ({
+  const productRoutes = productRoutes.map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

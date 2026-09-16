@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "two-way-pallets", name: "Two-Way Pallets", eyebrow: "DIRECTIONAL HANDLING",
-  summary: "Two-way entry pallets for controlled forklift and pallet-truck access.",
-  description: "A straightforward stringer-led pallet route where handling direction is predictable and structural simplicity is preferred.",
-  applications: ["Manufacturing", "Industrial storage", "Machinery movement", "Dedicated transport routes"],
-  features: ["2-way entry", "Stringer or custom construction", "Custom sizing", "Optional treatment"],
-  specs: [{ label: "Entry", value: "2-way" }, { label: "Construction", value: "Stringer / custom" }, { label: "Sizing", value: "Custom" }, { label: "Treatment", value: "Optional" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "two-way-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/two-way-pallets" },
+  title: {
+    absolute: "Two Way Pallets for Sale | 2 Way Wooden Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies two way pallets and 2 way wooden pallets for warehousing, forklifts and export. Get custom, heavy-duty and stringer options with pricing.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {

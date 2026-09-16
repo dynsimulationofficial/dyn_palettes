@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
+import { getProductCategory, getProductItem } from "@/data/products";
 
-const category = { slug: "wooden-pallets" as const, name: "Wooden Pallets" };
-const product = {
-  slug: "plywood-pallets", name: "Plywood Pallets", eyebrow: "CONSISTENT ENGINEERED PANELS",
-  summary: "Plywood pallet formats for selected clean and weight-conscious applications.",
-  description: "Plywood pallet construction can be considered where dimensional consistency, lower tare weight and a clean engineered finish are useful.",
-  applications: ["Clean handling", "Warehousing", "Manufacturing", "Export logistics"],
-  features: ["Plywood and timber members", "2-way or 4-way entry", "Custom sizing", "Domestic or export use"],
-  specs: [{ label: "Material", value: "Plywood + timber members" }, { label: "Entry", value: "2-way / 4-way" }, { label: "Sizing", value: "Custom" }, { label: "Use", value: "Domestic / export" }],
-};
+const categorySlug = "wooden-pallets" as const;
+const productSlug = "plywood-pallets";
+const category = getProductCategory(categorySlug)!;
+const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} | DYN Pallets`, description: product.summary,
-  alternates: { canonical: "/products/wooden-pallets/plywood-pallets" },
+  title: {
+    absolute: "Plywood Pallets for Sale | Custom Export Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies durable plywood pallets for export, shipping and industrial use. Get custom sizes, wholesale supply, lightweight options and competitive pallet pricing.",
+  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
 export default function Page() {
