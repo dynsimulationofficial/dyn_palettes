@@ -371,8 +371,6 @@ main { min-height: 70vh; }
 .footer-grid > div:not(:first-child) a:hover { color:#dfa054; }
 .footer-bottom { border-top:1px solid var(--line-light); padding-top:24px; display:flex; justify-content:space-between; gap:20px; color:#66685f; font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
 
-.reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
-.reveal.is-visible { opacity:1; transform:translateY(0); }
 
 .page-hero { min-height:720px; padding:170px max(5vw,40px) 90px; background:#ede7dc; display:grid; grid-template-columns:1fr .9fr; gap:60px; align-items:center; overflow:hidden; }
 .page-hero-copy { position:relative; z-index:2; max-width:760px; }
@@ -894,7 +892,6 @@ main { position:relative; z-index:1; background:#090a09; }
 .footer-orb{position:absolute;width:760px;height:760px;border-radius:50%;right:-300px;top:-330px;border:1px solid rgba(213,130,57,.08);box-shadow:0 0 0 90px rgba(213,130,57,.012),0 0 0 180px rgba(213,130,57,.008)}
 .footer-shell{max-width:1360px;margin:auto;padding:110px max(4vw,34px) 30px;position:relative}.footer-lead{padding-bottom:76px;border-bottom:1px solid var(--line)}.footer-lead h2{max-width:1080px}.footer-lead .button{margin-top:32px}.footer-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr .8fr;gap:58px;padding:66px 0 52px}.footer-brand{margin-bottom:22px}.footer-about>p{color:#a1a39c;font-size:15px;line-height:1.68;max-width:320px}.footer-contact-stack{margin-top:24px;display:flex;flex-direction:column;gap:11px}.footer-contact-stack span,.footer-contact-stack a{display:flex;align-items:center;gap:9px;color:#a0a39d;font-size:12px;line-height:1.4;text-decoration:none}.footer-contact-stack a:hover{color:#d78d4c}.footer-contact-stack svg{color:#b9743d}.footer-grid h4{color:#797d75;font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 20px}.footer-grid>div:not(:first-child){display:flex;flex-direction:column;align-items:flex-start}.footer-grid>div:not(:first-child) a{color:#c4c6bf;font-size:14px;line-height:1.4;padding:7px 0;transition:.2s}.footer-grid>div:not(:first-child) a:hover{color:#e5a160;transform:translateX(3px)}.footer-more{display:flex!important;align-items:center;gap:6px;color:#e2a05e!important;margin-top:8px}.footer-wordmark{font-size:clamp(72px,12.2vw,178px);line-height:.78;letter-spacing:-.075em;font-weight:900;color:rgba(255,255,255,.035);white-space:nowrap;border-bottom:1px solid var(--line);padding-bottom:22px;user-select:none}.footer-bottom{border-top:0;padding-top:26px;display:flex;justify-content:space-between;gap:20px;color:#686c65;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
 
-.reveal { opacity:0; transform:translateY(30px) scale(.992); filter:blur(4px); transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),filter .8s ease; }.reveal.is-visible{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 
 @media (max-width:1120px){
   .desktop-nav{display:none}.menu-button{display:grid;place-items:center}.home-hero{grid-template-columns:1fr;padding-top:112px;min-height:auto}.hero-copy{max-width:940px}.hero-lab{min-height:560px;margin-top:10px}.split-heading,.content-grid,.about-grid,.contact-layout{grid-template-columns:1fr;gap:45px}.metric-grid,.workflow-grid,.industry-grid{grid-template-columns:repeat(2,1fr)}.product-feature-grid,.catalog-grid{grid-template-columns:repeat(2,1fr)}.product-card.featured{grid-column:span 2}.services-panel{grid-template-columns:1fr;gap:54px}.services-sticky{position:relative;top:auto}.material-story{grid-template-columns:1fr;gap:25px}.material-visual{min-height:500px}.dark-feature{grid-template-columns:1fr}.page-hero{grid-template-columns:1fr;min-height:auto}.page-hero .product-visual{max-width:650px;width:100%;justify-self:center}.footer-grid{grid-template-columns:1.3fr 1fr 1fr}.footer-grid>div:last-child{grid-column:2/4}
@@ -1386,7 +1383,8 @@ main { position:relative; z-index:1; background:#090a09; }
 .nav-mega-panel::before { content:""; position:absolute; left:0; right:0; top:-20px; height:20px; }
 .nav-services-panel { width:720px; }
 .nav-mega:hover .nav-mega-panel,
-.nav-mega:focus-within .nav-mega-panel { opacity:1; visibility:visible; transform:translate(-50%,0) scale(1); pointer-events:auto; }
+.nav-mega:focus-within .nav-mega-panel,
+.nav-mega.is-open .nav-mega-panel { opacity:1; visibility:visible; transform:translate(-50%,0) scale(1); pointer-events:auto; }
 .nav-mega-intro {
   min-height:292px;
   display:flex;
@@ -2372,7 +2370,7 @@ summary,
 /* Products mega menu: full-width like a catalogue panel, retaining DYN dark theme. */
 .nav-products-panel {
   position: fixed;
-  top: 86px;
+  top: 78px;
   left: 50%;
   width: min(1440px, calc(100vw - 44px));
   min-height: 455px;
@@ -2710,9 +2708,9 @@ summary,
 }
 
 /* ==========================================================================
-   PERFORMANCE PASS — STATIC EVERYWHERE EXCEPT THE HOME HERO
+  PERFORMANCE PASS — STATIC CONTENT WITH FUNCTIONAL UI FEEDBACK
    Heavy scroll/pointer/reveal work has been removed in React. These rules
-   also stop decorative CSS motion outside the approved home hero while
+  also stop decorative CSS motion across the site while
    keeping textures, grids, gradients and static visual treatments intact.
    ========================================================================== */
 
@@ -2723,23 +2721,18 @@ summary,
   display: none !important;
 }
 
-/* Header interactions still work, but without animated movement/fades. */
+/* Header interactions stay functional; only decorative keyframes are disabled. */
 .site-header,
 .site-header *,
 footer,
 footer * {
   animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
 }
 
-/* On the home page only .home-hero is allowed to keep its existing motion. */
-main > :not(.home-hero),
-main > :not(.home-hero) *,
-.page-hero,
-.page-hero * {
+/* Content renders in its final position on every page, including the home page. */
+main,
+main * {
   animation: none !important;
-  transition: none !important;
 }
 
 /* Reveal wrappers now render immediately; keep legacy classes harmless. */
@@ -2748,6 +2741,36 @@ main > :not(.home-hero) *,
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
+}
+
+/* Keep hover feedback lightweight and avoid promoting large card/image layers. */
+.product-card:hover,
+.catalog-card:hover,
+.industry-card:hover,
+.metric:hover,
+.why-card:hover,
+.company-route-card:hover,
+.principle-card:hover,
+.selection-factor-card:hover,
+.product-route-card:hover,
+.support-item:hover,
+.workflow-card:hover,
+.service-card-large:hover {
+  transform: none !important;
+}
+
+.product-card::after,
+.product-card:hover::after {
+  transform: none !important;
+  transition: none !important;
+}
+
+.field-photo:hover .field-photo-bg,
+.why-image-panel:hover .why-image-bg,
+.gallery-photo-card:hover .gallery-photo-bg,
+.product-card:hover .product-photo-bg,
+.hero-image-slot:hover .hero-image-slot-bg {
+  transform: none !important;
 }
 
 /* Every non-home hero is photographic and fully static. */
@@ -2884,5 +2907,4 @@ main > :not(.home-hero)::after,
 main > :not(.home-hero) *::before,
 main > :not(.home-hero) *::after {
   animation: none !important;
-  transition: none !important;
 }

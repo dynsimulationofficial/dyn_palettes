@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { navServices } from "@/data/site";
 import { productCategories } from "@/data/productCatalog";
@@ -17,9 +17,11 @@ function Brand() {
   );
 }
 
-function ProductMegaMenu() {
+type MegaMenuName = "products" | "services";
+
+function ProductMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
   return (
-    <div className="nav-mega-panel nav-products-panel">
+    <div className="nav-mega-panel nav-products-panel" onPointerEnter={onPointerEnter}>
       <div className="nav-product-intro">
         <span>PRODUCT SYSTEMS</span>
         <h3>Packaging built around the load.</h3>
@@ -69,9 +71,9 @@ function ProductMegaMenu() {
   );
 }
 
-function ServicesMegaMenu() {
+function ServicesMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
   return (
-    <div className="nav-mega-panel nav-services-panel">
+    <div className="nav-mega-panel nav-services-panel" onPointerEnter={onPointerEnter}>
       <div className="nav-mega-intro">
         <span>PACKING + EXPORT</span>
         <h3>Protection beyond the pallet.</h3>
@@ -93,9 +95,23 @@ function ServicesMegaMenu() {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [openMega, setOpenMega] = useState<MegaMenuName | null>(null);
+  const megaCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   const active = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const cancelMegaClose = () => {
+    if (megaCloseTimer.current) clearTimeout(megaCloseTimer.current);
+    megaCloseTimer.current = null;
+  };
+  const showMega = (menu: MegaMenuName) => {
+    cancelMegaClose();
+    setOpenMega(menu);
+  };
+  const hideMegaSoon = () => {
+    cancelMegaClose();
+    megaCloseTimer.current = setTimeout(() => setOpenMega(null), 350);
+  };
 
   return (
     <header className="site-header">
@@ -106,14 +122,22 @@ export default function Header() {
           <Link href="/" className={active("/") ? "active" : ""}>Home</Link>
           <Link href="/about" className={active("/about") ? "active" : ""}>About Us</Link>
 
-          <div className={`nav-mega ${active("/products") ? "active" : ""}`}>
+          <div
+            className={`nav-mega ${active("/products") ? "active" : ""} ${openMega === "products" ? "is-open" : ""}`}
+            onPointerEnter={() => showMega("products")}
+            onPointerLeave={hideMegaSoon}
+          >
             <Link href="/products">Products</Link>
-            <ProductMegaMenu />
+            <ProductMegaMenu onPointerEnter={cancelMegaClose} />
           </div>
 
-          <div className={`nav-mega ${active("/services") ? "active" : ""}`}>
+          <div
+            className={`nav-mega ${active("/services") ? "active" : ""} ${openMega === "services" ? "is-open" : ""}`}
+            onPointerEnter={() => showMega("services")}
+            onPointerLeave={hideMegaSoon}
+          >
             <Link href="/services">Services</Link>
-            <ServicesMegaMenu />
+            <ServicesMegaMenu onPointerEnter={cancelMegaClose} />
           </div>
 
           <Link href="/gallery" className={active("/gallery") ? "active" : ""}>Gallery</Link>
