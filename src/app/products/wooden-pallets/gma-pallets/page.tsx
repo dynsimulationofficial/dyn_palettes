@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "GMA Pallets for Sale | 48x40 Standard Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies 48x40 GMA wooden pallets for warehousing, food distribution, shipping and export, with standard, 4-way and heat-treated options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

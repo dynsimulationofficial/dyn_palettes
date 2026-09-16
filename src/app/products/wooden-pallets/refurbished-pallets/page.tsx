@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "Refurbished Pallets for Sale | Recycled Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies refurbished wooden pallets, used pallets and recycled pallets for industrial reuse. Request bulk, export and heat-treated options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

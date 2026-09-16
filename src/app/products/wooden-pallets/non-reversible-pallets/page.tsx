@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "Non Reversible Pallets for Sale | Single Deck Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies non reversible wooden pallets for warehousing, shipping and export. Get 2-way, 4-way, heavy-duty, heat-treated and custom pallet options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

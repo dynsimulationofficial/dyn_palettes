@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "Heavy Duty Pallets for Sale | Industrial Wood Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies heavy duty wooden pallets for machinery, industrial loads and export. Get custom, heat-treated and high-load pallet options with quote-based pricing.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

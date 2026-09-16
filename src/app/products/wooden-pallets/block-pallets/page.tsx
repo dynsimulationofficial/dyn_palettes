@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "Block Pallets for Sale | 4 Way Wooden Block Pallets | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies wooden block pallets for warehousing, forklifts and export. Get 4-way, heavy-duty, heat-treated and custom block pallet options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

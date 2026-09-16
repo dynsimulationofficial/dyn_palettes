@@ -8,8 +8,11 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: {
+    absolute: "Wooden Skids for Sale | Heavy Duty Machinery Skids | DYN Pallets",
+  },
+  description:
+    "DYN Pallets supplies wooden skids for machinery, industrial handling, shipping and export. Get custom, heavy-duty, heat-treated and ISPM 15 skid options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 
