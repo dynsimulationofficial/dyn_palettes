@@ -884,7 +884,7 @@ main { position:relative; z-index:1; background:#090a09; }
 .content-section,.cards-page,.about-story { background:#0d0f0d; color:#f2eee7; padding:100px max(5vw,56px); }.content-shell,.cards-shell{max-width:1220px;margin:auto}.content-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px}.content-grid h2{color:#f0ede7}.content-grid p,.about-copy p{color:#7f837b}.content-grid .lead{color:#c8c8c1}.spec-grid{border-color:var(--line)}.spec{border-color:var(--line);background:rgba(255,255,255,.012)}.spec small{color:#6f736c}.spec strong{color:#dddcd6}.check-list{border-color:var(--line)}.check-list li{border-color:var(--line);color:#8d9089}.check-list li::before{color:#d28946}
 .cards-intro h2,.about-grid h2{color:#f2eee7}.cards-intro p{color:#7e827a}.catalog-grid{gap:14px}.catalog-card{border-color:var(--line);background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.012));color:#f0ede7;box-shadow:none}.catalog-card:hover{transform:translateY(-7px);border-color:rgba(225,151,78,.24);box-shadow:0 24px 60px rgba(0,0,0,.28)}.catalog-card p{color:#777b73}.catalog-card footer{border-color:var(--line);color:#aaaDa6}.service-card-large{background:linear-gradient(145deg,#171a16,#0d0f0d);border:1px solid var(--line)}.service-card-large p{color:#7c8078}.about-values .value-card{background:linear-gradient(145deg,#171a16,#0d0f0d);border:1px solid var(--line)}.value-card p{color:#7c8078}
 .industry-page-card,.custom-step{border-color:var(--line);background:rgba(255,255,255,.018);color:#eeece6}.industry-page-card p,.custom-step p{color:#7b7f77}.gallery-card{border-color:rgba(255,255,255,.09);background:#111310}.gallery-card::before{background:radial-gradient(circle at 20% 20%,rgba(217,139,56,.18),transparent 35%),linear-gradient(145deg,#1a1d19,#0c0e0c)}.gallery-card:nth-child(even)::before{background:radial-gradient(circle at 75% 25%,rgba(148,113,72,.20),transparent 35%),linear-gradient(145deg,#1b1c19,#0d0f0d)}.gallery-card:nth-child(even) footer{color:#fff}.catalogue-panel{background:linear-gradient(145deg,#171a16,#0c0e0c);border:1px solid var(--line)}.catalogue-sheet{background:#e9e0d2;color:#171813}.faq-item{border-color:var(--line)}
-.contact-layout{background:#0d0f0d}.contact-info{background:radial-gradient(circle at 85% 10%,rgba(203,120,53,.14),transparent 28%),#111310;border:1px solid var(--line)}.contact-info>p{color:#7e827a}.contact-details{border-color:var(--line)}.contact-detail{border-color:var(--line)}.quote-form{border-color:var(--line);background:rgba(255,255,255,.018)}.field label{color:#8b8e86}.field input,.field select,.field textarea{border-color:rgba(255,255,255,.11);background:#111310;color:#f2eee7}.field input:focus,.field select:focus,.field textarea:focus{border-color:#b7713b;box-shadow:0 0 0 3px rgba(183,113,59,.08)}.form-note{color:#747870}
+.contact-layout{background:#0d0f0d}.contact-info{background:radial-gradient(circle at 85% 10%,rgba(203,120,53,.14),transparent 28%),#111310;border:1px solid var(--line)}.contact-info>p{color:#7e827a}.contact-details{border-color:var(--line)}.contact-detail{border-color:var(--line)}.quote-form{border-color:rgba(215,137,70,.22);background:linear-gradient(145deg,#2b1b11,#17100c);box-shadow:inset 0 1px 0 rgba(255,210,158,.06),0 24px 60px rgba(0,0,0,.2)}.field label{color:#bc8254}.field input,.field select,.field textarea{border-color:rgba(232,169,108,.2);background:#21140d;color:#f2eee7}.field input::placeholder,.field textarea::placeholder{color:#9e8775}.field input:focus,.field select:focus,.field textarea:focus{border-color:#c98248;box-shadow:0 0 0 3px rgba(183,113,59,.12)}.form-note{color:#9b806d}
 
 /* Footer */
 .site-footer { background:#070807; color:#fff; position:relative; overflow:hidden; border-top:1px solid rgba(255,255,255,.07); }
@@ -2125,24 +2125,27 @@ summary,
   box-shadow: 0 24px 58px rgba(62,42,26,.12);
 }
 
-/* Contact stays balanced: dark contact card, warm form surface. */
+/* Contact uses the same dark brown surface as the rest of the site. */
 .content-section.light-surface .contact-info {
   background: radial-gradient(circle at 85% 10%,rgba(203,120,53,.14),transparent 28%),#111310;
   color: #fff;
 }
 .content-section.light-surface .quote-form {
-  border-color: var(--warm-line);
-  background: rgba(255,255,255,.36);
+  border-color: rgba(215,137,70,.22);
+  background: linear-gradient(145deg,#2b1b11,#17100c);
+  box-shadow: inset 0 1px 0 rgba(255,210,158,.06), 0 24px 60px rgba(0,0,0,.2);
 }
-.content-section.light-surface .field label { color: #6b6258; }
+.content-section.light-surface .field label { color: #bc8254; }
 .content-section.light-surface .field input,
 .content-section.light-surface .field select,
 .content-section.light-surface .field textarea {
-  border-color: rgba(53,42,31,.16);
-  background: rgba(255,255,255,.50);
-  color: #201f1b;
+  border-color: rgba(232,169,108,.2);
+  background: #21140d;
+  color: #f2eee7;
 }
-.content-section.light-surface .form-note { color: #746c63; }
+.content-section.light-surface .field input::placeholder,
+.content-section.light-surface .field textarea::placeholder { color: #9e8775; }
+.content-section.light-surface .form-note { color: #9b806d; }
 
 /* Gallery keeps dark photo cards against a warm exhibition surface. */
 .gallery-photo-page.light-surface .gallery-photo-card,
