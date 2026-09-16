@@ -3313,3 +3313,188 @@ main > :not(.home-hero) *::after {
   }
 }
 
+
+
+/* ==========================================================================\n   DYN PALLETS — HEADER / MEGA MENU READABILITY UPGRADE\n   Drop-in override. Keep this block AFTER the existing header CSS.\n   ========================================================================== */
+
+:root {
+  --dyn-header-nav-font: 14px;
+  --dyn-header-cta-font: 11px;
+  --dyn-mega-eyebrow-font: 9px;
+  --dyn-mega-body-font: 13px;
+  --dyn-mega-link-font: 11px;
+  --dyn-mega-item-font: 11.5px;
+  --dyn-mega-index-font: 8px;
+  --dyn-mega-category-font: 16px;
+}
+
+/* Brand and primary navigation */
+.brand-type strong {
+  font-size: 22px;
+}
+
+.brand-type b {
+  font-size: 10px;
+}
+
+.final-desktop-nav > a,
+.final-desktop-nav .nav-mega > a {
+  font-size: var(--dyn-header-nav-font);
+  line-height: 1.2;
+  padding: 14px 15px;
+}
+
+.header-enquire {
+  min-height: 44px;
+  padding-inline: 18px;
+  font-size: var(--dyn-header-cta-font);
+  letter-spacing: .085em;
+}
+
+/* Product mega menu */
+.nav-products-panel {
+  min-height: 500px;
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.nav-product-intro {
+  padding: 30px 25px;
+}
+
+.nav-product-intro > span,
+.nav-mega-intro > span {
+  font-size: var(--dyn-mega-eyebrow-font);
+  line-height: 1.35;
+}
+
+.nav-product-intro h3 {
+  font-size: 31px;
+  line-height: 1.04;
+}
+
+.nav-product-intro p,
+.nav-mega-intro p {
+  font-size: var(--dyn-mega-body-font);
+  line-height: 1.65;
+}
+
+.final-desktop-nav .nav-product-intro > a,
+.final-desktop-nav .nav-mega-intro > a {
+  font-size: var(--dyn-mega-link-font);
+  line-height: 1.3;
+}
+
+.nav-product-column {
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+
+.final-desktop-nav .nav-product-category {
+  min-height: 58px;
+  padding-bottom: 14px;
+}
+
+.nav-product-category > span {
+  font-size: var(--dyn-mega-index-font);
+  line-height: 1.25;
+}
+
+.nav-product-category > strong {
+  font-size: var(--dyn-mega-category-font);
+  line-height: 1.2;
+}
+
+.nav-product-list {
+  padding-top: 11px;
+  gap: 2px;
+}
+
+.final-desktop-nav .nav-product-list > a {
+  min-height: 32px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  padding: 5px 6px;
+}
+
+.nav-product-list > a span {
+  font-size: var(--dyn-mega-index-font);
+  line-height: 1;
+}
+
+.nav-product-list > a b {
+  font-size: var(--dyn-mega-item-font);
+  line-height: 1.25;
+}
+
+.nav-product-list > p {
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+.final-desktop-nav .nav-product-more {
+  font-size: 10.5px;
+  padding-top: 14px;
+}
+
+/* Services mega menu */
+.nav-services-panel {
+  width: 780px;
+  grid-template-columns: 270px 1fr;
+}
+
+.nav-mega-intro {
+  min-height: 320px;
+  padding: 27px;
+}
+
+.nav-mega-intro h3 {
+  font-size: 30px;
+  line-height: 1.04;
+}
+
+.final-desktop-nav .nav-mega-links > a {
+  min-height: 54px;
+  grid-template-columns: 30px 1fr 18px;
+  padding: 10px 11px;
+}
+
+.final-desktop-nav .nav-mega-links > a > span {
+  font-size: 9px;
+}
+
+.final-desktop-nav .nav-mega-links > a > b {
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+/* Mobile product-category links were also a little too small. */
+.drawer-product-links a {
+  font-size: 13px;
+  line-height: 1.25;
+  padding: 10px 12px;
+}
+
+/* Keep the larger desktop type from crowding medium screens. */
+@media (max-width: 1260px) and (min-width: 1121px) {
+  :root {
+    --dyn-header-nav-font: 13px;
+    --dyn-mega-item-font: 10.5px;
+    --dyn-mega-category-font: 15px;
+  }
+
+  .final-desktop-nav > a,
+  .final-desktop-nav .nav-mega > a {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .nav-products-panel {
+    grid-template-columns: 225px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .brand-type strong { font-size: 18px; }
+  .brand-type b { font-size: 8px; }
+  .drawer-product-links a { font-size: 13px; }
+}

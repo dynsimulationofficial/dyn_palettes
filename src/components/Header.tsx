@@ -127,7 +127,7 @@ export default function Header() {
             onPointerEnter={() => showMega("products")}
             onPointerLeave={hideMegaSoon}
           >
-            <Link href="/products">Products</Link>
+            <Link href="/products">Accessories</Link>
             <ProductMegaMenu onPointerEnter={cancelMegaClose} />
           </div>
 
@@ -158,7 +158,7 @@ export default function Header() {
         <div className="drawer-links">
           <Link href="/" onClick={() => setOpen(false)}><span>01</span>Home<ArrowUpRight size={18} /></Link>
           <Link href="/about" onClick={() => setOpen(false)}><span>02</span>About Us<ArrowUpRight size={18} /></Link>
-          <Link href="/products" onClick={() => setOpen(false)}><span>03</span>Products<ArrowUpRight size={18} /></Link>
+          <Link href="/products" onClick={() => setOpen(false)}><span>03</span>Accessories<ArrowUpRight size={18} /></Link>
           <div className="drawer-product-links">
             {productCategories.map((category) => <Link href={`/products/${category.slug}`} key={category.slug} onClick={() => setOpen(false)}>{category.name}<ArrowUpRight size={14}/></Link>)}
           </div>
