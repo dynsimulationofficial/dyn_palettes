@@ -13,7 +13,7 @@ export function ProductDetailTemplate({
   category,
   product,
 }: {
-  category: ProductCategory;
+  category: Pick<ProductCategory, "slug" | "name">;
   product: CatalogProduct;
 }) {
   const heroImage = categoryHeroImages[category.slug];

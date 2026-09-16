@@ -75,9 +75,36 @@ export const productCategories: ProductCategory[] = [
     summary: "Standard, export, heavy-duty and custom wooden pallet formats for industrial handling.",
     description: "Choose the pallet construction around the load, forklift entry, warehouse flow, shipment route and treatment requirement.",
     items: [
-      wp("pinewood-pallets", "Pinewood Pallets", "Clean, precise timber", "Pinewood pallets for warehouse, shipping and export requirements.", "A versatile timber pallet route for businesses that need predictable machining, lower tare weight and repeatable supply.", [
-        { label: "Material", value: "Pinewood" }, { label: "Entry", value: "2-way / 4-way" }, { label: "Sizing", value: "Standard / custom" }, { label: "Treatment", value: "HT available" },
-      ]),
+      {
+        slug: "pinewood-pallets",
+        name: "Pinewood Pallets",
+        eyebrow: "PINE TIMBER PALLET SYSTEMS",
+        summary: "Pinewood pallets for industrial handling, warehousing, transport and export, with custom sizes, 2-way, 4-way, heavy-duty and heat-treated options.",
+        description: "DYN Pallets manufactures engineered pinewood pallets for industrial handling, storage, transportation, warehousing and export applications. Each pallet can be configured around cargo weight, load distribution, dimensions, handling method, storage environment and transportation conditions.",
+        applications: [
+          "Manufacturing material movement",
+          "Warehouse storage and staging",
+          "Finished goods handling",
+          "Forklift and pallet truck movement",
+          "Road and container transportation",
+          "Export packaging requirements",
+        ],
+        features: [
+          "Selected pine timber construction",
+          "2-way or 4-way entry configurations",
+          "Stringer or block construction",
+          "Standard, custom and drawing-based sizing",
+          "Static, dynamic and handling-specific load design",
+          "Heat treatment available where required",
+        ],
+        specs: [
+          { label: "Material", value: "Selected Pine Timber" },
+          { label: "Entry", value: "2-Way / 4-Way" },
+          { label: "Construction", value: "Stringer / Block" },
+          { label: "Sizing", value: "Standard / Custom" },
+          { label: "Treatment", value: "Natural / Heat-Treated Where Required" },
+        ],
+      },
       wp("hardwood-pallets", "Hardwood Pallets", "Strong timber construction", "Hardwood and jungle-wood pallets for demanding industrial loads.", "Hardwood pallet construction is suited to applications where robust timber sections, impact resistance and demanding load conditions are priorities.", [
         { label: "Material", value: "Hardwood / jungle wood" }, { label: "Load", value: "Application-specific" }, { label: "Sizing", value: "Custom" }, { label: "Treatment", value: "Available" },
       ]),

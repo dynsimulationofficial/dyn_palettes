@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { ProductDetailTemplate } from "@/components/ProductDetailTemplate";
-import { getCatalogProduct, getProductCategory } from "@/data/productCatalog";
 
-const category = getProductCategory("wooden-boxes-crates");
-const product = getCatalogProduct("wooden-boxes-crates", "pinewood-boxes");
+const category = { slug: "wooden-boxes-crates" as const, name: "Wooden Boxes & Crates" };
+const product = { slug: "pinewood-boxes", name: "Pinewood Boxes", eyebrow: "EXPORT-FRIENDLY TIMBER BOX", summary: "Pinewood boxes for machinery, engineering products and seaworthy packing routes.", description: "Pinewood box construction provides a practical timber enclosure that can be configured around product weight, shipment route and export treatment needs.", applications: ["Machinery", "Engineering products", "Industrial exports", "Protected storage"], features: ["Pinewood construction", "Skid or pallet base", "Custom sizing", "Heat treatment available"], specs: [{ label: "Material", value: "Pinewood" }, { label: "Base", value: "Skid / pallet base" }, { label: "Sizing", value: "Custom" }, { label: "Treatment", value: "HT available" }] };
 
 export const metadata: Metadata = {
-  title: product ? `${product.name} | DYN Pallets` : "Product | DYN Pallets",
-  description: product?.summary,
+  title: `${product.name} | DYN Pallets`, description: product.summary,
   alternates: { canonical: "/products/wooden-boxes-crates/pinewood-boxes" },
 };
 
 export default function Page() {
-  if (!category || !product) notFound();
   return <ProductDetailTemplate category={category} product={product} />;
 }
