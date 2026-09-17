@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Bolting Box Manufacturer | Heavy Machinery Packing Boxes | DYN Pallets",
+  description:
+    "Heavy-duty bolting boxes for machinery, export and reusable packing, including full bolting, nut bolting, plywood bolting and seaworthy box configurations.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

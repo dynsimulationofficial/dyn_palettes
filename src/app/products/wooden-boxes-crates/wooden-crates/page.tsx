@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Wooden Crate Manufacturer | Heavy Machinery Shipping Crates | DYN Pallets",
+  description:
+    "Custom wooden shipping crates for machinery, heavy equipment and export cargo, including heavy-duty, heat-treated, ISPM 15-ready and seaworthy crate designs.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

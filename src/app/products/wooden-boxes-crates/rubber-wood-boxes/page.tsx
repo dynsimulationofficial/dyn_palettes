@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Rubber Wood Box Manufacturer | Industrial Shipping Boxes | DYN Pallets",
+  description:
+    "Custom rubber wood boxes for machinery, industrial packing and shipping, including heavy-duty, export, treatment-specific and seaworthy box configurations.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

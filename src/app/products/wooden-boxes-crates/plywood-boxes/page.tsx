@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Plywood Box Manufacturer | Export Packing Cases | DYN Pallets",
+  description:
+    "Custom plywood packing boxes for industrial, export and seaworthy applications, including heavy-duty, nailless, collapsible and reusable plywood box designs.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

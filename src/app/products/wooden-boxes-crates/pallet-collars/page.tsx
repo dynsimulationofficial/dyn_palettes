@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Wooden Pallet Collar Manufacturer | Foldable Euro Collars | DYN Pallets",
+  description:
+    "Foldable wooden pallet collars for reusable storage, logistics and export use, including Euro 1200x800, hinged, collapsible and custom collar systems.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

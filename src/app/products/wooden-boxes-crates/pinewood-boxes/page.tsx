@@ -8,9 +8,12 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
-  alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
+  title: "Pinewood Box Manufacturer | Machinery & Export Packing | DYN Pallets",
+  description:
+    "Custom pinewood boxes for machinery, industrial packing and export shipping, including heavy-duty, heat-treated, ISPM 15-ready and seaworthy configurations.",
+  alternates: {
+    canonical: `/products/${categorySlug}/${productSlug}`,
+  },
 };
 
 export default function Page() {

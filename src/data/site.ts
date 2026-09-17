@@ -121,6 +121,17 @@ export const products: Product[] = [
     visual: "pallet",
   },
   {
+    slug: "wooden-boxes-crates",
+    name: "Wooden Boxes & Crates",
+    eyebrow: "Protected enclosed packaging",
+    summary: "Custom wooden boxes, crates and protective packaging for industrial equipment and shipment security.",
+    description: "Wooden boxes and crates are selected when the load needs more than a pallet base—enclosed protection, framing strength, load securing and shipment readiness all matter in the final design.",
+    features: ["Custom internal sizing", "Crate and box builds", "Load securing and bracing", "Export-ready construction"],
+    applications: ["Machinery", "Engineering equipment", "Industrial exports", "Heavy components"],
+    specs: [{ label: "Build", value: "Custom box / crate" }, { label: "Base", value: "Skid / pallet base" }, { label: "Closure", value: "Nailed / screwed / framed" }, { label: "Treatment", value: "Available" }],
+    visual: "crate",
+  },
+  {
     slug: "plastic-pallets",
     name: "Plastic Pallets",
     eyebrow: "Cleanable and moisture-resistant",
@@ -188,5 +199,7 @@ export const industries = [
   ["Heavy Industry", "Reinforced bases, skids and crates for project cargo and dense industrial loads."],
 ];
 
-export const navProducts = products.filter(({ slug }) => slug === "wooden-pallets").map(({ slug, name }) => ({ slug, name }));
+export const navProducts = products
+  .filter(({ slug }) => ["wooden-pallets", "plastic-pallets", "wooden-boxes-crates", "chemical-pallets"].includes(slug))
+  .map(({ slug, name }) => ({ slug, name }));
 export const navServices = services.map(({ slug, name }) => ({ slug, name }));

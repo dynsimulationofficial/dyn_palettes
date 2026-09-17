@@ -11,34 +11,33 @@ import { navProducts, services } from "@/data/site";
 import { siteConfig } from "@/data/config";
 
 export default function Footer() {
+  const companyLinks = [
+    { label: "About us", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Services", href: "/services" },
+    { label: "Contact us", href: "/contact" },
+  ];
+
+  const policyLinks = [
+    { label: "Terms & Conditions", href: "/contact" },
+    { label: "Privacy Policy", href: "/contact" },
+  ];
+
+  const productLinks = navProducts.slice(0, 4).map((product) => ({
+    label: product.name,
+    href: `/products/${product.slug}`,
+  }));
+
+  const serviceLinks = services.slice(0, 4).map((service) => ({
+    label: service.name,
+    href: `/services/${service.slug}`,
+  }));
+
   return (
     <footer className="site-footer">
-      <div className="footer-texture" aria-hidden="true" />
-      <div className="footer-orb" aria-hidden="true" />
-
       <div className="footer-shell">
-        {/* Top CTA */}
-        <div className="footer-lead">
-          <span className="kicker">
-            INDUSTRIAL PACKAGING, WITHOUT THE GUESSWORK.
-          </span>
-
-          <h2>
-            Bring the load.
-            <br />
-            <em>We&apos;ll engineer the protection.</em>
-          </h2>
-
-          <Link href="/contact" className="button button-light">
-            Start a requirement
-            <ArrowUpRight size={19} />
-          </Link>
-        </div>
-
-        {/* Main footer links */}
-        <div className="footer-grid">
-          {/* Brand */}
-          <div className="footer-about">
+        <div className="footer-top-grid">
+          <div className="footer-brand-block">
             <Link href="/" className="brand footer-brand">
               <Image
                 className="brand-logo"
@@ -57,88 +56,84 @@ export default function Footer() {
 
             <p>{siteConfig.tagline}</p>
 
-            <div className="footer-contact-stack">
-              <span>
-                <MapPin size={17} />
-                {siteConfig.serviceArea}
-              </span>
-
-              <a href={siteConfig.phoneHref}>
-                <Phone size={17} />
-                {siteConfig.phone}
-              </a>
-
-              <a href={siteConfig.emailHref}>
-                <Mail size={17} />
-                {siteConfig.email}
-              </a>
+            <div className="footer-inline-mark" aria-hidden="true">
+              <span className="wave" />
             </div>
           </div>
 
-          {/* Products */}
-          <div>
+          <div className="footer-column">
+            <h4>Company</h4>
+            {companyLinks.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="footer-column">
             <h4>Products</h4>
-
-            {navProducts.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/products/${product.slug}`}
-              >
-                {product.name}
+            {productLinks.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
               </Link>
             ))}
-
             <Link className="footer-more" href="/products">
-              All products
+              View all products
               <ArrowUpRight size={14} />
             </Link>
           </div>
 
-          {/* Services */}
-          <div>
+          <div className="footer-column">
             <h4>Services</h4>
-
-            {services.slice(0, 5).map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-              >
-                {service.name}
+            {serviceLinks.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
               </Link>
             ))}
-
             <Link className="footer-more" href="/services">
-              All services
+              View all services
               <ArrowUpRight size={14} />
             </Link>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4>Navigate</h4>
+          <div className="footer-column">
+            <h4>Company Policy</h4>
+            {policyLinks.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
-            <Link href="/">Home</Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/gallery">Gallery</Link>
-            <Link href="/contact">Contact Us</Link>
+          <div className="footer-column footer-contact-column">
+            <h4>Contact</h4>
+
+            <a href={siteConfig.phoneHref}>
+              <Phone size={14} />
+              {siteConfig.phone}
+            </a>
+            <a href={siteConfig.emailHref}>
+              <Mail size={14} />
+              {siteConfig.email}
+            </a>
+            <span>
+              <MapPin size={14} />
+              {siteConfig.location}
+            </span>
           </div>
         </div>
 
-        {/* Large wordmark */}
         <div className="footer-wordmark" aria-hidden="true">
           DYN PALLETS
         </div>
 
-        {/* Bottom legalm bar */}
-        <div className="footer-bottom footer-bottom-final">
-          <span>
-            © {new Date().getFullYear()}{" "}
-            <strong>DYN PALLETS</strong>. All rights reserved.
-          </span>
+        <div className="footer-bottom-strip">
+          <div className="footer-legal-left">
+            <span className="footer-mini-mark" aria-hidden="true">D</span>
+            <span>© {new Date().getFullYear()} DYN PALLETS. ALL RIGHTS RESERVED.</span>
+          </div>
 
-          <span className="footer-powered">
+          <span className="footer-powered-text">
             Powered by{" "}
             <a
               href="https://www.dynsimulation.com/"
@@ -149,6 +144,8 @@ export default function Footer() {
             </a>
           </span>
         </div>
+
+        <div className="footer-bar-line" aria-hidden="true" />
       </div>
     </footer>
   );
