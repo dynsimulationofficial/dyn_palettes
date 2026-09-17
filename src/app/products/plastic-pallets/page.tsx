@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
+import { getProductImage } from "@/data/productImages";
 
 export const metadata: Metadata = {
   title: "Plastic Pallets | DYN Pallets",
@@ -18,7 +19,7 @@ export default function PlasticPalletsPage() {
         <p>Plastic pallet options for clean, moisture-sensitive and repeat-use handling environments.</p>
         <div className="hero-actions"><Link href="/contact" className="button button-primary">Request a quote <ArrowUpRight size={18}/></Link></div>
       </div>
-      <div className="catalog-detail-image-slot catalog-hero-photo" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&q=58&w=1800')" }} aria-label="Plastic pallets image"><div className="catalog-hero-photo-overlay"/><div className="catalog-hero-photo-meta"><span>PLASTIC PALLETS</span><b>STATIC PRODUCT VIEW</b></div></div>
+      <div className="catalog-detail-image-slot catalog-hero-photo" style={{ backgroundImage: `url('${getProductImage("plastic-pallets", "plastic-pallets")}')` }} aria-label="Plastic pallets image"><div className="catalog-hero-photo-overlay"/><div className="catalog-hero-photo-meta"><span>PLASTIC PALLETS</span><b>STATIC PRODUCT VIEW</b></div></div>
     </section>
     <section className="section catalog-detail-overview light-surface">
       <div className="catalog-detail-layout"><div><span className="kicker">OVERVIEW</span><h2>Clean handling without timber.</h2></div><div className="catalog-detail-prose"><p>Plastic pallets are a practical fit where washability, moisture resistance and consistent molded dimensions are important to the handling process.</p><p>Share the load, dimensions, racking requirement and repeat-use conditions so the suitable pallet format can be reviewed.</p></div></div>

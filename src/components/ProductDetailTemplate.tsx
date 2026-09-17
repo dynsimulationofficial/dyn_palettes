@@ -8,13 +8,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import type { ProductItem, ProductCategory } from "@/data/products";
-
-const categoryHeroImages: Record<ProductCategory["slug"], string> = {
-  "wooden-pallets": "/pinewood%20pallets.png",
-  "chemical-pallets": "/wooden-pallets-performance.webp",
-  "wooden-boxes-crates": "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&q=58&w=1800",
-  "plastic-pallets": "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&q=58&w=1800",
-};
+import { getProductImage } from "@/data/productImages";
 
 function getSpec(product: ProductItem, label: string) {
   return product.specs.find((spec) => spec.label.toLowerCase() === label.toLowerCase())?.value;
@@ -63,7 +57,7 @@ export function ProductDetailTemplate({
   category: ProductCategory;
   product: ProductItem;
 }) {
-  const heroImage = categoryHeroImages[category.slug];
+  const heroImage = getProductImage(product.slug, category.slug);
   const related = product.relatedProductSlugs?.length
     ? product.relatedProductSlugs
         .map((slug) => category.items.find((item) => item.slug === slug))
@@ -98,7 +92,7 @@ export function ProductDetailTemplate({
             <div className="product-main-image" style={{ backgroundImage: `url('${heroImage}')` }} role="img" aria-label={product.name}>
               <div className="product-image-grid" />
               <span className="product-image-badge">DYN / PRODUCT VIEW</span>
-              <span className="product-image-caption">Image can be replaced later without changing the layout</span>
+              <span className="product-image-caption">Product-specific DYN visual</span>
             </div>
             <div className="product-thumbnails" aria-label={`${product.name} image previews`}>
               {["Front", "Build", "Handling", "Detail"].map((label, index) => (
@@ -292,7 +286,7 @@ export function ProductDetailTemplate({
           <div className="product-related-grid">
             {related.map((item) => (
               <Link href={`/products/${category.slug}/${item.slug}`} key={item.slug}>
-                <div className="product-related-image" style={{ backgroundImage: `url('${heroImage}')` }} />
+                <div className="product-related-image" style={{ backgroundImage: `url('${getProductImage(item.slug, category.slug)}')` }} />
                 <span>{item.eyebrow}</span>
                 <h3>{item.name}</h3>
                 <p>{item.summary}</p>

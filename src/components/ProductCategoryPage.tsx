@@ -1,16 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { ProductCategory } from "@/data/products";
-
-const categoryHeroImages: Record<ProductCategory["slug"], string> = {
-  "wooden-pallets": "/pinewood%20pallets.png",
-  "chemical-pallets": "/wooden-pallets-performance.webp",
-  "wooden-boxes-crates": "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&q=58&w=1800",
-  "plastic-pallets": "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&q=58&w=1800",
-};
+import { categoryImages, getProductImage } from "@/data/productImages";
 
 export function ProductCategoryPage({ category }: { category: ProductCategory }) {
-  const heroImage = categoryHeroImages[category.slug];
+  const heroImage = categoryImages[category.slug];
 
   return (
     <>
@@ -36,7 +30,7 @@ export function ProductCategoryPage({ category }: { category: ProductCategory })
         <div className="catalog-category-grid">
           {category.items.map((item, index) => (
             <Link href={`/products/${category.slug}/${item.slug}`} className="catalog-static-card" key={item.slug}>
-              <div className="catalog-static-image catalog-static-image-photo" style={{ backgroundImage: `url('${heroImage}')` }}><span>PRODUCT FAMILY</span></div>
+              <div className="catalog-static-image catalog-static-image-photo" style={{ backgroundImage: `url('${getProductImage(item.slug, category.slug)}')` }}><span>PRODUCT FAMILY</span></div>
               <div className="catalog-static-body"><span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span><h3>{item.name}</h3><p>{item.summary}</p><footer><span>View product</span><ArrowUpRight size={15} /></footer></div>
             </Link>
           ))}

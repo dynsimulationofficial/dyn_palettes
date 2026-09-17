@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, Boxes, Forklift, Image as ImageIcon, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
+import { categoryImages } from "@/data/productImages";
 import { productCategories } from "@/data/products";
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default function ProductsPage() {
       <div className="product-category-hub-grid">
         {productCategories.map((category, index) => (
           <article className="product-category-hub-card" key={category.slug}>
-            <div className="product-category-hub-image"><ImageIcon size={26}/><span>ADD CATEGORY IMAGE</span></div>
+            <div className="product-category-hub-image" style={{ backgroundImage: `url('${categoryImages[category.slug]}')`, backgroundSize: "cover", backgroundPosition: "center" }}><span className="sr-only">{category.name} image</span></div>
             <div className="product-category-hub-body">
               <span className="kicker">{String(index + 1).padStart(2,"0")} · {category.eyebrow}</span>
               <h3>{category.name}</h3>

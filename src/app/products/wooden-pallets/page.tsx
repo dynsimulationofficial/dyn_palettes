@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { woodenPalletItems } from "@/data/products";
+import { getProductImage } from "@/data/productImages";
 import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -763,7 +764,7 @@ export default function WoodenPalletsPage() {
         <div className="catalog-category-grid">
           {woodenPalletItems.map((item, index) => (
             <Link href={`/products/wooden-pallets/${item.slug}`} className="catalog-static-card" key={item.slug}>
-              <div className="catalog-static-image"><ImageIcon size={22} /><span>IMAGE</span></div>
+              <div className="catalog-static-image catalog-static-image-photo" style={{ backgroundImage: `url('${getProductImage(item.slug, "wooden-pallets")}')` }}><span>PRODUCT FAMILY</span></div>
               <div className="catalog-static-body">
                 <span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span>
                 <h3>{item.name}</h3>
