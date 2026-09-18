@@ -1,0 +1,24 @@
+# DYN Pallets — Cline Project Rules
+
+Before editing, inspect the relevant files and preserve the existing visual system, routes, content architecture, and responsive behavior.
+
+## Repository safety
+- Never modify `.git`, Git remotes, branches, commit history, repository URLs, credentials, GitHub settings, or deployment connections.
+- Never run `git init`, `git remote set-url`, `git reset --hard`, `git clean -fd`, force-push, or destructive Git commands.
+- Do not commit or push unless the user explicitly asks.
+
+## Editing rules
+- Make only changes required by the current task.
+- Do not redesign unrelated sections.
+- Reuse existing components, data structures, CSS variables, and naming conventions.
+- Preserve Next.js App Router structure and existing URLs.
+- Keep TypeScript strictness and accessibility attributes intact.
+- Do not expose secrets or write API keys into tracked files.
+
+## Validation
+After code changes, run the least-destructive checks available:
+1. `npm run lint`
+2. `npm run build`
+Fix errors caused by your changes. Do not change unrelated code just to silence pre-existing warnings.
+
+At the end, summarize modified files and what changed.

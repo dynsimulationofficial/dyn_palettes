@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { navServices } from "@/data/site";
 import { productCategories } from "@/data/products";
@@ -19,9 +19,9 @@ function Brand() {
 
 type MegaMenuName = "products" | "services";
 
-function ProductMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
+function ProductMegaMenu({ onPointerEnter, onNavigate }: { onPointerEnter: () => void; onNavigate: () => void }) {
   return (
-    <div className="nav-mega-panel nav-products-panel" onPointerEnter={onPointerEnter}>
+    <div className="nav-mega-panel nav-products-panel" onPointerEnter={onPointerEnter} onClickCapture={onNavigate}>
       <div className="nav-product-intro">
         <span>PRODUCT SYSTEMS</span>
         <h3>Packaging built around the load.</h3>
@@ -55,9 +55,6 @@ function ProductMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
                     <b>{item.name}</b>
                   </Link>
                 ))}
-                {category.slug === "plastic-pallets" && (
-                  <p>Clean, reusable pallet formats for hygiene-sensitive and moisture-exposed handling.</p>
-                )}
               </div>
 
               <Link className="nav-product-more" href={`/products/${category.slug}`}>
@@ -71,9 +68,9 @@ function ProductMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
   );
 }
 
-function ServicesMegaMenu({ onPointerEnter }: { onPointerEnter: () => void }) {
+function ServicesMegaMenu({ onPointerEnter, onNavigate }: { onPointerEnter: () => void; onNavigate: () => void }) {
   return (
-    <div className="nav-mega-panel nav-services-panel" onPointerEnter={onPointerEnter}>
+    <div className="nav-mega-panel nav-services-panel" onPointerEnter={onPointerEnter} onClickCapture={onNavigate}>
       <div className="nav-mega-intro">
         <span>PACKING + EXPORT</span>
         <h3>Protection beyond the pallet.</h3>
@@ -99,10 +96,20 @@ export default function Header() {
   const megaCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
+  useEffect(() => {
+    setOpenMega(null);
+    setOpen(false);
+    if (megaCloseTimer.current) clearTimeout(megaCloseTimer.current);
+  }, [pathname]);
+
   const active = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
   const cancelMegaClose = () => {
     if (megaCloseTimer.current) clearTimeout(megaCloseTimer.current);
     megaCloseTimer.current = null;
+  };
+  const closeMegaNow = () => {
+    cancelMegaClose();
+    setOpenMega(null);
   };
   const showMega = (menu: MegaMenuName) => {
     cancelMegaClose();
@@ -127,8 +134,8 @@ export default function Header() {
             onPointerEnter={() => showMega("products")}
             onPointerLeave={hideMegaSoon}
           >
-            <Link href="/products">Accessories</Link>
-            <ProductMegaMenu onPointerEnter={cancelMegaClose} />
+            <Link href="/products" onClick={closeMegaNow}>Accessories</Link>
+            <ProductMegaMenu onPointerEnter={cancelMegaClose} onNavigate={closeMegaNow} />
           </div>
 
           <div
@@ -136,8 +143,8 @@ export default function Header() {
             onPointerEnter={() => showMega("services")}
             onPointerLeave={hideMegaSoon}
           >
-            <Link href="/services">Services</Link>
-            <ServicesMegaMenu onPointerEnter={cancelMegaClose} />
+            <Link href="/services" onClick={closeMegaNow}>Services</Link>
+            <ServicesMegaMenu onPointerEnter={cancelMegaClose} onNavigate={closeMegaNow} />
           </div>
 
           <Link href="/gallery" className={active("/gallery") ? "active" : ""}>Gallery</Link>

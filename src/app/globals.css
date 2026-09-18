@@ -3702,3 +3702,154 @@ main > :not(.home-hero) *::after {
   .brand-type b { font-size: 8px; }
   .drawer-product-links a { font-size: 13px; }
 }
+
+/* ==========================================================================\n   HOME HERO — LARGE PRODUCT PHOTOGRAPH + CONTROLLED TECH MOTION\n   Replaces the small inset/3D pallet animation with a product-first visual.\n   ========================================================================== */
+.hero-lab {
+  isolation: isolate;
+}
+
+/* The old generated 3D stage and thumbnail are no longer used on the home hero. */
+.hero-lab .lab-visual-wrap,
+.hero-lab .load-core,
+.hero-lab .hero-image-slot {
+  display: none !important;
+}
+
+.hero-product-stage {
+  position: absolute;
+  inset: 64px 14px 54px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #100d09;
+  z-index: 2;
+}
+
+.hero-product-photo {
+  position: absolute;
+  inset: -3%;
+  background-image: url('/wooden-pallets-performance.webp');
+  background-size: cover;
+  background-position: 50% 47%;
+  filter: saturate(.88) contrast(1.06) brightness(.88);
+  transform: scale(1.035);
+}
+
+.hero-product-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5,6,5,.56) 0%, rgba(5,6,5,.12) 35%, rgba(5,6,5,.05) 62%, rgba(5,6,5,.44) 100%),
+    linear-gradient(180deg, rgba(7,8,7,.34), transparent 25%, transparent 67%, rgba(7,8,7,.72));
+  pointer-events: none;
+}
+
+.hero-product-sweep {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 18%;
+  height: 1px;
+  z-index: 3;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(241,167,91,.95), rgba(255,220,177,.65), transparent);
+  box-shadow: 0 0 18px rgba(225,139,67,.36);
+  animation: heroProductSweep 6.8s ease-in-out infinite !important;
+}
+
+@keyframes heroProductSweep {
+  0%, 12% { transform: translateY(0); opacity: 0; }
+  20% { opacity: .72; }
+  72% { opacity: .42; }
+  88%, 100% { transform: translateY(300px); opacity: 0; }
+}
+
+.hero-product-route {
+  position: absolute;
+  z-index: 3;
+  height: 1px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, transparent, rgba(226,145,73,.52), transparent);
+  opacity: .6;
+}
+.hero-product-route::after {
+  content: "";
+  position: absolute;
+  right: 18%;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e29a55;
+  box-shadow: 0 0 0 5px rgba(226,154,85,.08), 0 0 18px rgba(226,154,85,.45);
+  animation: heroRoutePulse 3.4s ease-in-out infinite;
+}
+.route-one { width: 58%; left: 7%; top: 35%; transform: rotate(-8deg); }
+.route-two { width: 46%; right: 4%; bottom: 27%; transform: rotate(11deg); }
+.route-two::after { animation-delay: -1.4s; }
+
+@keyframes heroRoutePulse {
+  0%, 100% { opacity: .38; transform: scale(.75); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+
+.hero-product-badge {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 5;
+  display: grid;
+  gap: 5px;
+  max-width: 280px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  background: rgba(8,9,8,.68);
+  backdrop-filter: blur(10px);
+}
+.hero-product-badge span { color: #8d9188; font-size: 6px; letter-spacing: .16em; }
+.hero-product-badge b { color: #f0bd84; font-size: 9px; letter-spacing: .13em; }
+
+/* Keep readings legible without covering the product. */
+.hero-lab .reading-a { left: 22px; top: 112px; }
+.hero-lab .reading-b { right: 20px; top: 176px; }
+.hero-lab .reading-c { left: auto; right: 20px; bottom: 82px; }
+
+/* Mega menus are controlled by React state so a clicked destination never stays covered. */
+.nav-mega:hover .nav-mega-panel,
+.nav-mega:focus-within .nav-mega-panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%,12px) scale(.985);
+  pointer-events: none;
+}
+.nav-mega.is-open .nav-mega-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%,0) scale(1);
+  pointer-events: auto;
+}
+
+@media (max-width: 1120px) {
+  .hero-product-stage { inset: 64px 12px 54px; }
+  .hero-product-photo { background-position: center; }
+}
+
+@media (max-width: 720px) {
+  .hero-product-stage { inset: 58px 10px 48px; border-radius: 14px; }
+  .hero-product-badge { left: 14px; bottom: 14px; max-width: 220px; }
+  .hero-lab .reading-a { left: 14px; top: 98px; }
+  .hero-lab .reading-b { right: 14px; top: 150px; }
+  .hero-lab .reading-c { right: 14px; bottom: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-product-sweep,
+  .hero-product-route::after {
+    animation: none !important;
+  }
+  .hero-product-sweep { display: none; }
+}
+
+/* Stop the previous hero-lab halo/scan motion; only the new product scan remains animated. */
+.hero-lab::before { animation: none !important; }
+.hero-lab::after { display: none !important; animation: none !important; }

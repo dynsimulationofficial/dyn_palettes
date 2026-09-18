@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Boxes, Check, Factory, Gauge, PackageCheck, Ruler, ShieldCheck, Sparkles, Truck, Layers3, TimerReset, BadgeCheck, ClipboardCheck, Ship, Warehouse } from "lucide-react";
 import { products, services, industries } from "@/data/site";
 import { CountUp, Reveal } from "@/components/Motion";
-import { ProductVisual } from "@/components/ProductVisual";
 import { ProductCardMedia } from "@/components/ProductCardMedia";
 import { QuoteBand } from "@/components/QuoteBand";
 
@@ -51,18 +50,17 @@ export default function Home() {
           <div className="lab-header"><span><i /> DYN / PACKAGING LAB</span><b>LIVE SYSTEM 01</b></div>
           <div className="lab-grid" />
           <div className="lab-corners"><i/><i/><i/><i/></div>
-          <div className="lab-visual-wrap">
-            <ProductVisual type="pallet" />
-            <div className="load-core"><span>LOAD</span><b>02.5T</b></div>
+          <div className="hero-product-stage" aria-label="DYN wooden pallets engineered for industrial movement">
+            <div className="hero-product-photo" />
+            <div className="hero-product-vignette" />
+            <div className="hero-product-sweep" />
+            <div className="hero-product-route route-one" />
+            <div className="hero-product-route route-two" />
+            <div className="hero-product-badge"><span>ENGINEERED LOAD PLATFORM</span><b>DYN WOODEN PALLETS</b></div>
           </div>
           <div className="lab-reading reading-a"><small>ENTRY</small><strong>4-WAY</strong><span>FORK ACCESS</span></div>
           <div className="lab-reading reading-b"><small>MATERIAL</small><strong>PINE / HW</strong><span>SELECTED TIMBER</span></div>
           <div className="lab-reading reading-c"><small>ROUTE</small><strong>EXPORT</strong><span>HT SUPPORT</span></div>
-          <div className="hero-image-slot" aria-label="Wooden pallets in an industrial setting">
-            <div className="hero-image-slot-bg" />
-            <span>FIELD IMAGE</span>
-            <b>WOODEN PALLETS</b>
-          </div>
           <div className="lab-footer"><span>STRUCTURE / LOAD / ROUTE</span><span>DESIGN STATUS <b>READY</b></span></div>
         </div>
 
