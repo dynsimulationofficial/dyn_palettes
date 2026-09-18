@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function WoodenPalletsPage() {
   return (
-    <>
+    <div className="product-category-layout">
      <section className="page-hero texture-grid wooden-pallets-hero">
   <div className="page-hero-copy">
     <nav className="wooden-breadcrumbs" aria-label="Breadcrumb">
@@ -902,6 +902,6 @@ export default function WoodenPalletsPage() {
           </div>
         </div>
       </section> */}
-    </>
+    </div>
   );
 }

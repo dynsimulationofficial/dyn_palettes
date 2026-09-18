@@ -9,7 +9,7 @@ export const siteConfig = {
   whatsapp: "918850139961",
   location: "Mumbai, Maharashtra, India",
   serviceArea: "Mumbai, Maharashtra, India",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://dynpallets.com",
 } as const;
 
 export const getSiteUrl = (): string => {

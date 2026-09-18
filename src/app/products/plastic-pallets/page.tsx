@@ -255,7 +255,7 @@ const faqSchema = {
 
 export default function PlasticPalletsPage() {
   return (
-    <>
+    <div className="product-category-layout">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -826,6 +826,6 @@ export default function PlasticPalletsPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
