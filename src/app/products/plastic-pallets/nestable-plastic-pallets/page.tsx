@@ -8,8 +8,8 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Nestable Plastic Pallets | DYN Pallets",
-  description: "Nestable plastic pallets for compact empty storage, return logistics and efficient export material handling.",
+  title: "Nestable Plastic Pallets for Export & Return Logistics | DYN Pallets",
+  description: "Space-saving nestable plastic pallets in HDPE, lightweight, 4-way and 1200x800 formats for export, warehouses and efficient return logistics.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

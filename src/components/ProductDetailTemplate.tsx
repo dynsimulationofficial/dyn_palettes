@@ -135,34 +135,6 @@ export function ProductDetailTemplate({
         </div>
       </section>
 
-      {variants.length > 0 && (
-        <section className="product-detail-section light-surface product-options-section">
-          <div className="product-detail-heading">
-            <div><span className="kicker">AVAILABLE TYPES</span><h2>Available {product.name} Types</h2></div>
-            <p>Different applications require different pallet structures. Final construction is reviewed around the load, handling method, treatment requirement and shipment route.</p>
-          </div>
-          <div className="product-option-grid">
-            {variants.map((variant, index) => (
-              <article className="product-option-card product-option-card-text-only" key={variant.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{variant.title}</h3>
-                <p>{variant.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {highlights.length > 0 && (
-        <section className="product-detail-section product-highlight-section">
-          <div className="product-highlight-grid">
-            {highlights.map((item) => (
-              <div key={item.title}><Ruler size={21} /><h3>{item.title}</h3><p>{item.description}</p></div>
-            ))}
-          </div>
-        </section>
-      )}
-
       <section className="product-detail-section light-surface product-information-section">
         <div className="product-info-grid">
           <div>
@@ -182,6 +154,35 @@ export function ProductDetailTemplate({
           </article>
         </div>
       </section>
+         {highlights.length > 0 && (
+        <section className="product-detail-section product-highlight-section">
+          <div className="product-highlight-grid">
+            {highlights.map((item) => (
+              <div key={item.title}><Ruler size={21} /><h3>{item.title}</h3><p>{item.description}</p></div>
+            ))}
+          </div>
+        </section>
+      )}
+      {variants.length > 0 && (
+        <section className="product-detail-section light-surface product-options-section">
+          <div className="product-detail-heading">
+            <div><span className="kicker">AVAILABLE TYPES</span><h2>Available {product.name} Types</h2></div>
+            <p>Different applications require different pallet structures. Final construction is reviewed around the load, handling method, treatment requirement and shipment route.</p>
+          </div>
+          <div className="product-option-grid">
+            {variants.map((variant, index) => (
+              <article className="product-option-card product-option-card-text-only" key={variant.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{variant.title}</h3>
+                <p>{variant.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+   
+
 
       <section className="product-detail-section product-information-section product-about-dark-section">
         <div className="product-info-grid">

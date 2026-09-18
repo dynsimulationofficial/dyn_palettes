@@ -8,8 +8,9 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
-  description: product.summary,
+  title: "CP4 1300x1100 Pallets for Heavy-Duty Chemical Use | DYN Pallets",
+  description:
+    "CP4 wooden pallets in 1300x1100 mm format for heavy-duty chemical, drum and industrial handling, with 3-runner, heat-treated and export options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

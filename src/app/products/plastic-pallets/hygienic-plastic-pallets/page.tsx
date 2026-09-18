@@ -8,8 +8,9 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Hygienic Plastic Pallets | DYN Pallets",
-  description: "Hygienic plastic pallets for food processing, pharmacy operations and clean, controlled material handling environments.",
+  title: "Food & Pharma Hygienic Plastic Pallets | DYN Pallets",
+  description:
+    "Washable hygienic plastic pallets for food, pharma and cleanroom handling, with HDPE, closed deck, rackable, 4-way and 1200x1000 options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
 

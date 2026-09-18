@@ -46,9 +46,6 @@ function ProductMegaMenu({ onPointerEnter, onNavigate }: { onPointerEnter: () =>
               </Link>
 
               <div className="nav-product-list">
-                {category.slug === "chemical-pallets" && (
-                  <Link href="/products/chemical-pallets"><span>00</span><b>Chemical Pallets Overview</b></Link>
-                )}
                 {links.map((item, index) => (
                   <Link href={`/products/${category.slug}/${item.slug}`} key={item.slug}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -134,7 +131,7 @@ export default function Header() {
             onPointerEnter={() => showMega("products")}
             onPointerLeave={hideMegaSoon}
           >
-            <Link href="/products" onClick={closeMegaNow}>Accessories</Link>
+            <Link href="/products" onClick={closeMegaNow}>Products</Link>
             <ProductMegaMenu onPointerEnter={cancelMegaClose} onNavigate={closeMegaNow} />
           </div>
 
@@ -165,7 +162,7 @@ export default function Header() {
         <div className="drawer-links">
           <Link href="/" onClick={() => setOpen(false)}><span>01</span>Home<ArrowUpRight size={18} /></Link>
           <Link href="/about" onClick={() => setOpen(false)}><span>02</span>About Us<ArrowUpRight size={18} /></Link>
-          <Link href="/products" onClick={() => setOpen(false)}><span>03</span>Accessories<ArrowUpRight size={18} /></Link>
+          <Link href="/products" onClick={() => setOpen(false)}><span>03</span>Products<ArrowUpRight size={18} /></Link>
           <div className="drawer-product-links">
             {productCategories.map((category) => <Link href={`/products/${category.slug}`} key={category.slug} onClick={() => setOpen(false)}>{category.name}<ArrowUpRight size={14}/></Link>)}
           </div>
