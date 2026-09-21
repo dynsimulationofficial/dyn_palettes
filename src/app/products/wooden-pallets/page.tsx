@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { woodenPalletItems } from "@/data/products";
+import { DynTicker } from "@/components/DynTicker";
 import { getProductImage } from "@/data/productImages";
 import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
 
@@ -50,6 +51,8 @@ export default function WoodenPalletsPage() {
     />
   </div>
 </section>
+
+     <DynTicker items={woodenPalletItems.map((item) => ({ key: item.slug, label: item.name }))} />
 
     
 

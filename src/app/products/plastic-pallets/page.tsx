@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { plasticPalletItems } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
+import { DynTicker } from "@/components/DynTicker";
 
 export const metadata: Metadata = {
   title: "Plastic Pallets Manufacturer in India | DYN Pallets",
@@ -305,6 +307,8 @@ export default function PlasticPalletsPage() {
           />
         </div>
       </section>
+
+      <DynTicker items={plasticPalletItems.map((item) => ({ key: item.slug, label: item.name }))} />
 
       <section className="wooden-page-section wooden-intro-section light-surface">
         <div className="wooden-content-shell">

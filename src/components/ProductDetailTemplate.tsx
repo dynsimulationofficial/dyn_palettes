@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import type { ProductItem, ProductCategory } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
+import { DynTicker } from "@/components/DynTicker";
 
 function getSpec(product: ProductItem, label: string) {
   return product.specs.find((spec) => spec.label.toLowerCase() === label.toLowerCase())?.value;
@@ -80,6 +81,7 @@ export function ProductDetailTemplate({
   return (
     <>
       <section className="product-detail-shell texture-grid">
+        <span className="exact-fx-hero-timber" aria-hidden="true" />
         <nav className="product-detail-breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span>/</span>
           <Link href="/products">Products</Link><span>/</span>
@@ -93,6 +95,10 @@ export function ProductDetailTemplate({
               <div className="product-image-grid" />
               <span className="product-image-badge">DYN / PRODUCT VIEW</span>
               <span className="product-image-caption">Product-specific DYN visual</span>
+              <span className="exact-fx-glare" aria-hidden="true" />
+              <span className="exact-fx-ruler exact-fx-ruler-y" aria-hidden="true" />
+              <span className="exact-fx-ruler exact-fx-ruler-x" aria-hidden="true" />
+              <span className="exact-fx-reticle" aria-hidden="true" />
             </div>
             <div className="product-thumbnails" aria-label={`${product.name} image previews`}>
               {["Front", "Build", "Handling", "Detail"].map((label, index) => (
@@ -134,6 +140,8 @@ export function ProductDetailTemplate({
           </div>
         </div>
       </section>
+
+      <DynTicker items={category.items.map((item) => ({ key: item.slug, label: item.name }))} current={product.slug} />
 
       <section className="product-detail-section light-surface product-information-section">
         <div className="product-info-grid">

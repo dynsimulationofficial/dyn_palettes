@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { DynTicker } from "@/components/DynTicker";
+import { productCategories } from "@/data/products";
+import { navServices } from "@/data/site";
+
+// Decorative ticker under every inner-page hero: product categories + services.
+const heroTickerItems = [
+  ...productCategories.map((category) => ({ key: `product-${category.slug}`, label: category.name })),
+  ...navServices.map((service) => ({ key: `service-${service.slug}`, label: service.name })),
+];
 
 const fallbackImages = {
   pallet: "/wooden-pallets-performance.webp",
@@ -30,6 +39,7 @@ export function PageHero({
   const resolvedImage = image || fallbackImages[visual];
 
   return (
+    <>
     <section className="page-hero texture-grid page-hero-photo-mode">
       <div className="page-hero-copy">
         {back && <Link className="back-link" href={back.href}><ArrowLeft size={14} /> {back.label}</Link>}
@@ -45,7 +55,13 @@ export function PageHero({
         <div className="page-hero-photo-corners"><i/><i/><i/><i/></div>
         <div className="page-hero-photo-top"><span><i /> DYN / FIELD VIEW</span><b>PACKAGING SYSTEM</b></div>
         <div className="page-hero-photo-bottom"><span>{imageLabel}</span><b>{imageMeta}</b></div>
+        <span className="exact-fx-glare" aria-hidden="true" />
+        <span className="exact-fx-ruler exact-fx-ruler-y" aria-hidden="true" />
+        <span className="exact-fx-ruler exact-fx-ruler-x" aria-hidden="true" />
+        <span className="exact-fx-reticle" aria-hidden="true" />
       </div>
     </section>
+    <DynTicker items={heroTickerItems} />
+    </>
   );
 }

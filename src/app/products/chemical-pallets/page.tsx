@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { chemicalPalletItems } from "@/data/products";
+import { DynTicker } from "@/components/DynTicker";
 import { getProductImage } from "@/data/productImages";
 
 export const metadata: Metadata = {
@@ -38,6 +39,8 @@ export default function ChemicalPalletsPage() {
 
   return <div className="product-category-layout">
     <section className="page-hero texture-grid wooden-pallets-hero"><div className="page-hero-copy"><nav className="wooden-breadcrumbs" aria-label="Breadcrumb"><Link href="/products">Products</Link><span>/</span><span>Chemical Pallets</span></nav><h1>Chemical Pallets</h1><p className="wooden-hero-description">Chemical resistant pallets engineered for safe storage, handling, containment and transportation of chemicals, drums, IBCs and industrial materials.</p><div className="hero-actions wooden-hero-actions"><Link href="/contact" className="button button-primary">Request a Quote <ArrowUpRight size={18} /></Link><Link href="/contact" className="button button-ghost">Send Specification <ArrowUpRight size={17} /></Link></div></div><div className="wooden-hero-image"><Image src="/product-photos/chemical-pallets.webp" alt="Chemical pallets" fill priority className="wooden-pallet-product-image" /></div></section>
+
+    <DynTicker items={chemicalPalletItems.map((item) => ({ key: item.slug, label: item.name }))} />
 
     <section className="wooden-page-section wooden-intro-section light-surface"><div className="wooden-content-shell"><div className="wooden-intro-layout"><span className="kicker">OVERVIEW</span><div className="wooden-content-flow wooden-intro-copy"><p>DYN Pallets manufactures and supplies chemical pallets for demanding chemical storage, manufacturing, warehouse, logistics and material handling applications.</p><p>From HDPE chemical pallets and chemical resistant plastic pallets to chemical spill pallets, drum containment systems and IBC spill containment pallets, solutions can be selected around the chemical, load, container, forklift movement and storage environment.</p><p>Chemical handling environments may require non-absorbent and corrosion-resistant materials that withstand acids, alkalis, solvents, oils, moisture and industrial liquids.</p><p>DYN Pallets provides industrial chemical pallets, chemical storage pallets and containment solutions for drums, containers, totes and IBCs.</p></div></div><div className="wooden-spec-strip-inner wooden-inline-specs"><div><span>Material</span><p className="wooden-spec-value">HDPE / Chemical-Resistant Plastic</p></div><div><span>Handling</span><p className="wooden-spec-value">Forklift / Pallet Jack / 4-Way Entry</p></div><div><span>Application</span><p className="wooden-spec-value">Storage / Handling / Spill Containment</p></div><div><span>Configuration</span><p className="wooden-spec-value">Standard / Heavy Duty / Rackable / Custom</p></div><div><span>Containers</span><p className="wooden-spec-value">Drums / Totes / IBCs / Packaged Chemicals</p></div></div></div></section>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SiteFx } from "@/components/SiteFx";
 import { getSiteUrl } from "@/data/config";
 
 const siteUrl = getSiteUrl();
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main>{children}</main>
         <Footer />
+        <SiteFx />
       </body>
     </html>
   );

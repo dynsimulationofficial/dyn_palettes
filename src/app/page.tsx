@@ -32,6 +32,7 @@ export default function Home() {
   return (
     <>
       <section className="home-hero">
+        <span className="exact-fx-hero-timber" aria-hidden="true" />
         <div className="hero-noise" />
         <div className="hero-beam beam-a" /><div className="hero-beam beam-b" />
         <div className="hero-copy">

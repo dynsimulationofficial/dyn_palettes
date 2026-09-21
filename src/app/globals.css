@@ -4555,3 +4555,1506 @@ main > :not(.home-hero) *::after {
   .product-category-layout .section-heading,
   .product-category-layout .catalog-category-grid { width: min(100% - 28px, 1220px); }
 }
+
+/* =========================================================
+   EXACT SERVICE PAGES — TEXTURE, DETAIL + EFFECTS LAYER
+   Drop-in addition. Keep this block at the END of globals.css.
+
+   - Presentation only: the client's SEO copy is untouched. Every new label
+     (route number, section index, ticker, stamp, HUD) is drawn by CSS from
+     data-attributes on aria-hidden elements, so the page's text content is
+     exactly what it was before.
+   - Textures are tiny inline SVGs (no image files, no extra requests).
+   - Motion follows the performance pass: transform/opacity only, re-enabled
+     explicitly with !important (the pass sets `main * { animation: none }`),
+     and fully switched off for prefers-reduced-motion.
+   ========================================================= */
+
+:root {
+  --exact-tex-wood-dark: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='400'%3E%3Cfilter%20id='f'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20color-interpolation-filters='sRGB'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.0011%200.028'%20numOctaves='2'%20seed='9'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%201%200%200%200%200'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='table'%20tableValues='0%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix%20values='0%200%200%200%200.93%20%200%200%200%200%200.66%20%200%200%200%200%200.4%20%200%200%200%200.072%200'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23f)'/%3E%3C/svg%3E");
+  --exact-tex-wood-light: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='400'%3E%3Cfilter%20id='f'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20color-interpolation-filters='sRGB'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.0011%200.028'%20numOctaves='2'%20seed='9'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%201%200%200%200%200'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='table'%20tableValues='0%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix%20values='0%200%200%200%200.4%20%200%200%200%200%200.23%20%200%200%200%200%200.1%20%200%200%200%200.16%200'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23f)'/%3E%3C/svg%3E");
+  --exact-tex-kraft: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='220'%20height='220'%3E%3Cfilter%20id='s'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20color-interpolation-filters='sRGB'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='.62'%20numOctaves='2'%20seed='4'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.3%20%200%200%200%200%200.2%20%200%200%200%200%200.11%20%20-14%200%200%200%204.3'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='linear'%20slope='0.2'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23s)'/%3E%3C/svg%3E");
+  --exact-tex-topo: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='640'%3E%3Cfilter%20id='f'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20color-interpolation-filters='sRGB'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.011%200.011'%20numOctaves='2'%20seed='5'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%201%200%200%200%200'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='table'%20tableValues='0%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200%201%200%200%200'/%3E%3C/feComponentTransfer%3E%3CfeColorMatrix%20values='0%200%200%200%200.45%20%200%200%200%200%200.3%20%200%200%200%200%200.17%20%200%200%200%200.13%200'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23f)'/%3E%3C/svg%3E");
+  --exact-tex-stamp: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20160%20160'%3E%3Cdefs%3E%3Cpath%20id='r'%20d='M80%2080m-60%200a60%2060%200%201%201%20120%200a60%2060%200%201%201-120%200'/%3E%3C/defs%3E%3Cg%20fill='none'%20stroke='%239b5f34'%3E%3Ccircle%20cx='80'%20cy='80'%20r='77'%20stroke-width='1.6'/%3E%3Ccircle%20cx='80'%20cy='80'%20r='72.5'%20stroke-width='.8'%20stroke-dasharray='2%203'/%3E%3Ccircle%20cx='80'%20cy='80'%20r='47'%20stroke-width='1.2'/%3E%3C/g%3E%3Ctext%20fill='%239b5f34'%20font-family='Arial,Helvetica,sans-serif'%20font-size='9.6'%20font-weight='700'%20letter-spacing='1.2'%3E%3CtextPath%20href='%23r'%20xlink:href='%23r'%20textLength='370'%20lengthAdjust='spacing'%3EDYN%20PALLETS%20%E2%80%A2%20ENGINEERED%20TO%20PROTECT%20%E2%80%A2%20BUILT%20TO%20MOVE%20%E2%80%A2%3C/textPath%3E%3C/text%3E%3C/svg%3E");
+  --exact-tex-stamp-dyn: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20160%20160'%3E%3Cdefs%3E%3Cpath%20id='r'%20d='M80%2080m-60%200a60%2060%200%201%201%20120%200a60%2060%200%201%201-120%200'/%3E%3C/defs%3E%3Cg%20transform='rotate(-12%2080%2080)'%20opacity='.62'%3E%3Cg%20fill='none'%20stroke='%239b5f34'%3E%3Ccircle%20cx='80'%20cy='80'%20r='77'%20stroke-width='1.6'/%3E%3Ccircle%20cx='80'%20cy='80'%20r='72.5'%20stroke-width='.8'%20stroke-dasharray='2%203'/%3E%3Ccircle%20cx='80'%20cy='80'%20r='47'%20stroke-width='1.2'/%3E%3C/g%3E%3Ctext%20fill='%239b5f34'%20font-family='Arial,Helvetica,sans-serif'%20font-size='9.6'%20font-weight='700'%20letter-spacing='1.2'%3E%3CtextPath%20href='%23r'%20xlink:href='%23r'%20textLength='370'%20lengthAdjust='spacing'%3EDYN%20PALLETS%20%E2%80%A2%20ENGINEERED%20TO%20PROTECT%20%E2%80%A2%20BUILT%20TO%20MOVE%20%E2%80%A2%3C/textPath%3E%3C/text%3E%3Ctext%20x='80'%20y='90'%20fill='%239b5f34'%20font-family='Arial,Helvetica,sans-serif'%20font-size='27'%20font-weight='900'%20letter-spacing='-1'%20text-anchor='middle'%3EDYN%3C/text%3E%3C/g%3E%3C/svg%3E");
+  --exact-tex-marks: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20156%2050'%20fill='none'%20stroke='%236d4125'%20stroke-width='2.2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='2'%20y='2'%20width='46'%20height='46'%20rx='4'/%3E%3Cpath%20d='M17%2038V13M11%2020l6-7%206%207M33%2038V13M27%2020l6-7%206%207M10%2041h30'/%3E%3Crect%20x='55'%20y='2'%20width='46'%20height='46'%20rx='4'/%3E%3Cpath%20d='M62%2028q16-20%2032%200zM78%2028v10a3%203%200%200%201-6%200M66%2011l-2%204M78%208l-2%204M90%2011l-2%204'/%3E%3Crect%20x='108'%20y='2'%20width='46'%20height='46'%20rx='4'/%3E%3Cpath%20d='M122%2010h18l-2%2012a7%207%200%200%201-14%200zM131%2029v9M125%2040h12'/%3E%3C/svg%3E");
+  --exact-ico-check-light: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2012'%3E%3Cpath%20d='M2.6%206.4%205%208.6l4.6-5'%20fill='none'%20stroke='%239b5f34'%20stroke-width='1.9'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E");
+  --exact-ico-check-dark: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2012'%3E%3Cpath%20d='M2.6%206.4%205%208.6l4.6-5'%20fill='none'%20stroke='%23e7a45f'%20stroke-width='1.9'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* 1 — Layout fix ------------------------------------------------------------
+   `overflow: hidden` made every section a scroll container. That stopped the
+   sticky section headings from sticking (it also pushed them ~118px below the
+   first paragraph) and left the section scroll-reveal timeline inactive.
+   `clip` keeps the clipping without creating a scroll container. */
+.exact-service-section,
+.exact-service-overview.light-surface {
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* 2 — Hero: timber grain, stencil route number, lab HUD on the photo -------- */
+.exact-fx-hero-timber {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--exact-tex-wood-dark) 0 0 / 1200px 400px repeat;
+  -webkit-mask-image: linear-gradient(104deg, #000 0%, rgba(0,0,0,.62) 34%, transparent 60%);
+          mask-image: linear-gradient(104deg, #000 0%, rgba(0,0,0,.62) 34%, transparent 60%);
+}
+.exact-fx-hero-stencil {
+  position: absolute;
+  z-index: -1;
+  left: max(10px, calc((100% - 1320px) / 2 - 22px));
+  bottom: -.26em;
+  color: transparent;
+  font-size: clamp(190px, 25vw, 400px);
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: -.075em;
+  -webkit-text-stroke: 1px rgba(227,154,82,.2);
+  pointer-events: none;
+  user-select: none;
+  /* stencil bridge cut through the numerals */
+  -webkit-mask-image: linear-gradient(180deg, #000 0 46%, transparent 46% 52%, #000 52%);
+          mask-image: linear-gradient(180deg, #000 0 46%, transparent 46% 52%, #000 52%);
+}
+.exact-fx-hero-stencil::before { content: attr(data-route); }
+
+.exact-service-hero-grid { perspective: 1800px; }
+.exact-service-hero-visual {
+  rotate: var(--fx-rotate, 0 0 1 0deg);
+  transition: rotate .7s cubic-bezier(.2,.8,.2,1), border-color .45s ease, box-shadow .45s ease;
+}
+.exact-service-hero-visual[data-fx-active] {
+  border-color: rgba(227,154,82,.34);
+  box-shadow: 0 42px 110px rgba(0,0,0,.36), 0 0 0 1px rgba(227,154,82,.08);
+}
+.exact-service-hero-image {
+  translate: calc(var(--fx-dx, 0px) * -.035) calc(var(--fx-dy, 0px) * -.035);
+  transition: translate .9s cubic-bezier(.2,.8,.2,1);
+}
+.exact-service-hero-corner-a { top: 54px; left: 18px; }
+.exact-service-hero-corner-b { right: 18px; bottom: 52px; }
+
+.exact-fx-glare {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  width: 96%;
+  aspect-ratio: 1;
+  margin: -48% 0 0 -48%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,210,160,.2), rgba(255,210,160,.05) 38%, transparent 64%);
+  translate: var(--fx-dx, 0px) var(--fx-dy, 0px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease, translate .35s ease-out;
+}
+.exact-service-hero-visual[data-fx-active] .exact-fx-glare { opacity: 1; }
+
+.exact-fx-ruler { position: absolute; z-index: 4; opacity: .7; pointer-events: none; }
+.exact-fx-ruler-x {
+  left: 22px;
+  right: 80px;
+  bottom: 52px;
+  height: 10px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.6) 0 1px, transparent 1px 50px) 0 100% / 100% 10px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.34) 0 1px, transparent 1px 10px) 0 100% / 100% 5px no-repeat,
+    linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) 0 100% / 100% 1px no-repeat;
+}
+.exact-fx-ruler-y {
+  top: 58px;
+  right: 22px;
+  bottom: 108px;
+  width: 10px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.6) 0 1px, transparent 1px 50px) 100% 0 / 10px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(255,255,255,.34) 0 1px, transparent 1px 10px) 100% 0 / 5px 100% no-repeat,
+    linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) 100% 0 / 1px 100% no-repeat;
+}
+
+.exact-fx-reticle {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  width: 76px;
+  height: 76px;
+  margin: -38px 0 0 -38px;
+  border: 1px solid rgba(240,189,132,.62);
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(240,189,132,.85), rgba(240,189,132,.85)) 50% 50% / 1px 12px no-repeat,
+    linear-gradient(rgba(240,189,132,.85), rgba(240,189,132,.85)) 50% 50% / 12px 1px no-repeat;
+  box-shadow: 0 0 0 7px rgba(240,189,132,.05), inset 0 0 18px rgba(240,189,132,.08);
+  translate: var(--fx-dx, 0px) var(--fx-dy, 0px);
+  opacity: .5;
+  pointer-events: none;
+  transition: translate .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease, scale .35s ease;
+}
+.exact-fx-reticle::before {
+  content: "";
+  position: absolute;
+  inset: -13px;
+  background:
+    linear-gradient(rgba(240,189,132,.8), rgba(240,189,132,.8)) 50% 0 / 1px 9px no-repeat,
+    linear-gradient(rgba(240,189,132,.8), rgba(240,189,132,.8)) 50% 100% / 1px 9px no-repeat,
+    linear-gradient(rgba(240,189,132,.8), rgba(240,189,132,.8)) 0 50% / 9px 1px no-repeat,
+    linear-gradient(rgba(240,189,132,.8), rgba(240,189,132,.8)) 100% 50% / 9px 1px no-repeat;
+}
+.exact-fx-reticle::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(240,189,132,.5);
+  border-radius: 50%;
+  opacity: 0;
+}
+.exact-service-hero-visual .exact-fx-reticle::after {
+  animation: exactFxPing 3.4s cubic-bezier(.2,.7,.3,1) infinite !important;
+}
+.exact-service-hero-visual[data-fx-active] .exact-fx-reticle { opacity: 1; scale: .86; }
+
+.exact-fx-hud {
+  position: absolute;
+  z-index: 5;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(238,234,226,.82);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.exact-fx-hud-top {
+  top: 18px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.exact-fx-hud-top::before {
+  content: "DYN / Service lab";
+  display: inline-block;
+  padding-left: 15px;
+  background: radial-gradient(circle at 4px 50%, #c9ef78 0 2.6px, rgba(201,239,120,.28) 3px 5.2px, transparent 5.6px) no-repeat;
+}
+.exact-fx-hud-top::after { content: "Route " attr(data-route) " / " attr(data-total); color: #f0bd84; }
+.exact-fx-hud-top:not([data-route])::after { content: "Service route"; }
+.exact-fx-hud-bottom {
+  bottom: 16px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  counter-reset: exact-fx-x var(--fx-cx, 500) exact-fx-y var(--fx-cy, 500);
+}
+.exact-fx-hud-bottom::before { content: "Packing + export"; }
+.exact-fx-hud-bottom::after {
+  content: "X " counter(exact-fx-x) " \00B7  Y " counter(exact-fx-y);
+  color: #f0bd84;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3 — Service ticker (packing-tape strip under the hero) -------------------- */
+.exact-fx-ticker {
+  position: relative;
+  z-index: 3;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #1b130b;
+  background:
+    var(--exact-tex-kraft) 0 0 / 220px 220px,
+    repeating-linear-gradient(92deg, transparent 0 22px, rgba(64,31,10,.05) 23px 24px, transparent 25px 52px),
+    linear-gradient(90deg, #cf7c38, #e19b56 48%, #d1813d);
+  border-top: 1px solid rgba(0,0,0,.2);
+  border-bottom: 1px solid rgba(0,0,0,.24);
+  box-shadow: inset 0 1px 0 rgba(255,236,210,.3), inset 0 -1px 0 rgba(84,40,12,.18);
+}
+.exact-fx-ticker::before,
+.exact-fx-ticker::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 110px;
+  pointer-events: none;
+}
+.exact-fx-ticker::before { left: 0; background: linear-gradient(90deg, #cf7c38, rgba(207,124,56,0)); }
+.exact-fx-ticker::after { right: 0; background: linear-gradient(-90deg, #d1813d, rgba(209,129,61,0)); }
+.exact-fx-ticker-track { display: flex; width: max-content; will-change: transform; }
+.exact-fx-ticker .exact-fx-ticker-track { animation: exactFxTicker var(--exact-fx-ticker-duration, 46s) linear infinite !important; }
+.exact-fx-ticker:hover .exact-fx-ticker-track { animation-play-state: paused !important; }
+.exact-fx-ticker-set { display: flex; align-items: center; }
+.exact-fx-ticker-set > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding-left: 22px;
+  font-size: 9.5px;
+  font-weight: 900;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.exact-fx-ticker-set > span::before { content: attr(data-no) " / " attr(data-label); }
+.exact-fx-ticker-set > span::after { content: "\25C6"; font-size: 6px; opacity: .5; }
+.exact-fx-ticker-set > span[data-current]::before {
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #f3c894;
+  background: #15120e;
+  box-shadow: inset 0 0 0 1px rgba(243,200,148,.22), 0 4px 14px rgba(40,18,4,.22);
+}
+
+/* 4 — Overview: kraft paper, route-map contours, stamp, measuring rail ------- */
+.exact-service-overview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--exact-tex-kraft) 0 0 / 220px 220px;
+}
+.exact-fx-overview-map {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--exact-tex-topo) 0 0 / 640px 640px;
+  opacity: .6;
+  -webkit-mask-image: radial-gradient(ellipse 58% 72% at 100% 0%, #000 0%, rgba(0,0,0,.45) 46%, transparent 76%);
+          mask-image: radial-gradient(ellipse 58% 72% at 100% 0%, #000 0%, rgba(0,0,0,.45) 46%, transparent 76%);
+}
+.exact-fx-stamp {
+  position: absolute;
+  z-index: 2;
+  top: clamp(34px, 4.6vw, 62px);
+  right: max(22px, calc((100% - 1300px) / 2));
+  width: 132px;
+  aspect-ratio: 1;
+  opacity: .62;
+  rotate: -10deg;
+  pointer-events: none;
+}
+.exact-fx-stamp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--exact-tex-stamp) center / contain no-repeat;
+}
+.exact-service-overview .exact-fx-stamp::before { animation: exactFxSpin 48s linear infinite !important; }
+.exact-fx-stamp::after {
+  content: attr(data-route);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #9b5f34;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -.05em;
+}
+.exact-fx-stamp:not([data-route])::after { content: "DYN"; font-size: 20px; }
+
+.exact-service-overview-rail span {
+  width: 14px;
+  height: 230px;
+  border-left: 1px solid rgba(122,78,45,.42);
+  background:
+    repeating-linear-gradient(180deg, rgba(122,78,45,.55) 0 1px, transparent 1px 46px) 0 0 / 14px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(122,78,45,.35) 0 1px, transparent 1px 9.2px) 0 0 / 8px 100% no-repeat;
+}
+.exact-service-overview-rail span::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(#e39a52, #b46d38);
+  transform-origin: 50% 0;
+  scale: 1 .22;
+}
+
+/* Lists, tables and labels in the intro span the full width (they were being
+   squeezed into the first column of the two-column quick-facts grid). */
+.exact-service-overview-content > .exact-service-list,
+.exact-service-overview-content > .exact-service-numbered,
+.exact-service-overview-content > .exact-service-table-wrap,
+.exact-service-overview-content > .exact-service-label,
+.exact-service-overview-content > h3 {
+  grid-column: 1 / -1;
+}
+
+.exact-service-overline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.exact-service-overline::before {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: #b46d38;
+  box-shadow: 0 0 0 4px rgba(180,109,56,.14);
+}
+.exact-service-overline::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(155,97,55,.5) 0 7px, transparent 7px 12px);
+}
+
+/* Quick-fact cards: rivets, index numbers, amber edge on hover */
+.exact-service-overview-content { counter-reset: exact-fx-fact; }
+.exact-service-fact {
+  position: relative;
+  isolation: isolate;
+  counter-increment: exact-fx-fact;
+  background:
+    radial-gradient(circle at 11px 11px, rgba(122,78,45,.42) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at calc(100% - 11px) 11px, rgba(122,78,45,.42) 0 1.7px, transparent 2.3px),
+    linear-gradient(90deg, #c9763b, rgba(201,118,59,0)) 0 0 / 0% 2px no-repeat,
+    rgba(255,255,255,.2);
+  transition: transform .25s ease, border-color .25s ease, background-color .25s ease, background-size .5s cubic-bezier(.2,.8,.2,1);
+}
+.exact-service-fact:hover {
+  background:
+    radial-gradient(circle at 11px 11px, rgba(122,78,45,.5) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at calc(100% - 11px) 11px, rgba(122,78,45,.5) 0 1.7px, transparent 2.3px),
+    linear-gradient(90deg, #c9763b, rgba(201,118,59,0)) 0 0 / 100% 2px no-repeat,
+    rgba(255,255,255,.44);
+}
+.exact-service-fact::before {
+  content: counter(exact-fx-fact, decimal-leading-zero);
+  content: counter(exact-fx-fact, decimal-leading-zero) / "";
+  position: absolute;
+  top: 17px;
+  right: 28px;
+  color: rgba(155,97,55,.55);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+/* 5 — Sections: material textures, index, ghost numerals -------------------- */
+.exact-service-section-0 {
+  background:
+    var(--exact-fx-tape, none),
+    var(--exact-tex-kraft) 0 0 / 220px 220px,
+    linear-gradient(90deg, #f3eee5 0%, #f3eee5 50%, rgba(243,238,229,.74) 76%, rgba(243,238,229,.3) 100%),
+    var(--exact-tex-wood-light) 0 0 / 1200px 400px,
+    #f3eee5;
+}
+.exact-service-section-1 {
+  background:
+    var(--exact-fx-tape, none),
+    var(--exact-tex-kraft) 0 0 / 220px 220px,
+    repeating-linear-gradient(180deg, transparent 0 147px, rgba(84,58,34,.09) 147px 148px, rgba(255,255,255,.42) 148px 149px, transparent 149px 150px),
+    #e9e2d7;
+}
+.exact-service-section-1::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: max(20px, calc((100% - 1220px) / 2));
+  bottom: 28px;
+  width: 168px;
+  height: 54px;
+  background: var(--exact-tex-marks) center / contain no-repeat;
+  opacity: .3;
+  pointer-events: none;
+}
+.exact-service-section-2 {
+  background:
+    var(--exact-fx-tape, none),
+    radial-gradient(circle at 82% 22%, rgba(195,117,56,.14), transparent 28%),
+    linear-gradient(90deg, rgba(12,14,12,.97) 0%, rgba(12,14,12,.72) 46%, rgba(12,14,12,.3) 100%),
+    var(--exact-tex-wood-dark) 0 0 / 1200px 400px,
+    #0c0e0c;
+}
+.exact-service-section-2::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(227,154,82,.4) 0 1px, transparent 1px 60px) 0 0 / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.14) 0 1px, transparent 1px 12px) 0 0 / 100% 6px no-repeat;
+}
+/* Closing section gets a strip of hazard tape along its top edge. */
+.exact-service-article > .exact-service-section:last-child {
+  --exact-fx-tape: repeating-linear-gradient(135deg, #c98142 0 14px, #17130e 14px 28px) 0 0 / 100% 7px no-repeat;
+}
+.exact-service-article > .exact-service-section-2:last-child::after { top: 7px; }
+
+.exact-fx-section-ghost {
+  position: absolute;
+  z-index: -1;
+  left: max(8px, calc((100% - 1220px) / 2 - 36px));
+  bottom: -.17em;
+  color: transparent;
+  font-size: clamp(140px, 17vw, 280px);
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: -.075em;
+  -webkit-text-stroke: 1px rgba(104,70,43,.13);
+  pointer-events: none;
+  user-select: none;
+}
+.exact-fx-section-ghost::before { content: attr(data-index); }
+.exact-service-section-2 .exact-fx-section-ghost { -webkit-text-stroke-color: rgba(255,255,255,.075); }
+
+.exact-fx-section-index {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  color: rgba(88,72,58,.62);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.exact-fx-section-index::before {
+  content: attr(data-index);
+  display: inline-grid;
+  place-items: center;
+  min-width: 38px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid rgba(155,97,55,.42);
+  border-radius: 8px;
+  background: rgba(255,255,255,.42);
+  color: #8f5530;
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+.exact-fx-section-index::after { content: "/ " attr(data-total); }
+.exact-service-section-2 .exact-fx-section-index { color: rgba(220,220,212,.46); }
+.exact-service-section-2 .exact-fx-section-index::before {
+  border-color: rgba(227,154,82,.4);
+  background: rgba(255,255,255,.04);
+  color: #eeb071;
+}
+
+.exact-service-section .exact-service-section-rule {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.exact-service-section .exact-service-section-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #d98a43, #f0bd84);
+  transform-origin: 0 50%;
+  scale: 0 1;
+}
+
+/* 6 — Content details -------------------------------------------------------- */
+.exact-service-section-body > p:first-child {
+  color: #3b372f;
+  font-size: 15px;
+  line-height: 1.72;
+}
+.exact-service-section-2 .exact-service-section-body > p:first-child { color: #d9dbd4; }
+
+.exact-service-section-body > h3::before {
+  width: 3px;
+  background: linear-gradient(#d98a43, #9b5a2c);
+}
+.exact-service-section-body > h3::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: calc(.16em - 6px);
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: #f0bd84;
+  box-shadow: 0 0 0 3px rgba(217,138,67,.18);
+}
+
+/* Bold-only lines ("Reduced Pest Risk") read as spec entries. */
+.exact-service-section-body > .exact-service-label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.exact-service-section-body > .exact-service-label::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #b46d38;
+  box-shadow: 0 0 0 4px rgba(180,109,56,.13);
+}
+.exact-service-section-body > .exact-service-label + p:not(.exact-service-label) {
+  margin-left: 3px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(180,109,56,.32);
+}
+.exact-service-section-2 .exact-service-section-body > .exact-service-label::before { background: #e39a52; }
+.exact-service-section-2 .exact-service-section-body > .exact-service-label + p:not(.exact-service-label) { border-left-color: rgba(227,154,82,.3); }
+
+/* Checklist cards */
+.exact-service-list li {
+  isolation: isolate;
+  padding-left: 46px;
+  background:
+    linear-gradient(90deg, rgba(179,110,57,.55), rgba(179,110,57,0)) 0 100% / 0% 1px no-repeat,
+    rgba(255,255,255,.26);
+  transition: transform .22s ease, border-color .22s ease, background-color .22s ease, background-size .5s cubic-bezier(.2,.8,.2,1);
+}
+.exact-service-list li:hover {
+  background:
+    linear-gradient(90deg, rgba(179,110,57,.55), rgba(179,110,57,0)) 0 100% / 100% 1px no-repeat,
+    rgba(255,255,255,.5);
+}
+.exact-service-list li::before {
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 6px;
+  background: rgba(179,110,57,.11) var(--exact-ico-check-light) 50% 50% / 11px 11px no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(179,110,57,.34);
+}
+.exact-service-section-2 .exact-service-list li {
+  background:
+    linear-gradient(90deg, rgba(227,154,82,.5), rgba(227,154,82,0)) 0 100% / 0% 1px no-repeat,
+    rgba(255,255,255,.035);
+}
+.exact-service-section-2 .exact-service-list li:hover {
+  background:
+    linear-gradient(90deg, rgba(227,154,82,.5), rgba(227,154,82,0)) 0 100% / 100% 1px no-repeat,
+    rgba(255,255,255,.065);
+}
+.exact-service-section-2 .exact-service-list li::before {
+  background: rgba(227,154,82,.12) var(--exact-ico-check-dark) 50% 50% / 11px 11px no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(227,154,82,.34);
+}
+
+/* Numbered steps */
+.exact-service-numbered li {
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, #c9763b, rgba(201,118,59,0)) 0 0 / 0% 2px no-repeat,
+    linear-gradient(145deg, rgba(255,255,255,.5), rgba(255,255,255,.12));
+  transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background-size .55s cubic-bezier(.2,.8,.2,1);
+}
+.exact-service-numbered li:hover { background-size: 100% 2px, auto; }
+.exact-service-numbered li::before {
+  left: 16px;
+  top: 21px;
+  min-width: 34px;
+  height: 26px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(154,100,64,.32);
+  border-radius: 8px;
+  background: rgba(255,255,255,.55);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+.exact-service-section-2 .exact-service-numbered li {
+  background:
+    linear-gradient(90deg, #e39a52, rgba(227,154,82,0)) 0 0 / 0% 2px no-repeat,
+    linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+}
+.exact-service-section-2 .exact-service-numbered li:hover { background-size: 100% 2px, auto; }
+.exact-service-section-2 .exact-service-numbered li::before {
+  border-color: rgba(227,154,82,.32);
+  background: rgba(255,255,255,.04);
+}
+
+/* Cursor spotlight (position comes from ExactServiceFx; centred without JS) */
+.exact-service-list li::after,
+.exact-service-numbered li::after,
+.exact-service-fact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--fx-x, 50%) var(--fx-y, 0%), rgba(214,133,62,.16), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+.exact-service-list li:hover::after,
+.exact-service-numbered li:hover::after,
+.exact-service-fact:hover::after { opacity: 1; }
+.exact-service-section-2 .exact-service-list li::after,
+.exact-service-section-2 .exact-service-numbered li::after {
+  background: radial-gradient(240px circle at var(--fx-x, 50%) var(--fx-y, 0%), rgba(232,160,92,.14), transparent 65%);
+}
+
+/* Tables */
+.exact-service-table-wrap th {
+  color: #f0d3ad;
+  background: #211d17;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.exact-service-table-wrap td:first-child { color: #2b2822; font-weight: 700; }
+.exact-service-table-wrap tbody tr:nth-child(even) td { background: rgba(84,58,34,.04); }
+.exact-service-table-wrap tbody tr { transition: background-color .2s ease; }
+.exact-service-table-wrap tbody tr:hover td { background: rgba(217,138,67,.09); }
+.exact-service-section-2 .exact-service-table-wrap th { color: #f0c28e; background: rgba(227,154,82,.08); }
+.exact-service-section-2 .exact-service-table-wrap td:first-child { color: #e8e5df; }
+.exact-service-section-2 .exact-service-table-wrap tbody tr:nth-child(even) td { background: rgba(255,255,255,.025); }
+.exact-service-section-2 .exact-service-table-wrap tbody tr:hover td { background: rgba(227,154,82,.08); }
+
+/* FAQ section: each question + answer reads as one card */
+.exact-service-section-faq .exact-service-section-body > h3 {
+  margin: 16px 0 0;
+  padding: 20px 22px 12px 60px;
+  border: 1px solid rgba(47,35,24,.13);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  background: rgba(255,255,255,.3);
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.3;
+}
+.exact-service-section-faq .exact-service-section-body > h3:first-child { margin-top: 2px; }
+.exact-service-section-faq .exact-service-section-body > h3::before {
+  content: "Q";
+  content: "Q" / "";
+  left: 20px;
+  top: 18px;
+  bottom: auto;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff5ea;
+  background: linear-gradient(145deg, #d98a43, #a9602f);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.exact-service-section-faq .exact-service-section-body > h3::after { display: none; }
+.exact-service-section-faq .exact-service-section-body > h3 + p {
+  margin: 0;
+  padding: 0 22px 20px 60px;
+  border: 1px solid rgba(47,35,24,.13);
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: rgba(255,255,255,.3);
+}
+.exact-service-section-faq.exact-service-section-2 .exact-service-section-body > h3,
+.exact-service-section-faq.exact-service-section-2 .exact-service-section-body > h3 + p {
+  border-color: rgba(255,255,255,.09);
+  background: rgba(255,255,255,.03);
+}
+
+.exact-service-breadcrumbs a:focus-visible,
+.exact-service-actions .button:focus-visible {
+  outline: 2px solid #f0bd84;
+  outline-offset: 3px;
+}
+
+/* 7 — Scroll-driven motion (Chrome/Edge/Safari 26+; other browsers simply
+   show everything in place) ----------------------------------------------- */
+@supports (animation-timeline: view()) {
+  /* Finish the existing section reveal earlier so copy is fully legible while reading. */
+  .exact-service-section-grid { animation-range: entry 0% entry 55% !important; }
+
+  .exact-service-section { view-timeline: --exact-fx-section block; }
+  .exact-service-overview.light-surface { view-timeline: --exact-fx-overview block; }
+
+  .exact-service-list li,
+  .exact-service-numbered li,
+  .exact-service-fact,
+  .exact-service-table-wrap,
+  .exact-service-section-body > h3,
+  .exact-service-section-body > .exact-service-label {
+    animation: exactFxRise linear both !important;
+    animation-timeline: view() !important;
+    animation-range: entry 5% entry 85% !important;
+  }
+  .exact-service-list li:nth-child(even),
+  .exact-service-numbered li:nth-child(even),
+  .exact-service-fact:nth-child(even) { animation-range: entry 15% entry 100% !important; }
+  .exact-service-section-faq .exact-service-section-body > h3 { animation: none !important; }
+
+  /* The rule under each sticky heading fills as the section is read. */
+  .exact-service-section .exact-service-section-rule::after {
+    animation: exactFxFill linear both !important;
+    animation-timeline: --exact-fx-section !important;
+    animation-range: contain 0% contain 100% !important;
+  }
+  /* The overview's measuring rail fills the same way. */
+  .exact-service-overview .exact-service-overview-rail span::after {
+    animation: exactFxFillY linear both !important;
+    animation-timeline: --exact-fx-overview !important;
+    animation-range: entry 40% exit 60% !important;
+  }
+}
+
+@keyframes exactFxRise {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes exactFxFill {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+@keyframes exactFxFillY {
+  from { scale: 1 0; }
+  to { scale: 1 1; }
+}
+@keyframes exactFxTicker { to { transform: translateX(-50%); } }
+@keyframes exactFxSpin { to { rotate: 360deg; } }
+@keyframes exactFxPing {
+  0% { opacity: .7; scale: 1; }
+  70%, 100% { opacity: 0; scale: 1.7; }
+}
+
+/* 8 — Responsive -------------------------------------------------------------- */
+@media (max-width: 1239px) {
+  .exact-fx-stamp { display: none; }
+}
+@media (max-width: 900px) {
+  .exact-fx-hero-stencil { font-size: clamp(150px, 42vw, 300px); bottom: auto; top: 76px; left: auto; right: -.04em; opacity: .5; }
+  .exact-fx-hero-timber {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 40%, transparent 70%);
+            mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 40%, transparent 70%);
+  }
+  .exact-fx-section-ghost { left: auto; right: -.04em; font-size: clamp(120px, 34vw, 220px); }
+  .exact-fx-section-index { margin-bottom: 16px; }
+  .exact-service-section-0 {
+    background:
+      var(--exact-fx-tape, none),
+      var(--exact-tex-kraft) 0 0 / 220px 220px,
+      linear-gradient(180deg, rgba(243,238,229,.6) 0%, #f3eee5 22%, #f3eee5 100%),
+      var(--exact-tex-wood-light) 0 0 / 1200px 400px,
+      #f3eee5;
+  }
+}
+@media (max-width: 640px) {
+  .exact-fx-hud { left: 16px; right: 16px; font-size: 7px; letter-spacing: .13em; }
+  .exact-fx-hud-top { top: 14px; padding-bottom: 11px; }
+  .exact-fx-hud-bottom { bottom: 12px; padding-top: 11px; }
+  .exact-fx-hud-bottom::after { content: none; }
+  .exact-service-hero-corner-a { top: 46px; left: 14px; width: 30px; height: 30px; }
+  .exact-service-hero-corner-b { right: 14px; bottom: 44px; width: 30px; height: 30px; }
+  .exact-fx-ruler-x { left: 16px; right: 58px; bottom: 44px; }
+  .exact-fx-ruler-y { right: 16px; top: 50px; bottom: 90px; }
+  .exact-fx-reticle { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
+  .exact-fx-ticker { height: 44px; }
+  .exact-fx-ticker-set > span { font-size: 8.5px; gap: 18px; padding-left: 18px; }
+  .exact-fx-ticker::before,
+  .exact-fx-ticker::after { width: 44px; }
+  .exact-service-section-1::after { width: 120px; height: 39px; bottom: 18px; }
+  .exact-service-section-faq .exact-service-section-body > h3 { padding: 18px 16px 10px 52px; }
+  .exact-service-section-faq .exact-service-section-body > h3::before { left: 14px; top: 16px; }
+  .exact-service-section-faq .exact-service-section-body > h3 + p { padding: 0 16px 18px 52px; }
+}
+
+/* 9 — Reduced motion + print ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .exact-fx-ticker .exact-fx-ticker-track,
+  .exact-service-overview .exact-fx-stamp::before,
+  .exact-service-hero-visual .exact-fx-reticle::after,
+  .exact-service-list li,
+  .exact-service-numbered li,
+  .exact-service-fact,
+  .exact-service-table-wrap,
+  .exact-service-section-body > h3,
+  .exact-service-section-body > .exact-service-label,
+  .exact-service-section .exact-service-section-rule::after,
+  .exact-service-overview .exact-service-overview-rail span::after {
+    animation: none !important;
+  }
+  .exact-service-hero-visual,
+  .exact-service-hero-image,
+  .exact-fx-reticle,
+  .exact-fx-glare { transition: none !important; }
+}
+@media print {
+  .exact-fx-ticker,
+  .exact-fx-stamp,
+  .exact-fx-hud,
+  .exact-fx-ruler,
+  .exact-fx-reticle,
+  .exact-fx-glare,
+  .exact-fx-hero-stencil,
+  .exact-fx-section-ghost,
+  .exact-fx-overview-map { display: none !important; }
+}
+
+/* =========================================================
+   DYN PALLETS — SITE-WIDE TEXTURE, DETAIL + EFFECTS LAYER
+   Extends the service-page system above to every page: home, about,
+   products (hub, categories, product pages), services, industries, custom
+   solutions, gallery, FAQ and contact.
+
+   - Presentation only. Page copy is untouched: section numbers come from CSS
+     counters (with empty alt text), ticker/stamp labels are CSS-generated on
+     aria-hidden elements.
+   - Shares the --exact-tex-* textures and exact-fx-* decorations defined in
+     the service-page block above.
+   - Motion is transform/opacity only, re-enabled with !important over the
+     performance pass, and switched off for prefers-reduced-motion.
+   ========================================================= */
+
+/* 1 — Layout fix (site-wide) ------------------------------------------------
+   Same issue as the service pages: overflow:hidden turned every section into
+   a scroll container, which silently broke sticky elements (e.g. the home
+   "services" intro and the product "about" card) and scroll-driven reveals.
+   clip keeps the clipping without creating a scroll container. */
+.section,
+.light-surface,
+.services-panel,
+.material-story {
+  overflow: hidden;
+  overflow: clip;
+}
+/* These get textures/ghost numerals below; clip keeps them inside their band. */
+.wooden-page-section,
+.product-detail-section,
+.product-treatment-band,
+.cards-page { overflow: clip; }
+
+/* 2 — Reading progress bar under the header --------------------------------- */
+.site-header::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8e5129, #e39a52 55%, #f3c894);
+  box-shadow: 0 0 14px rgba(227,154,82,.35);
+  transform-origin: 0 50%;
+  scale: 0 1;
+  pointer-events: none;
+}
+
+/* 3 — Heroes: timber grain + live photo HUD --------------------------------- */
+.page-hero {
+  isolation: isolate;
+  perspective: 1800px;
+  background:
+    radial-gradient(circle at 75% 42%, rgba(181,103,46,.13), transparent 27%),
+    linear-gradient(100deg, rgba(9,10,9,.08) 0%, rgba(9,10,9,.58) 36%, #090a09 64%),
+    var(--exact-tex-wood-dark) 0 0 / 1200px 400px,
+    linear-gradient(180deg, #0b0c0b, #090a09);
+}
+.product-detail-shell { isolation: isolate; }
+.product-detail-shell .exact-fx-hero-timber {
+  -webkit-mask-image: linear-gradient(256deg, #000 0%, rgba(0,0,0,.6) 34%, transparent 62%);
+          mask-image: linear-gradient(256deg, #000 0%, rgba(0,0,0,.6) 34%, transparent 62%);
+}
+.home-hero .exact-fx-hero-timber {
+  -webkit-mask-image: linear-gradient(104deg, #000 0%, rgba(0,0,0,.55) 30%, transparent 56%);
+          mask-image: linear-gradient(104deg, #000 0%, rgba(0,0,0,.55) 30%, transparent 56%);
+}
+
+/* Inner-page hero photo: tilt, glare, reticle and rulers (PageHero) */
+.page-hero-photo {
+  rotate: var(--fx-rotate, 0 0 1 0deg);
+  transition: rotate .7s cubic-bezier(.2,.8,.2,1), border-color .45s ease, box-shadow .45s ease;
+}
+.page-hero-photo[data-fx-active] {
+  border-color: rgba(227,154,82,.34);
+  box-shadow: 0 42px 110px rgba(0,0,0,.36), 0 0 0 1px rgba(227,154,82,.08);
+}
+.page-hero-photo-static .page-hero-photo-bg {
+  scale: 1.05;
+  translate: calc(var(--fx-dx, 0px) * -.035) calc(var(--fx-dy, 0px) * -.035);
+  transition: translate .9s cubic-bezier(.2,.8,.2,1);
+}
+.page-hero-photo .exact-fx-ruler-y { top: 104px; right: 24px; bottom: 104px; }
+.page-hero-photo .exact-fx-ruler-x { left: 64px; right: 64px; bottom: 58px; }
+
+/* Product page main image (light backdrop, so the HUD is drawn in ink) */
+.product-gallery-panel { perspective: 1800px; }
+.product-main-image {
+  rotate: var(--fx-rotate, 0 0 1 0deg);
+  transition: rotate .7s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
+}
+.product-main-image[data-fx-active] { box-shadow: 0 40px 100px rgba(0,0,0,.3), 0 0 0 1px rgba(184,117,63,.3); }
+.product-main-image .exact-fx-ruler { opacity: .55; }
+.product-main-image .exact-fx-ruler-y {
+  top: 64px;
+  right: 18px;
+  bottom: 64px;
+  background:
+    repeating-linear-gradient(180deg, rgba(38,28,19,.62) 0 1px, transparent 1px 50px) 100% 0 / 10px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(38,28,19,.36) 0 1px, transparent 1px 10px) 100% 0 / 5px 100% no-repeat,
+    linear-gradient(rgba(38,28,19,.32), rgba(38,28,19,.32)) 100% 0 / 1px 100% no-repeat;
+}
+.product-main-image .exact-fx-ruler-x {
+  left: 18px;
+  right: 64px;
+  bottom: 48px;
+  background:
+    repeating-linear-gradient(90deg, rgba(38,28,19,.62) 0 1px, transparent 1px 50px) 0 100% / 100% 10px no-repeat,
+    repeating-linear-gradient(90deg, rgba(38,28,19,.36) 0 1px, transparent 1px 10px) 0 100% / 100% 5px no-repeat,
+    linear-gradient(rgba(38,28,19,.32), rgba(38,28,19,.32)) 0 100% / 100% 1px no-repeat;
+}
+.product-main-image .exact-fx-reticle { border-color: rgba(166,96,47,.7); box-shadow: 0 0 0 7px rgba(166,96,47,.06); }
+.product-main-image .exact-fx-reticle,
+.product-main-image .exact-fx-reticle::before {
+  --dyn-ink: rgba(166,96,47,.85);
+}
+.product-main-image .exact-fx-reticle {
+  background:
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 50% 50% / 1px 12px no-repeat,
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 50% 50% / 12px 1px no-repeat;
+}
+.product-main-image .exact-fx-reticle::before {
+  background:
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 50% 0 / 1px 9px no-repeat,
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 50% 100% / 1px 9px no-repeat,
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 0 50% / 9px 1px no-repeat,
+    linear-gradient(var(--dyn-ink), var(--dyn-ink)) 100% 50% / 9px 1px no-repeat;
+}
+.product-main-image .exact-fx-reticle::after { border-color: rgba(166,96,47,.5); }
+.product-main-image .exact-fx-glare { background: radial-gradient(circle, rgba(255,246,232,.34), rgba(255,246,232,.08) 38%, transparent 64%); }
+.product-gallery-panel .product-main-image .exact-fx-reticle::after {
+  animation: exactFxPing 3.4s cubic-bezier(.2,.7,.3,1) infinite !important;
+}
+.page-hero .page-hero-photo .exact-fx-reticle::after {
+  animation: exactFxPing 3.4s cubic-bezier(.2,.7,.3,1) infinite !important;
+}
+
+/* Category landing heroes (product image on the dark hero): framed like a spec sheet */
+.product-category-layout .wooden-hero-image::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 4px;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(240,189,132,.7), rgba(240,189,132,.7)) 0 0 / 36px 1px no-repeat,
+    linear-gradient(rgba(240,189,132,.7), rgba(240,189,132,.7)) 0 0 / 1px 36px no-repeat,
+    linear-gradient(rgba(240,189,132,.7), rgba(240,189,132,.7)) 100% 100% / 36px 1px no-repeat,
+    linear-gradient(rgba(240,189,132,.7), rgba(240,189,132,.7)) 100% 100% / 1px 36px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.42) 0 1px, transparent 1px 50px) 60px calc(100% - 26px) / calc(100% - 120px) 9px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.22) 0 1px, transparent 1px 10px) 60px calc(100% - 26px) / calc(100% - 120px) 5px no-repeat;
+}
+.product-category-layout .wooden-hero-image::after {
+  content: "DYN / Product family";
+  content: "DYN / Product family" / "";
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  left: 50px;
+  padding-left: 15px;
+  color: rgba(238,234,226,.72);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  background: radial-gradient(circle at 4px 50%, #c9ef78 0 2.6px, rgba(201,239,120,.28) 3px 5.2px, transparent 5.6px) no-repeat;
+  pointer-events: none;
+}
+
+/* Home: the packaging-lab tilt now follows the pointer (SiteFx feeds --mrx/--mry) */
+.home-hero .hero-lab { will-change: transform; }
+
+/* Other photo panels that tilt with the pointer */
+.gallery-photo-grid,
+.dark-feature,
+.material-story,
+.why-layout { perspective: 1800px; }
+.gallery-photo-card,
+.dark-feature-image-slot,
+.material-visual-static,
+.why-image-panel {
+  isolation: isolate;
+  rotate: var(--fx-rotate, 0 0 1 0deg);
+  transition: rotate .7s cubic-bezier(.2,.8,.2,1), border-color .45s ease;
+}
+.gallery-photo-card::before,
+.dark-feature-image-slot::before,
+.material-visual-static::before,
+.why-image-panel::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 110%;
+  aspect-ratio: 1;
+  margin: -55% 0 0 -55%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,210,160,.17), rgba(255,210,160,.04) 38%, transparent 62%);
+  translate: var(--fx-dx, 0px) var(--fx-dy, 0px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease, translate .35s ease-out;
+}
+.dark-feature-image-slot::before { z-index: 3; }
+.gallery-photo-card[data-fx-active]::before,
+.dark-feature-image-slot[data-fx-active]::before,
+.material-visual-static[data-fx-active]::before,
+.why-image-panel[data-fx-active]::before { opacity: 1; }
+.gallery-photo-card[data-fx-active],
+.dark-feature-image-slot[data-fx-active] { border-color: rgba(227,154,82,.3); }
+
+/* 4 — Kraft-tape strips: the home capability strip joins the ticker style --- */
+.marquee-strip {
+  height: 50px;
+  background:
+    var(--exact-tex-kraft) 0 0 / 220px 220px,
+    repeating-linear-gradient(92deg, transparent 0 22px, rgba(64,31,10,.05) 23px 24px, transparent 25px 52px),
+    linear-gradient(90deg, #cf7c38, #e19b56 48%, #d1813d);
+  border-top: 1px solid rgba(0,0,0,.2);
+  border-bottom: 1px solid rgba(0,0,0,.24);
+  box-shadow: inset 0 1px 0 rgba(255,236,210,.3), inset 0 -1px 0 rgba(84,40,12,.18);
+}
+.marquee-strip::before { width: 110px; background: linear-gradient(90deg, #cf7c38, rgba(207,124,56,0)); }
+.marquee-strip::after { width: 110px; background: linear-gradient(-90deg, #d1813d, rgba(209,129,61,0)); }
+.marquee-track span { font-size: 9.5px; letter-spacing: .17em; }
+/* The strip's list isn't a seamless loop, so it glides end to end and back. */
+.marquee-strip .marquee-track { animation: dynFxMarquee 38s ease-in-out infinite alternate !important; }
+.marquee-strip:hover .marquee-track { animation-play-state: paused !important; }
+
+/* 5 — Section numbers: every section heading gets its index badge + a large
+   stencil numeral (CSS counters, so no text is added to the page) --------- */
+main { counter-reset: dyn-sec; }
+.section-heading .kicker,
+.wooden-section-heading > .kicker,
+.wooden-intro-layout > .kicker,
+.product-detail-heading .kicker { counter-increment: dyn-sec; }
+
+.section-heading .kicker::before,
+.wooden-section-heading > .kicker::before,
+.wooden-intro-layout > .kicker::before,
+.product-detail-heading .kicker::before {
+  content: counter(dyn-sec, decimal-leading-zero);
+  content: counter(dyn-sec, decimal-leading-zero) / "";
+  display: inline-grid;
+  place-items: center;
+  width: auto;
+  min-width: 32px;
+  height: 24px;
+  padding: 0 7px;
+  border: 1px solid currentColor;
+  border-radius: 7px;
+  background: rgba(255,255,255,.04);
+  opacity: 1;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+.light-surface .section-heading .kicker::before,
+.light-surface .wooden-section-heading > .kicker::before,
+.light-surface .wooden-intro-layout > .kicker::before,
+.light-surface .product-detail-heading .kicker::before { background: rgba(255,255,255,.42); }
+/* The services hub already numbers its kickers ("01 · OVERVIEW"): keep its line. */
+main:has(.service-signal-grid) .section-heading .kicker::before {
+  content: "";
+  min-width: 0;
+  width: 20px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: currentColor;
+  opacity: .8;
+}
+
+.wooden-section-heading,
+.product-detail-heading { position: relative; }
+.section-heading::after,
+.wooden-section-heading::after,
+.product-detail-heading::after {
+  content: counter(dyn-sec, decimal-leading-zero);
+  content: counter(dyn-sec, decimal-leading-zero) / "";
+  position: absolute;
+  z-index: -1;
+  top: -.4em;
+  right: -.03em;
+  color: transparent;
+  font-size: clamp(120px, 13vw, 210px);
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: -.075em;
+  -webkit-text-stroke: 1px rgba(255,255,255,.07);
+  pointer-events: none;
+  user-select: none;
+}
+.light-surface .section-heading::after,
+.light-surface .wooden-section-heading::after,
+.light-surface .product-detail-heading::after { -webkit-text-stroke-color: rgba(104,70,43,.14); }
+
+/* 6 — Surfaces: kraft paper on light sections, timber + ruler edge on dark -- */
+.light-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--exact-tex-kraft) 0 0 / 220px 220px;
+}
+/* The first light section under a hero carries the DYN inspection stamp,
+   tucked into the top-right gutter so it never sits under the copy. */
+.exact-fx-ticker + .light-surface:not(.exact-service-overview):not(.gallery-photo-page)::after,
+.marquee-strip + .light-surface::after {
+  background:
+    var(--exact-tex-stamp-dyn) right 14px top 14px / 96px 96px no-repeat,
+    var(--exact-tex-kraft) 0 0 / 220px 220px;
+}
+
+.wooden-page-section,
+.product-detail-section,
+.product-treatment-band,
+.cards-page { position: relative; }
+.section:not(.light-surface),
+.wooden-page-section-alt,
+.product-detail-section:not(.light-surface),
+.cards-page:not(.light-surface),
+.material-story,
+.product-treatment-band { isolation: isolate; }
+.section:not(.light-surface)::after,
+.wooden-page-section-alt::after,
+.product-detail-section:not(.light-surface)::after,
+.cards-page:not(.light-surface)::after,
+.material-story::after,
+.product-treatment-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .9;
+  background:
+    repeating-linear-gradient(90deg, rgba(227,154,82,.34) 0 1px, transparent 1px 60px) 0 0 / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 12px) 0 0 / 100% 6px no-repeat,
+    var(--exact-tex-wood-dark) 0 0 / 1200px 400px;
+}
+
+/* 7 — Cards: cursor spotlight (position from SiteFx; centred without JS) ---- */
+:is(.why-card, .industry-card, .workflow-card, .metric:not(.metric-accent), .company-route-card, .principle-card,
+    .value-card, .purpose-card, .support-item, .service-process-step, .service-use-grid > div, .service-signal-grid > div,
+    .product-signal-grid > div, .selection-factor-card, .product-route-card, .catalog-static-card, .product-category-hub-card,
+    .wooden-subsection-card, .wooden-requirement-card, .wooden-spec-strip-inner > div, .product-option-card,
+    .product-highlight-grid > div, .product-application-grid article, .product-related-grid > a, .product-quick-specs > div,
+    .industry-page-card, .custom-step) {
+  position: relative;
+  isolation: isolate;
+}
+:is(.why-card, .industry-card, .workflow-card, .metric:not(.metric-accent), .company-route-card, .principle-card,
+    .value-card, .purpose-card, .support-item, .service-process-step, .service-use-grid > div, .service-signal-grid > div,
+    .product-signal-grid > div, .selection-factor-card, .product-route-card, .catalog-static-card, .product-category-hub-card,
+    .wooden-subsection-card, .wooden-requirement-card, .wooden-spec-strip-inner > div, .product-option-card,
+    .product-highlight-grid > div, .product-application-grid article, .product-related-grid > a, .product-quick-specs > div,
+    .industry-page-card, .custom-step)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(260px circle at var(--fx-x, 50%) var(--fx-y, 0%), rgba(214,133,62,.15), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+:is(.why-card, .industry-card, .workflow-card, .metric:not(.metric-accent), .company-route-card, .principle-card,
+    .value-card, .purpose-card, .support-item, .service-process-step, .service-use-grid > div, .service-signal-grid > div,
+    .product-signal-grid > div, .selection-factor-card, .product-route-card, .catalog-static-card, .product-category-hub-card,
+    .wooden-subsection-card, .wooden-requirement-card, .wooden-spec-strip-inner > div, .product-option-card,
+    .product-highlight-grid > div, .product-application-grid article, .product-related-grid > a, .product-quick-specs > div,
+    .industry-page-card, .custom-step):hover::after { opacity: 1; }
+
+/* Crate rivets on boxed cards */
+:is(.selection-factor-card, .wooden-subsection-card, .product-option-card, .industry-page-card, .custom-step, .purpose-card) {
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(122,78,45,.4) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(122,78,45,.4) 0 1.7px, transparent 2.3px);
+  background-repeat: no-repeat;
+}
+.wooden-page-section-alt .wooden-subsection-card,
+.purpose-card-dark {
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(227,154,82,.38) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(227,154,82,.38) 0 1.7px, transparent 2.3px),
+    linear-gradient(145deg, rgba(255,255,255,.025), rgba(255,255,255,.008));
+}
+.purpose-card-dark {
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(227,154,82,.38) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(227,154,82,.38) 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at 90% 0, rgba(207,127,55,.18), transparent 32%);
+}
+
+/* Index chips inside cards read as stamped tags */
+.wooden-card-index {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  height: 24px;
+  padding: 0 7px;
+  border: 1px solid rgba(166,105,62,.4);
+  border-radius: 7px;
+  background: rgba(255,255,255,.42);
+}
+.wooden-page-section-alt .wooden-card-index { border-color: rgba(227,154,82,.4); background: rgba(255,255,255,.04); }
+.wooden-card-index { width: max-content; }
+
+/* Checklists: boxed ticks instead of dots */
+.wooden-content-list li { padding-left: 42px; }
+.wooden-content-list li::before {
+  left: 14px;
+  top: 15px;
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  background: rgba(186,113,58,.11) var(--exact-ico-check-light) 50% 50% / 10px 10px no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(186,113,58,.34);
+}
+.wooden-page-section-alt .wooden-content-list li::before {
+  background: rgba(227,154,82,.12) var(--exact-ico-check-dark) 50% 50% / 10px 10px no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(227,154,82,.34);
+}
+.wooden-content-list li { transition: background-color .2s ease; }
+.wooden-content-list li:hover { background: rgba(217,138,67,.06); }
+.product-requirement-fields span { gap: 9px; }
+.product-requirement-fields span::before {
+  content: "";
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background: rgba(186,113,58,.11) var(--exact-ico-check-light) 50% 50% / 9px 9px no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(186,113,58,.34);
+}
+
+/* Spec tables and spec rows */
+.wooden-spec-table tbody tr:nth-child(even) td { background: rgba(84,58,34,.035); }
+.wooden-spec-table tbody tr { transition: background-color .2s ease; }
+.wooden-spec-table tbody tr:hover td { background: rgba(217,138,67,.09); }
+.wooden-spec-table th { color: #f0d3ad; }
+.product-spec-table > div { transition: background-color .2s ease, padding-left .25s ease; }
+.product-spec-table > div:hover { background: linear-gradient(90deg, rgba(217,138,67,.1), transparent 70%); padding-left: 10px; }
+.wooden-spec-strip-inner > div {
+  background:
+    radial-gradient(circle at 10px 10px, rgba(122,78,45,.38) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle at calc(100% - 10px) 10px, rgba(122,78,45,.38) 0 1.6px, transparent 2.2px);
+  background-repeat: no-repeat;
+}
+
+/* FAQs: the open question gets an amber rail + warm wash */
+:is(.home-faq-item, .product-faq-grid details, .wooden-faq-list details, .product-faq-new-list details) {
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+:is(.home-faq-item, .product-faq-grid details, .wooden-faq-list details, .product-faq-new-list details)[open] {
+  box-shadow: inset 3px 0 0 #d98a43;
+  background: linear-gradient(90deg, rgba(217,138,67,.08), transparent 62%);
+}
+:is(.home-faq-item, .product-faq-grid details, .wooden-faq-list details, .product-faq-new-list details) summary { transition: padding-left .25s ease, color .2s ease; }
+:is(.home-faq-item, .product-faq-grid details, .wooden-faq-list details, .product-faq-new-list details) summary:hover { padding-left: 10px; }
+.faq-item h3 { display: flex; align-items: baseline; gap: 12px; }
+.faq-item h3::before {
+  content: "Q";
+  content: "Q" / "";
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  color: #fff5ea;
+  background: linear-gradient(145deg, #d98a43, #a9602f);
+  font-size: 11px;
+  font-weight: 900;
+  transform: translateY(-2px);
+}
+.faq-item p { padding-left: 38px; }
+
+/* Product "send the specification" card: crate handling marks */
+.product-requirement-copy { position: relative; }
+.product-requirement-copy::after {
+  content: "";
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  width: 132px;
+  height: 43px;
+  background: var(--exact-tex-marks) center / contain no-repeat;
+  opacity: .32;
+  pointer-events: none;
+}
+
+/* Contact: the enquiry form and info card sit on timber */
+.quote-form,
+.contact-info { position: relative; isolation: isolate; overflow: hidden; }
+.quote-form::before,
+.contact-info::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--exact-tex-wood-dark) 0 0 / 1200px 400px;
+  opacity: .9;
+}
+
+/* 8 — Closing enquiry band: hazard tape + kraft + DYN stamp ----------------- */
+.quote-band {
+  background-image:
+    repeating-linear-gradient(135deg, #17130e 0 14px, #eab06f 14px 28px),
+    var(--exact-tex-kraft),
+    repeating-linear-gradient(94deg, transparent 0 28px, rgba(58,29,12,.055) 29px 30px, transparent 31px 62px),
+    linear-gradient(135deg, #db8b45, #b9662f);
+  background-size: 100% 7px, 220px 220px, auto, auto;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+}
+.quote-band .dyn-quote-stamp {
+  top: 50%;
+  right: max(300px, 22%);
+  width: 124px;
+  margin-top: -62px;
+  opacity: .34;
+  mix-blend-mode: multiply;
+}
+.quote-band .dyn-quote-stamp::after { color: #5a3217; }
+.quote-band .exact-fx-stamp::before { animation: exactFxSpin 48s linear infinite !important; }
+
+/* 9 — Footer: timber, ruler edge, stencil wordmark -------------------------- */
+html body .site-footer {
+  background:
+    linear-gradient(180deg, rgba(7,8,7,.25) 0%, rgba(7,8,7,.82) 58%, #070807 100%),
+    var(--exact-tex-wood-dark) 0 0 / 1200px 400px,
+    #070807 !important;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(227,154,82,.34) 0 1px, transparent 1px 60px) 0 0 / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 12px) 0 0 / 100% 6px no-repeat;
+}
+html body .footer-wordmark {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(227,154,82,.26);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 45%, transparent 45% 52%, #000 52%);
+          mask-image: linear-gradient(180deg, #000 0 45%, transparent 45% 52%, #000 52%);
+}
+
+/* 10 — Scroll-driven motion (Chrome/Edge/Safari 26+; others show everything) */
+@supports (animation-timeline: view()) {
+  :is(.section-heading, .wooden-section-heading, .product-detail-heading, .cards-intro, .wooden-intro-layout,
+      .why-card, .industry-card, .workflow-card, .metric, .company-route-card, .principle-card, .value-card, .purpose-card,
+      .about-process-step, .support-item, .service-process-step, .service-use-grid > div, .service-signal-grid > div,
+      .product-signal-grid > div, .service-card-large, .service-row, .selection-factor-card, .product-route-card,
+      .catalog-static-card, .product-category-hub-card, .product-card, .wooden-subsection-card, .wooden-requirement-card,
+      .product-option-card, .product-highlight-grid > div, .product-application-grid article, .product-related-grid > a,
+      .industry-page-card, .custom-step, .faq-item, .home-faq-item, .product-faq-grid details, .wooden-faq-list details,
+      .product-faq-new-list details, .gallery-photo-card, .gallery-tech-card, .field-photo, .route-cta, .about-next-step,
+      .service-route-cta, .product-custom-cta, .wide-link) {
+    animation: exactFxRise linear both !important;
+    animation-timeline: view() !important;
+    animation-range: entry 5% entry 85% !important;
+  }
+  :is(.why-card, .industry-card, .workflow-card, .company-route-card, .principle-card, .support-item, .service-process-step,
+      .selection-factor-card, .catalog-static-card, .wooden-subsection-card, .wooden-requirement-card, .product-option-card,
+      .product-related-grid > a, .industry-page-card, .custom-step, .gallery-photo-card):nth-child(even) {
+    animation-range: entry 15% entry 100% !important;
+  }
+  html body .site-header::after {
+    animation: dynFxProgress linear both !important;
+    animation-timeline: scroll(root) !important;
+  }
+}
+@keyframes dynFxProgress {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+@keyframes dynFxMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% + 100vw)); }
+}
+
+/* 11 — Responsive ------------------------------------------------------------ */
+@media (max-width: 1439px) {
+  .exact-fx-ticker + .light-surface:not(.exact-service-overview):not(.gallery-photo-page)::after,
+  .marquee-strip + .light-surface::after { background: var(--exact-tex-kraft) 0 0 / 220px 220px; }
+}
+@media (max-width: 1179px) {
+  .quote-band .dyn-quote-stamp { display: none; }
+}
+@media (max-width: 720px) {
+  .section-heading::after,
+  .wooden-section-heading::after,
+  .product-detail-heading::after { top: -.25em; font-size: clamp(90px, 28vw, 140px); -webkit-text-stroke-color: rgba(255,255,255,.05); }
+  .light-surface .section-heading::after,
+  .light-surface .wooden-section-heading::after,
+  .light-surface .product-detail-heading::after { -webkit-text-stroke-color: rgba(104,70,43,.1); }
+  .page-hero-photo .exact-fx-ruler-y { top: 90px; right: 16px; bottom: 90px; }
+  .page-hero-photo .exact-fx-ruler-x { left: 50px; right: 50px; bottom: 50px; }
+  .product-main-image .exact-fx-ruler-x { bottom: 40px; right: 50px; }
+  .product-category-layout .wooden-hero-image::after { left: 44px; }
+  .faq-item p { padding-left: 0; }
+  .product-requirement-copy::after { display: none; }
+}
+
+/* 12 — Reduced motion + print ------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  :is(.section-heading, .wooden-section-heading, .product-detail-heading, .cards-intro, .wooden-intro-layout,
+      .why-card, .industry-card, .workflow-card, .metric, .company-route-card, .principle-card, .value-card, .purpose-card,
+      .about-process-step, .support-item, .service-process-step, .service-use-grid > div, .service-signal-grid > div,
+      .product-signal-grid > div, .service-card-large, .service-row, .selection-factor-card, .product-route-card,
+      .catalog-static-card, .product-category-hub-card, .product-card, .wooden-subsection-card, .wooden-requirement-card,
+      .product-option-card, .product-highlight-grid > div, .product-application-grid article, .product-related-grid > a,
+      .industry-page-card, .custom-step, .faq-item, .home-faq-item, .product-faq-grid details, .wooden-faq-list details,
+      .product-faq-new-list details, .gallery-photo-card, .gallery-tech-card, .field-photo, .route-cta, .about-next-step,
+      .service-route-cta, .product-custom-cta, .wide-link),
+  .marquee-strip .marquee-track,
+  .quote-band .exact-fx-stamp::before,
+  .product-gallery-panel .product-main-image .exact-fx-reticle::after,
+  .page-hero .page-hero-photo .exact-fx-reticle::after,
+  html body .site-header::after {
+    animation: none !important;
+  }
+  .page-hero-photo,
+  .page-hero-photo-static .page-hero-photo-bg,
+  .product-main-image,
+  .gallery-photo-card,
+  .dark-feature-image-slot,
+  .material-visual-static,
+  .why-image-panel { transition: none !important; }
+}
+@media print {
+  .site-header::after,
+  .quote-band .dyn-quote-stamp,
+  .section-heading::after,
+  .wooden-section-heading::after,
+  .product-detail-heading::after { display: none !important; }
+}
