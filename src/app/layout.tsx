@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
   },
   description:
     "DYN Pallets supplies industrial wooden pallets, export pallets, heat treated pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
+
   alternates: siteUrl ? { canonical: "/" } : undefined,
+
   openGraph: siteUrl
     ? {
         type: "website",
@@ -26,9 +29,17 @@ export const metadata: Metadata = {
         title: "Industrial Wooden Pallets & Packaging | DYN Pallets",
         description:
           "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and export logistics.",
-        images: [{ url: `${siteUrl}/og-image-placeholder.svg`, width: 1200, height: 630, alt: "DYN Pallets industrial packaging and export solutions" }],
+        images: [
+          {
+            url: `${siteUrl}/og-image-placeholder.svg`,
+            width: 1200,
+            height: 630,
+            alt: "DYN Pallets industrial packaging and export solutions",
+          },
+        ],
       }
     : undefined,
+
   twitter: siteUrl
     ? {
         card: "summary_large_image",
@@ -38,6 +49,7 @@ export const metadata: Metadata = {
         images: [`${siteUrl}/og-image-placeholder.svg`],
       }
     : undefined,
+
   robots: {
     index: true,
     follow: true,
@@ -49,20 +61,33 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
+
   creator: "DYN Pallets",
   publisher: "DYN Pallets",
 };
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data),
+      }}
+    />
+  );
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -95,10 +120,29 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
+
         <Header />
+
         <main>{children}</main>
+
         <Footer />
         <SiteFx />
+
+        {/* Microsoft Clarity */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){
+                (c[a].q=c[a].q||[]).push(arguments)
+              };
+              t=l.createElement(r);
+              t.async=1;
+              t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];
+              y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "ylp32ta0wg");
+          `}
+        </Script>
       </body>
     </html>
   );
