@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { ExactServiceContent } from "@/data/serviceExactContent";
+import { navServices } from "@/data/site";
+import { ExactServiceFx } from "./ExactServiceFx";
 
 const galleryHeroImages: Record<string, string> = {
   "heat-treatment": "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
@@ -13,6 +15,13 @@ const galleryHeroImages: Record<string, string> = {
   "vci-packing": "https://images.unsplash.com/photo-1772678144531-3552c0d39582?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
   "vacuum-packing": "https://images.unsplash.com/photo-1778830355680-b76a22f6835f?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
 };
+
+// Decorative only: the route number in the hero HUD and the service ticker come
+// from navServices. Their labels are drawn by CSS from data-attributes on
+// aria-hidden elements, so the page text and SEO copy stay exactly as supplied.
+function pad2(value: number) {
+  return String(value).padStart(2, "0");
+}
 
 function inline(text: string): ReactNode[] {
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
@@ -274,6 +283,10 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
   const pageUrl = siteUrl ? `${siteUrl}${pagePath}` : pagePath;
   const faqs = extractFaqs(page.body);
   const heroImage = galleryHeroImages[page.slug] ?? galleryHeroImages["industrial-packing"];
+  const routeIndex = navServices.findIndex((service) => service.slug === page.slug);
+  const routeNumber = routeIndex >= 0 ? pad2(routeIndex + 1) : undefined;
+  const routeTotal = pad2(navServices.length);
+  const sectionTotal = pad2(sections.length);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -305,6 +318,8 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
     {faqSchema ? <JsonLd data={faqSchema} /> : null}
 
     <section className="exact-service-hero texture-grid">
+      <span className="exact-fx-hero-timber" aria-hidden="true" />
+      <span className="exact-fx-hero-stencil" aria-hidden="true" data-route={routeNumber} />
       <div className="exact-service-hero-grid">
         <div className="exact-service-hero-copy">
           <nav className="exact-service-breadcrumbs" aria-label="Breadcrumb">
@@ -321,12 +336,32 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
           <div className="exact-service-hero-scan" aria-hidden="true" />
           <span className="exact-service-hero-corner exact-service-hero-corner-a" aria-hidden="true" />
           <span className="exact-service-hero-corner exact-service-hero-corner-b" aria-hidden="true" />
+          <span className="exact-fx-glare" aria-hidden="true" />
+          <span className="exact-fx-ruler exact-fx-ruler-y" aria-hidden="true" />
+          <span className="exact-fx-ruler exact-fx-ruler-x" aria-hidden="true" />
+          <span className="exact-fx-reticle" aria-hidden="true" />
+          <span className="exact-fx-hud exact-fx-hud-top" aria-hidden="true" data-route={routeNumber} data-total={routeTotal} />
+          <span className="exact-fx-hud exact-fx-hud-bottom" aria-hidden="true" />
         </div>
       </div>
     </section>
 
+    <div className="exact-fx-ticker" aria-hidden="true">
+      <div className="exact-fx-ticker-track">
+        {[0, 1].map((loop) => (
+          <div className="exact-fx-ticker-set" key={loop}>
+            {navServices.map((service, index) => (
+              <span key={service.slug} data-no={pad2(index + 1)} data-label={service.name} data-current={service.slug === page.slug ? "true" : undefined} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
     {introRemainder ? (
       <section className="exact-service-overview light-surface">
+        <span className="exact-fx-overview-map" aria-hidden="true" />
+        <span className="exact-fx-stamp" aria-hidden="true" data-route={routeNumber} />
         <div className="exact-service-shell exact-service-overview-grid">
           <div className="exact-service-overview-rail" aria-hidden="true"><span /></div>
           <div className="exact-service-overview-content">
@@ -338,9 +373,14 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
 
     <article className="exact-service-article">
       {sections.map((section, index) => (
-        <section className={`exact-service-section exact-service-section-${index % 3}`} key={`${page.slug}-${section.heading}`}>
+        <section
+          className={`exact-service-section exact-service-section-${index % 3}${section.heading.toLowerCase().includes("frequently asked questions") ? " exact-service-section-faq" : ""}`}
+          key={`${page.slug}-${section.heading}`}
+        >
+          <span className="exact-fx-section-ghost" aria-hidden="true" data-index={pad2(index + 1)} />
           <div className="exact-service-shell exact-service-section-grid">
             <header className="exact-service-section-heading">
+              <span className="exact-fx-section-index" aria-hidden="true" data-index={pad2(index + 1)} data-total={sectionTotal} />
               <h2>{inline(section.heading)}</h2>
               <span className="exact-service-section-rule" aria-hidden="true" />
             </header>
@@ -351,5 +391,7 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
         </section>
       ))}
     </article>
+
+    <ExactServiceFx />
   </>;
 }
