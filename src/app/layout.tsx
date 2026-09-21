@@ -12,14 +12,20 @@ const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 export const metadata: Metadata = {
   metadataBase,
   applicationName: "DYN Pallets",
+
   title: {
     default: "Industrial Wooden Pallets & Packaging | DYN Pallets",
     template: "%s | DYN Pallets",
   },
+
   description:
     "DYN Pallets supplies industrial wooden pallets, export pallets, heat treated pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
 
-  alternates: siteUrl ? { canonical: "/" } : undefined,
+  alternates: siteUrl
+    ? {
+        canonical: "/",
+      }
+    : undefined,
 
   openGraph: siteUrl
     ? {
@@ -53,6 +59,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -91,13 +98,17 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+
     name: "DYN Pallets",
     url: siteUrl || undefined,
     logo: siteUrl ? `${siteUrl}/icon.svg` : "/icon.svg",
+
     description:
       "Industrial wooden pallets, export pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
+
     email: "Info@dynpallets.com",
     telephone: "+918850139961",
+
     address: {
       "@type": "PostalAddress",
       addressLocality: "Mumbai",
@@ -109,51 +120,60 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+
     name: "DYN Pallets",
     url: siteUrl || undefined,
+
     description:
       "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and international shipments.",
   };
 
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y1P63LV32N"
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+
+              function gtag(){
+                dataLayer.push(arguments);
+              }
+
+              gtag('js', new Date());
+
+              gtag('config', 'G-Y1P63LV32N');
+            `,
+          }}
+        />
+
+        {/* Ahrefs Web Analytics */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ZV6HFdFBPvEYvZbychpr8w"
+          async
+        />
+      </head>
+
       <body>
+        {/* Structured Data */}
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
 
+        {/* Website */}
         <Header />
 
         <main>{children}</main>
 
         <Footer />
+
         <SiteFx />
-
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Y1P63LV32N"
-          strategy="afterInteractive"
-        />
-
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag(){
-              dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-Y1P63LV32N');
-          `}
-        </Script>
-
-        {/* Ahrefs Web Analytics */}
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="ZV6HFdFBPvEYvZbychpr8w"
-          strategy="afterInteractive"
-        />
 
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
