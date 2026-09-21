@@ -128,6 +128,13 @@ export default function RootLayout({
         <Footer />
         <SiteFx />
 
+        {/* Ahrefs Web Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ZV6HFdFBPvEYvZbychpr8w"
+          strategy="afterInteractive"
+        />
+
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
