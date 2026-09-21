@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { ExactServiceContent } from "@/data/serviceExactContent";
 import { navServices } from "@/data/site";
-import { DynTicker } from "./DynTicker";
+import { ExactServiceFx } from "./ExactServiceFx";
 
 const galleryHeroImages: Record<string, string> = {
   "heat-treatment": "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
@@ -346,7 +346,17 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
       </div>
     </section>
 
-    <DynTicker items={navServices.map((service) => ({ key: service.slug, label: service.name }))} current={page.slug} />
+    <div className="exact-fx-ticker" aria-hidden="true">
+      <div className="exact-fx-ticker-track">
+        {[0, 1].map((loop) => (
+          <div className="exact-fx-ticker-set" key={loop}>
+            {navServices.map((service, index) => (
+              <span key={service.slug} data-no={pad2(index + 1)} data-label={service.name} data-current={service.slug === page.slug ? "true" : undefined} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
 
     {introRemainder ? (
       <section className="exact-service-overview light-surface">
@@ -381,5 +391,7 @@ export function ExactServicePage({ page, siteUrl }: { page: ExactServiceContent;
         </section>
       ))}
     </article>
+
+    <ExactServiceFx />
   </>;
 }
