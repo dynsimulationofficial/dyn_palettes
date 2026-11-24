@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "HDPE Plastic Pallets Manufacturer | DYN Pallets",
+  title: "HDPE Plastic Pallets Manufacturer",
   description:
     "HDPE plastic pallets for industrial, warehouse, rackable, stackable, reusable and export applications. Heavy-duty and 1200x1000 options available.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

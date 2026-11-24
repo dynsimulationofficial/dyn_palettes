@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "48x40 Plastic Pallets for Warehouse & GMA Use | DYN Pallets",
+  title: "48x40 Plastic Pallets for Warehouse & GMA Use",
   description:
     "48x40 plastic pallets for warehouse, retail and racking applications, including HDPE, heavy-duty, black rackable, stackable, nestable and reusable options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

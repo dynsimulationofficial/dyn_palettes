@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUpRight,
   Check,
@@ -10,6 +11,8 @@ import {
 import type { ProductItem, ProductCategory } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
 import { DynTicker } from "@/components/DynTicker";
+import { JsonLd, breadcrumbSchema, faqPageSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 
 function getSpec(product: ProductItem, label: string) {
   return product.specs.find((spec) => spec.label.toLowerCase() === label.toLowerCase())?.value;
@@ -51,6 +54,48 @@ function buildFaqs(product: ProductItem, category: Pick<ProductCategory, "name">
   ];
 }
 
+function buildProductSchema(category: ProductCategory, product: ProductItem, heroImage: string) {
+  const siteUrl = getSiteUrl();
+  const url = `${siteUrl}/products/${category.slug}/${product.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+
+    name: product.name,
+    description: product.summary,
+    image: `${siteUrl}${heroImage}`,
+    url,
+    sku: product.slug,
+    category: category.name,
+
+    brand: { "@type": "Brand", name: siteConfig.name },
+    manufacturer: { "@type": "Organization", name: siteConfig.name, url: siteUrl },
+
+    // The specs table, machine-readable. This is the part of the page that
+    // answers the dimension and format queries the site already ranks for.
+    additionalProperty: product.specs.map((spec) => ({
+      "@type": "PropertyValue",
+      name: spec.label,
+      value: spec.value,
+    })),
+
+    // Made to order and quoted against the specification, so there is no list
+    // price. `price` is deliberately omitted rather than invented; Google will
+    // report it as a missing recommended field.
+    offers: {
+      "@type": "Offer",
+      url,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      priceCurrency: "INR",
+      businessFunction: "http://purl.org/goodrelations/v1#Sell",
+      seller: { "@type": "Organization", name: siteConfig.name, url: siteUrl },
+      areaServed: { "@type": "Country", name: "India" },
+    },
+  };
+}
+
 export function ProductDetailTemplate({
   category,
   product,
@@ -78,8 +123,24 @@ export function ProductDetailTemplate({
     "Drawing if available",
   ];
 
+  const siteUrl = getSiteUrl();
+  const categoryPath = `/products/${category.slug}`;
+  const schema = [
+    buildProductSchema(category, product, heroImage),
+    breadcrumbSchema(siteUrl, [
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      { name: category.name, path: categoryPath },
+      { name: product.name, path: `${categoryPath}/${product.slug}` },
+    ]),
+    faqPageSchema(faqs),
+  ];
+
+  const heroAlt = `${product.name} for industrial handling and export — ${category.name} from ${siteConfig.name}`;
+
   return (
     <>
+      <JsonLd data={schema} />
       <section className="product-detail-shell texture-grid">
         <span className="exact-fx-hero-timber" aria-hidden="true" />
         <nav className="product-detail-breadcrumbs" aria-label="Breadcrumb">
@@ -91,7 +152,16 @@ export function ProductDetailTemplate({
 
         <div className="product-commerce-grid">
           <div className="product-gallery-panel product-enter product-enter-a">
-            <div className="product-main-image" style={{ backgroundImage: `url('${heroImage}')` }} role="img" aria-label={product.name}>
+            <div className="product-main-image">
+              <Image
+                src={heroImage}
+                alt={heroAlt}
+                fill
+                className="product-main-photo"
+                sizes="(max-width: 980px) 100vw, 55vw"
+                loading="eager"
+                fetchPriority="high"
+              />
               <div className="product-image-grid" />
               <span className="product-image-badge">DYN / PRODUCT VIEW</span>
               <span className="product-image-caption">Product-specific DYN visual</span>
@@ -103,7 +173,9 @@ export function ProductDetailTemplate({
             <div className="product-thumbnails" aria-label={`${product.name} image previews`}>
               {["Front", "Build", "Handling", "Detail"].map((label, index) => (
                 <div className={index === 0 ? "active" : ""} key={label}>
-                  <span style={{ backgroundImage: `url('${heroImage}')` }} />
+                  <span>
+                    <Image src={heroImage} alt="" width={108} height={96} sizes="54px" />
+                  </span>
                   <b>{label}</b>
                 </div>
               ))}
@@ -240,7 +312,8 @@ export function ProductDetailTemplate({
 
       <section className="product-detail-section light-surface product-requirement-section">
         <div className="product-requirement-card">
-          <div className="product-requirement-visual" style={{ backgroundImage: `url('${heroImage}')` }}>
+          <div className="product-requirement-visual">
+            <Image src={heroImage} alt="" fill className="product-requirement-photo" sizes="(max-width: 980px) 100vw, 40vw" />
             <span>CUSTOM REQUIREMENT</span>
           </div>
           <div className="product-requirement-copy">
@@ -295,7 +368,15 @@ export function ProductDetailTemplate({
           <div className="product-related-grid">
             {related.map((item) => (
               <Link href={`/products/${category.slug}/${item.slug}`} key={item.slug}>
-                <div className="product-related-image" style={{ backgroundImage: `url('${getProductImage(item.slug, category.slug)}')` }} />
+                <div className="product-related-image">
+                  <Image
+                    src={getProductImage(item.slug, category.slug)}
+                    alt={`${item.name} — ${category.name} from ${siteConfig.name}`}
+                    fill
+                    className="product-related-photo"
+                    sizes="(max-width: 980px) 50vw, 290px"
+                  />
+                </div>
                 <span>{item.eyebrow}</span>
                 <h3>{item.name}</h3>
                 <p>{item.summary}</p>

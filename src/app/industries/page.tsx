@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { industries } from "@/data/site";
 
-export const metadata = { title: "Industries" };
+export const metadata: Metadata = {
+  title: "Industries We Supply",
+  description:
+    "Pallet and industrial packaging formats for engineering, automotive, pharmaceutical, chemical, logistics, export, electronics and heavy industry supply chains.",
+  alternates: { canonical: "/industries" },
+};
 
 export default function IndustriesPage() {
   return <>

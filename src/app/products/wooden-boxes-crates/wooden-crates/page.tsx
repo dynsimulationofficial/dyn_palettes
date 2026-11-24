@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Wooden Crate Manufacturer | Heavy Machinery Shipping Crates | DYN Pallets",
+  title: "Wooden Crate Manufacturer | Heavy Machinery Shipping Crates",
   description:
     "Custom wooden shipping crates for machinery, heavy equipment and export cargo, including heavy-duty, heat-treated, ISPM 15-ready and seaworthy crate designs.",
   alternates: {

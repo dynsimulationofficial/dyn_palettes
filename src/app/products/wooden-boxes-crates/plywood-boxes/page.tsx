@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Plywood Box Manufacturer | Export Packing Cases | DYN Pallets",
+  title: "Plywood Box Manufacturer | Export Packing Cases",
   description:
     "Custom plywood packing boxes for industrial, export and seaworthy applications, including heavy-duty, nailless, collapsible and reusable plywood box designs.",
   alternates: {

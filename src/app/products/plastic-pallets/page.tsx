@@ -4,10 +4,12 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { plasticPalletItems } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
+import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 import { DynTicker } from "@/components/DynTicker";
 
 export const metadata: Metadata = {
-  title: "Plastic Pallets Manufacturer in India | DYN Pallets",
+  title: "Plastic Pallets Manufacturer in India",
   description:
     "DYN Pallets supplies durable plastic pallets for warehouses, export, food, pharmaceutical, rackable and heavy-duty industrial applications.",
   alternates: { canonical: "/products/plastic-pallets" },
@@ -255,13 +257,31 @@ const faqSchema = {
   })),
 };
 
+const categorySchema = [
+  breadcrumbSchema(getSiteUrl(), [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Plastic Pallets", path: "/products/plastic-pallets" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Plastic Pallets",
+    numberOfItems: productFamilies.length,
+    itemListElement: productFamilies.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${getSiteUrl()}/products/plastic-pallets/${item.slug}`,
+    })),
+  },
+];
+
 export default function PlasticPalletsPage() {
   return (
     <div className="product-category-layout">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={categorySchema} />
 
       <section className="page-hero texture-grid wooden-pallets-hero">
         <div className="page-hero-copy">
@@ -779,15 +799,14 @@ export default function PlasticPalletsPage() {
               className="catalog-static-card"
               key={item.slug}
             >
-              <div
-                className="catalog-static-image catalog-static-image-photo"
-                style={{
-                  backgroundImage: `url('${getProductImage(
-                    "plastic-pallets",
-                    "plastic-pallets"
-                  )}')`,
-                }}
-              >
+              <div className="catalog-static-image catalog-static-image-photo">
+                <Image
+                  src={getProductImage(item.slug, "plastic-pallets")}
+                  alt={`${item.name} — plastic pallets from ${siteConfig.name}`}
+                  fill
+                  className="catalog-static-photo-img"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 380px"
+                />
                 <span>PRODUCT FAMILY</span>
               </div>
 

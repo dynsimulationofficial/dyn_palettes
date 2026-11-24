@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "CP6 1200x1000 Perimeter Base Chemical Pallets | DYN Pallets",
+  title: "CP6 1200x1000 Perimeter Base Chemical Pallets",
   description:
     "CP6 wooden pallets in 1200x1000 mm perimeter-base format for heavy-duty chemical and industrial handling, with 4-way, heat-treated and export options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

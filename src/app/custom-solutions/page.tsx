@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 
-export const metadata = { title: "Custom Solutions" };
+export const metadata: Metadata = {
+  title: "Custom Packaging Solutions",
+  description:
+    "Custom pallets, crates, skids and packing systems engineered around oversized, fragile, high-value or irregular cargo, from drawing review to dispatch.",
+  alternates: { canonical: "/custom-solutions" },
+};
 
 export default function CustomSolutionsPage() {
   const steps = [

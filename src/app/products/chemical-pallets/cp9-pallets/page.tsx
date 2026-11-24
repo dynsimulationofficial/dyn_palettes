@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "CP9 1140x1140 Pallets for Drums & Bulk Containers | DYN Pallets",
+  title: "CP9 1140x1140 Pallets for Drums & Bulk Containers",
   description:
     "CP9 wooden pallets in 1140x1140 mm perimeter-base format for drums, bulk containers, Big Bags and FIBCs, with heavy-duty, 4-way and export options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

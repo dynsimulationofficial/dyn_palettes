@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Plastic Pallets for Export & Air Freight | DYN Pallets",
+  title: "Plastic Pallets for Export & Air Freight",
   description:
     "Export plastic pallets for international shipping, container cargo and air freight, including HDPE, lightweight, nestable, one-way, 1200x800 and 1200x1000 formats.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

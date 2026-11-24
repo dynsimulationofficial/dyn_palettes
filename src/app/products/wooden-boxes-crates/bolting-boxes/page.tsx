@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Bolting Box Manufacturer | Heavy Machinery Packing Boxes | DYN Pallets",
+  title: "Bolting Box Manufacturer | Heavy Machinery Packing Boxes",
   description:
     "Heavy-duty bolting boxes for machinery, export and reusable packing, including full bolting, nut bolting, plywood bolting and seaworthy box configurations.",
   alternates: {

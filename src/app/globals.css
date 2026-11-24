@@ -5406,3 +5406,36 @@ main > :not(.home-hero) *::after {
   .exact-fx-section-ghost,
   .exact-fx-overview-map { display: none !important; }
 }
+
+/* ---------------------------------------------------------------------------
+   next/image layering
+   ---------------------------------------------------------------------------
+   Product and catalogue photography moved from CSS `background-image` to
+   <Image fill> so the files are optimised, sized and reachable by Google
+   Images with real alt text. The photo is now a child element rather than a
+   background layer, so the decorative overlays that used to paint above the
+   background need an explicit z-index to stay above the photo.
+   --------------------------------------------------------------------------- */
+
+.product-main-photo { object-fit: contain; z-index: 0; }
+.product-main-image::before,
+.product-main-image::after,
+.product-image-grid { z-index: 1; }
+
+.product-thumbnails span { display: grid; place-items: center; overflow: hidden; background-image: none; }
+.product-thumbnails span img { width: 100%; height: 100%; object-fit: contain; }
+
+.product-requirement-visual > img { object-fit: contain; z-index: 0; }
+.product-requirement-visual::after { z-index: 1; }
+
+.product-related-image { position: relative; overflow: hidden; }
+.product-related-photo { object-fit: contain; }
+
+.catalog-hero-photo-img { object-fit: cover; z-index: 0; }
+.catalog-hero-photo-overlay { z-index: 1; }
+
+.catalog-static-photo-img { object-fit: cover; z-index: 0; }
+.catalog-static-image-photo::after { z-index: 1; }
+
+.product-category-hub-image { position: relative; overflow: hidden; }
+.product-category-hub-img { object-fit: cover; }

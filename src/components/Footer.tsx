@@ -11,10 +11,17 @@ import { navProducts, services } from "@/data/site";
 import { siteConfig } from "@/data/config";
 
 export default function Footer() {
+  // /industries, /custom-solutions and /faq had no inbound link from anywhere
+  // on the site, so Googlebot only ever reached them from the sitemap. Every
+  // route in the sitemap is now one click from every page.
   const companyLinks = [
     { label: "About us", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Services", href: "/services" },
+    { label: "Industries", href: "/industries" },
+    { label: "Custom solutions", href: "/custom-solutions" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact us", href: "/contact" },
   ];
 
@@ -23,12 +30,12 @@ export default function Footer() {
     { label: "Privacy Policy", href: "/contact" },
   ];
 
-  const productLinks = navProducts.slice(0, 4).map((product) => ({
+  const productLinks = navProducts.map((product) => ({
     label: product.name,
     href: `/products/${product.slug}`,
   }));
 
-  const serviceLinks = services.slice(0, 4).map((service) => ({
+  const serviceLinks = services.map((service) => ({
     label: service.name,
     href: `/services/${service.slug}`,
   }));

@@ -4,7 +4,10 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteFx } from "@/components/SiteFx";
-import { getSiteUrl } from "@/data/config";
+import { JsonLd } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
+import { productCategories } from "@/data/products";
+import { services } from "@/data/site";
 
 const siteUrl = getSiteUrl();
 const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
@@ -27,22 +30,18 @@ export const metadata: Metadata = {
       }
     : undefined,
 
+  // Images come from app/opengraph-image.tsx and app/twitter-image.tsx, which
+  // render real PNGs. File-based metadata outranks this object, so listing
+  // `images` here would be ignored anyway.
   openGraph: siteUrl
     ? {
         type: "website",
         url: siteUrl,
         siteName: "DYN Pallets",
+        locale: "en_IN",
         title: "Industrial Wooden Pallets & Packaging | DYN Pallets",
         description:
           "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and export logistics.",
-        images: [
-          {
-            url: `${siteUrl}/og-image-placeholder.svg`,
-            width: 1200,
-            height: 630,
-            alt: "DYN Pallets industrial packaging and export solutions",
-          },
-        ],
       }
     : undefined,
 
@@ -52,7 +51,6 @@ export const metadata: Metadata = {
         title: "Industrial Wooden Pallets & Packaging | DYN Pallets",
         description:
           "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and industrial packing services for B2B supply chains.",
-        images: [`${siteUrl}/og-image-placeholder.svg`],
       }
     : undefined,
 
@@ -79,35 +77,35 @@ export const metadata: Metadata = {
   publisher: "DYN Pallets",
 };
 
-function JsonLd({ data }: { data: Record<string, unknown> }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(data),
-      }}
-    />
-  );
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationId = `${siteUrl}/#organization`;
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
 
-    name: "DYN Pallets",
+    name: siteConfig.name,
     url: siteUrl || undefined,
-    logo: siteUrl ? `${siteUrl}/icon.svg` : "/icon.svg",
+    slogan: siteConfig.tagline,
+
+    logo: {
+      "@type": "ImageObject",
+      url: siteUrl ? `${siteUrl}/icon.svg` : "/icon.svg",
+      width: 64,
+      height: 64,
+    },
+    image: siteUrl ? `${siteUrl}/opengraph-image` : undefined,
 
     description:
       "Industrial wooden pallets, export pallets, wooden crates, plywood boxes and industrial packaging solutions for commercial and export requirements.",
 
-    email: "Info@dynpallets.com",
-    telephone: "+918850139961",
+    email: siteConfig.email,
+    telephone: siteConfig.phoneHref.replace("tel:", ""),
 
     address: {
       "@type": "PostalAddress",
@@ -115,14 +113,62 @@ export default function RootLayout({
       addressRegion: "Maharashtra",
       addressCountry: "IN",
     },
+
+    // Supply is national, not just Mumbai: Search Console shows India at 76% of
+    // impressions and the best position of any market.
+    areaServed: [
+      { "@type": "Country", name: "India" },
+      { "@type": "AdministrativeArea", name: "Maharashtra" },
+    ],
+
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: siteConfig.phoneHref.replace("tel:", ""),
+        email: siteConfig.email,
+        areaServed: "IN",
+        availableLanguage: ["en", "hi", "mr"],
+      },
+    ],
+
+    knowsAbout: [
+      "Wooden pallets",
+      "Export pallets",
+      "Heat treated pallets",
+      "CP-series chemical pallets",
+      "Plastic pallets",
+      "Wooden boxes and crates",
+      "Industrial packing",
+      "Container lashing and chocking",
+    ],
+
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Products and services",
+      itemListElement: [
+        ...productCategories.map((category) => ({
+          "@type": "OfferCatalog",
+          name: category.name,
+          url: `${siteUrl}/products/${category.slug}`,
+        })),
+        ...services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: service.name, url: `${siteUrl}/services/${service.slug}` },
+        })),
+      ],
+    },
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
 
-    name: "DYN Pallets",
+    name: siteConfig.name,
     url: siteUrl || undefined,
+    inLanguage: "en",
+    publisher: { "@id": organizationId },
 
     description:
       "Industrial wooden pallets, export packaging, wooden crates, plywood boxes and packaging services for factories, warehouses and international shipments.",

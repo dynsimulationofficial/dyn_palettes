@@ -1,10 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, Boxes, Forklift, Image as ImageIcon, PackageCheck, Ruler, ShieldCheck, Ship, Weight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
 import { categoryImages } from "@/data/productImages";
 import { productCategories } from "@/data/products";
+import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -12,6 +15,25 @@ export const metadata: Metadata = {
     "Browse wooden pallets, CP1-CP9 chemical pallets, wooden boxes and crates, and plastic pallet solutions from DYN Pallets.",
   alternates: { canonical: "/products" },
 };
+
+const productsSchema = [
+  breadcrumbSchema(getSiteUrl(), [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Product categories",
+    numberOfItems: productCategories.length,
+    itemListElement: productCategories.map((category, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: category.name,
+      url: `${getSiteUrl()}/products/${category.slug}`,
+    })),
+  },
+];
 
 const productsImage = "https://images.unsplash.com/photo-1573209680076-bd7ec7007616?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800";
 
@@ -33,6 +55,7 @@ const productFaqs = [
 
 export default function ProductsPage() {
   return <>
+    <JsonLd data={productsSchema} />
     <PageHero
       kicker="PRODUCT RANGE"
       title="Built for every kind of load."
@@ -57,7 +80,15 @@ export default function ProductsPage() {
       <div className="product-category-hub-grid">
         {productCategories.map((category, index) => (
           <article className="product-category-hub-card" key={category.slug}>
-            <div className="product-category-hub-image" style={{ backgroundImage: `url('${categoryImages[category.slug]}')`, backgroundSize: "cover", backgroundPosition: "center" }}><span className="sr-only">{category.name} image</span></div>
+            <div className="product-category-hub-image">
+              <Image
+                src={categoryImages[category.slug]}
+                alt={`${category.name} manufactured by ${siteConfig.name} for industrial handling and export`}
+                fill
+                className="product-category-hub-img"
+                sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 420px"
+              />
+            </div>
             <div className="product-category-hub-body">
               <span className="kicker">{String(index + 1).padStart(2,"0")} · {category.eyebrow}</span>
               <h3>{category.name}</h3>

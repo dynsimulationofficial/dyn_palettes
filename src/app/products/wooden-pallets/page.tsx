@@ -4,17 +4,41 @@ import Image from "next/image";
 import { woodenPalletItems } from "@/data/products";
 import { DynTicker } from "@/components/DynTicker";
 import { getProductImage } from "@/data/productImages";
+import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Wooden Pallets for Sale | Manufacturer & Supplier | DYN Pallets',
+  title: 'Wooden Pallets for Sale | Manufacturer & Supplier',
   description: 'Source durable wooden pallets for storage, shipping and export from DYN Pallets. Custom, heat-treated, new and used pallet solutions built to your specifications.',
   alternates: { canonical: "/products/wooden-pallets" },
 };
 
+const categorySchema = [
+  breadcrumbSchema(getSiteUrl(), [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Wooden Pallets", path: "/products/wooden-pallets" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Wooden Pallets",
+    numberOfItems: woodenPalletItems.length,
+    itemListElement: woodenPalletItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${getSiteUrl()}/products/wooden-pallets/${item.slug}`,
+    })),
+  },
+];
+
 export default function WoodenPalletsPage() {
   return (
     <div className="product-category-layout">
+      <JsonLd data={categorySchema} />
+
      <section className="page-hero texture-grid wooden-pallets-hero">
   <div className="page-hero-copy">
     <nav className="wooden-breadcrumbs" aria-label="Breadcrumb">
@@ -767,7 +791,7 @@ export default function WoodenPalletsPage() {
         <div className="catalog-category-grid">
           {woodenPalletItems.map((item, index) => (
             <Link href={`/products/wooden-pallets/${item.slug}`} className="catalog-static-card" key={item.slug}>
-              <div className="catalog-static-image catalog-static-image-photo" style={{ backgroundImage: `url('${getProductImage(item.slug, "wooden-pallets")}')` }}><span>PRODUCT FAMILY</span></div>
+              <div className="catalog-static-image catalog-static-image-photo"><Image src={getProductImage(item.slug, "wooden-pallets")} alt={`${item.name} — wooden pallets from ${siteConfig.name}`} fill className="catalog-static-photo-img" sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 380px" /><span>PRODUCT FAMILY</span></div>
               <div className="catalog-static-body">
                 <span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span>
                 <h3>{item.name}</h3>

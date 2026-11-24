@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "CP3 1140x1140 Pallet Dimensions & Specifications | DYN Pallets",
+  title: "CP3 1140x1140 Pallet Dimensions & Specifications",
   description:
     "CP3 wooden pallets in 1140x1140 mm format for drums, barrels, IBC and chemical-industry handling, with 3-runner, heat-treated and export options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

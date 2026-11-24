@@ -4,6 +4,7 @@ import { products, services, industries } from "@/data/site";
 import { CountUp, Reveal } from "@/components/Motion";
 import { ProductCardMedia } from "@/components/ProductCardMedia";
 import { QuoteBand } from "@/components/QuoteBand";
+import { JsonLd, faqPageSchema } from "@/components/JsonLd";
 
 const fieldImages = {
   warehouse: "https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?auto=format&fit=crop&fm=webp&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=58&w=1800",
@@ -22,15 +23,17 @@ const productCardImages = [
 ] as const;
 
 const faqs = [
-  ["Can you make pallets to our exact dimensions?", "Yes. Share the footprint, load, entry requirement and expected quantity. Standard and fully custom builds can both be reviewed."],
-  ["Do you support export packaging?", "Yes. Export pallets, wooden boxes, crates, heat-treatment support, lashing, chocking, VCI and vacuum packing can be planned around the shipment route."],
-  ["What details help you quote faster?", "Dimensions, approximate load, quantity, handling method, destination and any drawings or photographs are the best starting inputs."],
-  ["Can you pack machinery at our site?", "Industrial packing requirements can be reviewed for onsite execution depending on cargo, location, access and project scope."],
+  { q: "Can you make pallets to our exact dimensions?", a: "Yes. Share the footprint, load, entry requirement and expected quantity. Standard and fully custom builds can both be reviewed." },
+  { q: "Do you support export packaging?", a: "Yes. Export pallets, wooden boxes, crates, heat-treatment support, lashing, chocking, VCI and vacuum packing can be planned around the shipment route." },
+  { q: "What details help you quote faster?", a: "Dimensions, approximate load, quantity, handling method, destination and any drawings or photographs are the best starting inputs." },
+  { q: "Can you pack machinery at our site?", a: "Industrial packing requirements can be reviewed for onsite execution depending on cargo, location, access and project scope." },
 ];
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqPageSchema(faqs)} />
+
       <section className="home-hero">
         <span className="exact-fx-hero-timber" aria-hidden="true" />
         <div className="hero-noise" />
@@ -160,7 +163,7 @@ export default function Home() {
 
       <section className="section home-faq light-surface">
         <Reveal className="section-heading split-heading"><div><span className="kicker">FREQUENTLY ASKED QUESTIONS</span><h2>Useful answers<br/><em>before you enquire.</em></h2></div><p>Quick answers for procurement teams, exporters and industrial buyers evaluating the right packaging route.</p></Reveal>
-        <div className="home-faq-grid">{faqs.map(([question,answer], i) => <Reveal key={question} delay={i*45}><details className="home-faq-item"><summary><span>{String(i+1).padStart(2,"0")}</span>{question}<b>+</b></summary><p>{answer}</p></details></Reveal>)}</div>
+        <div className="home-faq-grid">{faqs.map(({ q: question, a: answer }, i) => <Reveal key={question} delay={i*45}><details className="home-faq-item"><summary><span>{String(i+1).padStart(2,"0")}</span>{question}<b>+</b></summary><p>{answer}</p></details></Reveal>)}</div>
         <Reveal className="faq-link-row"><Link href="/faq" className="wide-link textured-link"><span>View all frequently asked questions</span><ArrowRight size={20}/></Link></Reveal>
       </section>
 

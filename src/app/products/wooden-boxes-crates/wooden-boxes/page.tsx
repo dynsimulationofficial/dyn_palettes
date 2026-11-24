@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Wooden Boxes Manufacturer | Industrial Packing Boxes | DYN Pallets",
+  title: "Wooden Boxes Manufacturer | Industrial Packing Boxes",
   description:
     "DYN Pallets manufactures custom wooden boxes, industrial wooden packing boxes, heavy-duty boxes and export wooden boxes with heat-treated and ISPM 15-ready options.",
   alternates: {

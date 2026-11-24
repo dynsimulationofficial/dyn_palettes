@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "CP5 760x1140 Pallets with IPPC Export Options | DYN Pallets",
+  title: "CP5 760x1140 Pallets with IPPC Export Options",
   description:
     "CP5 wooden pallets in 760x1140 mm format for chemical and industrial handling, with 3-runner, 4-way, heat-treated, IPPC and ISPM 15 export options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

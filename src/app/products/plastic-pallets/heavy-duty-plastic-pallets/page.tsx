@@ -10,7 +10,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Heavy Duty Plastic Pallets Manufacturer | DYN Pallets",
+  title: "Heavy Duty Plastic Pallets Manufacturer",
   description:
     "Buy heavy duty plastic pallets for warehouses, factories and racking. HDPE, rackable, reinforced, 4-way and 1200x1000 options available to specification.",
   keywords: [

@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "Rackable Plastic Pallet Manufacturer | DYN Pallets",
+  title: "Rackable Plastic Pallet Manufacturer",
   description:
     "Rackable plastic pallets for warehouse racking, including HDPE, heavy-duty, solid top, steel reinforced, 4-way, 48x40 and 1200x1000 options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

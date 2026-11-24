@@ -4,10 +4,12 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { woodenBoxesCratesItems } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
+import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 import { DynTicker } from "@/components/DynTicker";
 
 export const metadata: Metadata = {
-  title: "Custom Wooden Boxes & Crates Manufacturer in India | DYN Pallets",
+  title: "Custom Wooden Boxes & Crates Manufacturer in India",
   description:
     "DYN Pallets manufactures custom wooden boxes & crates for industrial, export and heavy-duty packing, including pinewood, plywood, heat-treated and ISPM 15 options.",
   alternates: {
@@ -133,13 +135,31 @@ const faqSchema = {
   })),
 };
 
+const categorySchema = [
+  breadcrumbSchema(getSiteUrl(), [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Wooden Boxes & Crates", path: "/products/wooden-boxes-crates" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Wooden Boxes & Crates",
+    numberOfItems: productFamilies.length,
+    itemListElement: productFamilies.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${getSiteUrl()}/products/wooden-boxes-crates/${item.slug}`,
+    })),
+  },
+];
+
 export default function WoodenBoxesCratesPage() {
   return (
     <div className="product-category-layout">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={categorySchema} />
 
       <section className="page-hero texture-grid wooden-pallets-hero">
         <div className="page-hero-copy">
@@ -1019,15 +1039,14 @@ export default function WoodenBoxesCratesPage() {
               className="catalog-static-card"
               key={item.slug}
             >
-              <div
-                className="catalog-static-image catalog-static-image-photo"
-                style={{
-                  backgroundImage: `url('${getProductImage(
-                    item.slug,
-                    "wooden-boxes-crates"
-                  )}')`,
-                }}
-              >
+              <div className="catalog-static-image catalog-static-image-photo">
+                <Image
+                  src={getProductImage(item.slug, "wooden-boxes-crates")}
+                  alt={`${item.name} — wooden boxes and crates from ${siteConfig.name}`}
+                  fill
+                  className="catalog-static-photo-img"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 380px"
+                />
                 <span>PRODUCT FAMILY</span>
               </div>
 

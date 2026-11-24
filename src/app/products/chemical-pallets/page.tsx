@@ -5,12 +5,34 @@ import { ArrowUpRight } from "lucide-react";
 import { chemicalPalletItems } from "@/data/products";
 import { DynTicker } from "@/components/DynTicker";
 import { getProductImage } from "@/data/productImages";
+import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import { getSiteUrl, siteConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Chemical Pallets Manufacturer | HDPE Spill Pallets | DYN Pallets",
+  title: "Chemical Pallets Manufacturer | HDPE Spill Pallets",
   description: "DYN Pallets manufactures chemical pallets, HDPE spill containment pallets and chemical resistant plastic pallets for drums, IBCs, hazardous storage and industrial handling.",
   alternates: { canonical: "/products/chemical-pallets" },
 };
+
+const categorySchema = [
+  breadcrumbSchema(getSiteUrl(), [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Chemical Pallets", path: "/products/chemical-pallets" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Chemical Pallets",
+    numberOfItems: chemicalPalletItems.length,
+    itemListElement: chemicalPalletItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: `${getSiteUrl()}/products/chemical-pallets/${item.slug}`,
+    })),
+  },
+];
 
 export default function ChemicalPalletsPage() {
   const typeCards = [
@@ -38,6 +60,7 @@ export default function ChemicalPalletsPage() {
   ] as const;
 
   return <div className="product-category-layout">
+    <JsonLd data={categorySchema} />
     <section className="page-hero texture-grid wooden-pallets-hero"><div className="page-hero-copy"><nav className="wooden-breadcrumbs" aria-label="Breadcrumb"><Link href="/products">Products</Link><span>/</span><span>Chemical Pallets</span></nav><h1>Chemical Pallets</h1><p className="wooden-hero-description">Chemical resistant pallets engineered for safe storage, handling, containment and transportation of chemicals, drums, IBCs and industrial materials.</p><div className="hero-actions wooden-hero-actions"><Link href="/contact" className="button button-primary">Request a Quote <ArrowUpRight size={18} /></Link><Link href="/contact" className="button button-ghost">Send Specification <ArrowUpRight size={17} /></Link></div></div><div className="wooden-hero-image"><Image src="/product-photos/chemical-pallets.webp" alt="Chemical pallets" fill priority className="wooden-pallet-product-image" /></div></section>
 
     <DynTicker items={chemicalPalletItems.map((item) => ({ key: item.slug, label: item.name }))} />
@@ -66,7 +89,7 @@ export default function ChemicalPalletsPage() {
 
     <section className="wooden-page-section light-surface"><div className="wooden-content-shell"><div className="wooden-section-heading"><span className="kicker">CHEMICAL PALLETS</span><h2>Related Chemical Pallet Solutions</h2></div><div className="wooden-content-flow"><p>DYN Pallets can support requirements beyond conventional plastic pallet platforms.</p></div><div className="wooden-subsection-grid">{[["01","HDPE Chemical Pallets","Chemical-resistant HDPE configurations for industrial handling, warehousing and repeat-use applications."],["02","Chemical Drum Pallets","Platforms designed around chemical drums and industrial container arrangements."],["03","Drum Spill Pallets","Containment systems for single or multiple drum storage areas."],["04","IBC Containment Pallets","Heavy-duty containment platforms designed around IBC storage requirements."],["05","Heavy Duty Chemical Pallets","Reinforced configurations for demanding industrial chemical loads."],["06","Custom Chemical Pallets","Custom platforms designed around unusual containers, equipment or storage requirements."]] .map(([number,title,copy]) => <article className="wooden-subsection-card" key={title}><span className="wooden-card-index">{number}</span><h3>{title}</h3><div className="wooden-content-flow"><p>{copy}</p></div></article>)}</div></div></section>
 
-    <section className="section wooden-category-browser"><div className="section-heading split-heading"><div><span className="kicker">BROWSE CHEMICAL PALLET TYPES</span><h2>Explore the CP range.<br /><em>Specify with confidence.</em></h2></div><p>Review CP1 through CP9 chemical pallet formats by industrial application, handling requirement and pallet configuration.</p></div><div className="catalog-category-grid">{chemicalPalletItems.map((item, index) => <Link href={`/products/chemical-pallets/${item.slug}`} className="catalog-static-card" key={item.slug}><div className="catalog-static-image catalog-static-image-photo" style={{ backgroundImage: `url('${getProductImage(item.slug, "chemical-pallets")}')` }}><span>CP SERIES {String(index + 1).padStart(2, "0")}</span></div><div className="catalog-static-body"><span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span><h3>{item.name}</h3><p>{item.summary}</p><footer><span>View product</span><ArrowUpRight size={15} /></footer></div></Link>)}</div></section>
+    <section className="section wooden-category-browser"><div className="section-heading split-heading"><div><span className="kicker">BROWSE CHEMICAL PALLET TYPES</span><h2>Explore the CP range.<br /><em>Specify with confidence.</em></h2></div><p>Review CP1 through CP9 chemical pallet formats by industrial application, handling requirement and pallet configuration.</p></div><div className="catalog-category-grid">{chemicalPalletItems.map((item, index) => <Link href={`/products/chemical-pallets/${item.slug}`} className="catalog-static-card" key={item.slug}><div className="catalog-static-image catalog-static-image-photo"><Image src={getProductImage(item.slug, "chemical-pallets")} alt={`${item.name} — CP-series chemical pallet from ${siteConfig.name}`} fill className="catalog-static-photo-img" sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 380px" /><span>CP SERIES {String(index + 1).padStart(2, "0")}</span></div><div className="catalog-static-body"><span className="kicker">{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span><h3>{item.name}</h3><p>{item.summary}</p><footer><span>View product</span><ArrowUpRight size={15} /></footer></div></Link>)}</div></section>
 
     <section className="wooden-page-section light-surface"><div className="wooden-content-shell"><div className="wooden-section-heading"><span className="kicker">CHEMICAL PALLETS</span><h2>Frequently Asked Questions</h2></div><div className="wooden-faq-list">{faqs.map(([question, answer], index) => <details key={question}><summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<b>+</b></summary><p>{answer}</p></details>)}</div></div></section>
 

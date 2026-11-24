@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: "1200x1000 Plastic Pallets for Industrial Use | DYN Pallets",
+  title: "1200x1000 Plastic Pallets for Industrial Use",
   description:
     "1200x1000 plastic pallets for warehouse, racking, export and industrial handling, including HDPE, heavy-duty, 4-way, perforated and high-load options.",
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },

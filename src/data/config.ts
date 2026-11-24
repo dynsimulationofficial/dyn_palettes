@@ -9,7 +9,9 @@ export const siteConfig = {
   whatsapp: "918850139961",
   location: "Mumbai, Maharashtra, India",
   serviceArea: "Mumbai, Maharashtra, India",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://dynpallets.com",
+  // Canonical host. Google crawls www.dynpallets.com; the apex 308s to it
+  // (see next.config.ts). Must match CANONICAL_HOST there.
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.dynpallets.com",
 } as const;
 
 export const getSiteUrl = (): string => {

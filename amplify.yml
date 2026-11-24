@@ -8,7 +8,7 @@ frontend:
       commands:
         # Amplify console env vars are NOT available to the Next.js server runtime
         # by default, so write the SMTP ones into .env.production at build time.
-        - env | grep -E '^(SMTP_|CONTACT_RECEIVER)' >> .env.production || true
+        - env | grep -E '^(SMTP_|CONTACT_RECEIVER|NEXT_PUBLIC_SITE_URL)' >> .env.production || true
         - npm run build
   artifacts:
     baseDirectory: .next

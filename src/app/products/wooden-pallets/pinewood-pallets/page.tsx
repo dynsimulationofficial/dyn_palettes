@@ -8,7 +8,7 @@ const category = getProductCategory(categorySlug)!;
 const product = getProductItem(categorySlug, productSlug)!;
 
 export const metadata: Metadata = {
-  title: `${product.name} for Industrial Use | DYN Pallets`,
+  title: `${product.name} for Industrial Use`,
   description: product.summary,
   alternates: { canonical: `/products/${categorySlug}/${productSlug}` },
 };
